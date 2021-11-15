@@ -1,6 +1,9 @@
 package gui;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -17,6 +20,11 @@ public class MainFrame extends JFrame {
 		setTitle("Studentska služba");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
+	
+		MyMenuBar barMenu = new MyMenuBar();
+		this.setJMenuBar(barMenu);
+
+		
 		setVisible(true);
 	}
 }
