@@ -24,14 +24,14 @@ public class MyMenuBar extends JMenuBar {
 		JMenu help = new JMenu("Help");
 		help.setMnemonic(KeyEvent.VK_H);
 		
-		ImageIcon newIcon = new ImageIcon("C:\\Users\\Zindovic\\eclipse-workspace\\oisisiProjekat\\oisisi-projekat\\src\\Images\\newImage.jpg");
-		ImageIcon aboutIcon = new ImageIcon("C:\\Users\\Zindovic\\eclipse-workspace\\oisisiProjekat\\oisisi-projekat\\src\\Images\\aboutImage.jpg");
-		ImageIcon closeIcon = new ImageIcon("C:\\Users\\Zindovic\\eclipse-workspace\\oisisiProjekat\\oisisi-projekat\\src\\Images\\closeImage.jpg");
-		ImageIcon deleteIcon = new ImageIcon("C:\\Users\\Zindovic\\eclipse-workspace\\oisisiProjekat\\oisisi-projekat\\src\\Images\\deleteImage.jpg");
-		ImageIcon editIcon = new ImageIcon("C:\\Users\\Zindovic\\eclipse-workspace\\oisisiProjekat\\oisisi-projekat\\src\\Images\\editImage.jpg");
-		ImageIcon helpIcon = new ImageIcon("C:\\Users\\Zindovic\\eclipse-workspace\\oisisiProjekat\\oisisi-projekat\\src\\Images\\helpImage.jpg");
-		ImageIcon openIcon = new ImageIcon("C:\\Users\\Zindovic\\eclipse-workspace\\oisisiProjekat\\oisisi-projekat\\src\\Images\\openImage.jpg");
-		ImageIcon saveIcon = new ImageIcon("C:\\Users\\Zindovic\\eclipse-workspace\\oisisiProjekat\\oisisi-projekat\\src\\Images\\saveImage.jpg");
+		ImageIcon newIcon = new ImageIcon("./src/Images/newImage.jpg");
+		ImageIcon aboutIcon = new ImageIcon("./src/Images/aboutImage.jpg");
+		ImageIcon closeIcon = new ImageIcon("./src/Images/closeImage.jpg");
+		ImageIcon deleteIcon = new ImageIcon("./src/Images/deleteImage.jpg");
+		ImageIcon editIcon = new ImageIcon("./src/Images/editImage.jpg");
+		ImageIcon helpIcon = new ImageIcon("./src/Images/helpImage.jpg");
+		ImageIcon openIcon = new ImageIcon("./src/Images/openImage.jpg");
+		ImageIcon saveIcon = new ImageIcon("./src/Images/saveImage.jpg");
 		
 		JMenu open = new JMenu("Open");
 		open.setIcon(openIcon);
