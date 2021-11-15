@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 enum Semester_enum {summer,winter };
@@ -19,6 +20,8 @@ public class Predmet {
 	
 	public Predmet() {
 		super();
+		passedStudents = new ArrayList<Student>();
+		failedStudents = new ArrayList<Student>();
 	}
 
 
@@ -30,6 +33,8 @@ public class Predmet {
 		this.year = year;
 		this.prof = prof;
 		this.espb = espb;
+		passedStudents = new ArrayList<Student>();
+		failedStudents = new ArrayList<Student>();
 	}
 
 
@@ -92,4 +97,12 @@ public class Predmet {
 		this.espb = espb;
 	}
 
+
+	public List<Student> getPassedStudents() {
+		return passedStudents;
+	}
+
+	public List<Student> getFailedStudents() {
+		return failedStudents;
+	}
 }

@@ -5,6 +5,7 @@ import java.util.Date;
 enum Grade_enum {
 	
 	SEST(6),SEDAM(7),OSAM(8),DEVET(9),DESET(10);
+	
 	private int numVal;
 	
 	Grade_enum(int numVal){

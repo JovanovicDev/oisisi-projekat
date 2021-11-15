@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +37,7 @@ public class Profesor {
 		this.numberID = numberID;
 		this.title = title;
 		this.yearsOfService = yearsOfService;
+		subjectsList = new ArrayList<Predmet>();
 	}
 
 
@@ -138,4 +140,8 @@ public class Profesor {
 		this.yearsOfService = yearsOfService;
 	}
 
+
+	public List<Predmet> getSubjectsList() {
+		return subjectsList;
+	}
 }

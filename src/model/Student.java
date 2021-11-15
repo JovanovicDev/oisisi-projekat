@@ -1,6 +1,7 @@
 package model;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +28,8 @@ public class Student {
 	
 	public Student() {
 		super();
+		passedExams = new ArrayList<Ocena>();
+		failedExams = new ArrayList<Ocena>();
 	}
 	
 	public Student(String id, String surname, String name, Date birthDate, Adresa adress, String phone, String email,
@@ -44,6 +47,9 @@ public class Student {
 		this.studyYear = studyYear;
 		this.status = status;
 		this.averageGrade = averageGrade;
+		passedExams = new ArrayList<Ocena>();
+		failedExams = new ArrayList<Ocena>();
+		
 
 	}
 
@@ -142,5 +148,16 @@ public class Student {
 	public void setAverageGrade(Double averageGrade) {
 		this.averageGrade = averageGrade;
 	}
+
+	public List<Ocena> getPassedExams() {
+		return passedExams;
+	}
+
+	public List<Ocena> getFailedExams() {
+		return failedExams;
+	}
+
+
 		
+	
 }
