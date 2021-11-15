@@ -10,13 +10,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.*;
 
-
-
 public class MyMenuBar extends JMenuBar {
 
 	public MyMenuBar() {
 		
-	
 		JMenu file = new JMenu("File");
 		file.setMnemonic(KeyEvent.VK_F);
 		JMenu edit = new JMenu("Edit");
@@ -74,7 +71,6 @@ public class MyMenuBar extends JMenuBar {
 		help.add(helpHelp);
 		help.addSeparator();
 		help.add(helpAbout);
-		
 		
 		fileNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		fileSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));

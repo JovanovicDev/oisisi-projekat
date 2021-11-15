@@ -7,6 +7,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.BorderLayout;
 
 public class MainFrame extends JFrame {
 
@@ -24,6 +25,8 @@ public class MainFrame extends JFrame {
 		MyMenuBar barMenu = new MyMenuBar();
 		this.setJMenuBar(barMenu);
 
+		Toolbar toolbar = new Toolbar();
+		add(toolbar, BorderLayout.NORTH);
 		
 		setVisible(true);
 	}
