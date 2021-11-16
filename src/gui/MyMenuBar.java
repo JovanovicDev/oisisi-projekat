@@ -33,6 +33,12 @@ public class MyMenuBar extends JMenuBar {
 		ImageIcon openIcon = new ImageIcon("./src/Images/openImage.jpg");
 		ImageIcon saveIcon = new ImageIcon("./src/Images/saveImage.jpg");
 		
+		ImageIcon studentIcon = new ImageIcon("./src/Images/imageStudent.png");
+		ImageIcon subjectIcon = new ImageIcon("./src/Images/imageBook.jpg");
+		ImageIcon tableIcon = new ImageIcon("./src/Images/imageTable.png");
+		ImageIcon profIcon = new ImageIcon("./src/Images/imageProf.png");
+		
+		
 		JMenu open = new JMenu("Open");
 		open.setIcon(openIcon);
 		
@@ -40,10 +46,10 @@ public class MyMenuBar extends JMenuBar {
 		JMenuItem fileSave = new JMenuItem("Save",saveIcon);
 		JMenuItem fileClose = new JMenuItem("Close",closeIcon);
 		
-		JMenuItem openStudenti = new JMenuItem("Studenti");
-		JMenuItem openPredmeti = new JMenuItem("Predmeti");
-		JMenuItem openProfesori = new JMenuItem("Profesori");
-		JMenuItem openKatedre = new JMenuItem("Katedre");
+		JMenuItem openStudenti = new JMenuItem("Studenti",studentIcon);
+		JMenuItem openPredmeti = new JMenuItem("Predmeti",subjectIcon);
+		JMenuItem openProfesori = new JMenuItem("Profesori",profIcon);
+		JMenuItem openKatedre = new JMenuItem("Katedre",tableIcon);
 		
 		JMenuItem editEdit = new JMenuItem("Edit",editIcon);
 		JMenuItem editDelete = new JMenuItem("Delete",deleteIcon);
