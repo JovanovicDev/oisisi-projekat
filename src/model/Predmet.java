@@ -3,14 +3,14 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-enum Semester_enum {summer,winter };
+enum SemesterEnum {summer,winter };
 
 public class Predmet {
 	
 	
 	private String subjectID;
 	private String name;
-	private Semester_enum semester; 
+	private SemesterEnum semester; 
 	private int year;
 	private Profesor prof;
 	private int espb;
@@ -25,7 +25,7 @@ public class Predmet {
 	}
 
 
-	public Predmet(String subjectID, String name, Semester_enum semester, int year, Profesor prof, int espb) {
+	public Predmet(String subjectID, String name, SemesterEnum semester, int year, Profesor prof, int espb) {
 		super();
 		this.subjectID = subjectID;
 		this.name = name;
@@ -58,12 +58,12 @@ public class Predmet {
 	}
 
 
-	public Semester_enum getSemester() {
+	public SemesterEnum getSemester() {
 		return semester;
 	}
 
 
-	public void setSemester(Semester_enum semester) {
+	public void setSemester(SemesterEnum semester) {
 		this.semester = semester;
 	}
 

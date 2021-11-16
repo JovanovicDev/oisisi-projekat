@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-enum Status_enum{B,S};
+enum StatusEnum{B,S};
 
 
 public class Student {
@@ -21,7 +21,7 @@ public class Student {
 	private String index;
 	private int enrollmentYear;
 	private int studyYear;
-	private Status_enum status;
+	private StatusEnum status;
 	private Double averageGrade;
 	private List<Ocena> passedExams;
 	private List<Ocena> failedExams;
@@ -33,7 +33,7 @@ public class Student {
 	}
 	
 	public Student(String id, String surname, String name, Date birthDate, Adresa adress, String phone, String email,
-			String index, int enrollmentYear, int studyYear, Status_enum status, Double averageGrade) {
+			String index, int enrollmentYear, int studyYear, StatusEnum status, Double averageGrade) {
 		super();
 		this.id = id;
 		this.surname = surname;
@@ -133,11 +133,11 @@ public class Student {
 		this.studyYear = studyYear;
 	}
 
-	public Status_enum getStatus() {
+	public StatusEnum getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status_enum status) {
+	public void setStatus(StatusEnum status) {
 		this.status = status;
 	}
 
@@ -157,7 +157,4 @@ public class Student {
 		return failedExams;
 	}
 
-
-		
-	
 }
