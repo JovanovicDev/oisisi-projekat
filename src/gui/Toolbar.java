@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.*;
+import java.awt.Color;
 
 public class Toolbar extends JToolBar {
 
@@ -85,6 +86,9 @@ public class Toolbar extends JToolBar {
 			   }
 
 		};
+		
+		addSeparator();
+		setBackground(Color.LIGHT_GRAY);
 		
 		JButton btnSearch = new JButton(actionSearch);
 		btnSearch.setIcon(new ImageIcon("./src/Images/searchSmall.jpg"));
