@@ -11,19 +11,24 @@ import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.*;
 import java.awt.Color;
 
 public class Toolbar extends JToolBar {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5707394191276063225L;
 
 	public Toolbar() {
 		
 		super(SwingConstants.HORIZONTAL);
 		
 		Action actionNew = new AbstractAction() {
+			private static final long serialVersionUID = 7831669777280633909L;
 
-			   @Override
+			@Override
 			   public void actionPerformed(ActionEvent e) {
 			      System.out.println("Ctrl + N is pressed.");
 			   }
@@ -40,7 +45,8 @@ public class Toolbar extends JToolBar {
 		
 		Action actionEdit = new AbstractAction() {
 
-			   @Override
+			private static final long serialVersionUID = 6368507878264246753L;
+			@Override
 			   public void actionPerformed(ActionEvent e) {
 			      System.out.println("Ctrl + E is pressed.");
 			   }
@@ -57,7 +63,8 @@ public class Toolbar extends JToolBar {
 		
 		Action actionDelete = new AbstractAction() {
 
-			   @Override
+			private static final long serialVersionUID = -4406310354123286787L;
+			@Override
 			   public void actionPerformed(ActionEvent e) {
 			      System.out.println("Ctrl + D is pressed.");
 			   }
@@ -80,7 +87,9 @@ public class Toolbar extends JToolBar {
 		
 		Action actionSearch = new AbstractAction() {
 
-			   @Override
+			private static final long serialVersionUID = -89102361834332284L;
+
+			@Override
 			   public void actionPerformed(ActionEvent e) {
 			      System.out.println("Ctrl + S is pressed.");
 			   }

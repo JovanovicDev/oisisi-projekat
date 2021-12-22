@@ -1,16 +1,16 @@
 package gui;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
 import java.awt.event.*;
 
 public class MyMenuBar extends JMenuBar {
+
+	private static final long serialVersionUID = -7863806568418316202L;
 
 	public MyMenuBar() {
 		

@@ -16,6 +16,8 @@ import java.util.Date;
 
 public class StatusBar extends JPanel{
 	
+	private static final long serialVersionUID = 7798455317309824882L;
+
 	public StatusBar(int width,String title) {
 		
 		 JPanel statusBar = new JPanel();

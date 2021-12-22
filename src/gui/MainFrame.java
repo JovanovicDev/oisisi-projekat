@@ -1,16 +1,17 @@
 package gui;
 
+
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
+
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.BorderLayout;
 
 public class MainFrame extends JFrame {
 
+
+	private static final long serialVersionUID = -888790554862002427L;
 	private static MainFrame instance = null;
 	
 	private MainFrame() {
@@ -37,6 +38,11 @@ public class MainFrame extends JFrame {
 		
 		StatusBar statBar = new StatusBar(width,getTitle());
 		add(statBar,BorderLayout.SOUTH);
+		
+	
+		ViewPanel vp = new ViewPanel(screenSize);
+		
+		add(vp);
 		
 		
 		
