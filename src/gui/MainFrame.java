@@ -11,8 +11,14 @@ import java.awt.BorderLayout;
 
 public class MainFrame extends JFrame {
 
-	public MainFrame() {
+	private static MainFrame instance = null;
+	
+	private MainFrame() {
 		super();
+		initialise();
+	}
+	
+	private void initialise() {
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Dimension screenSize = tk.getScreenSize();
 		int height = screenSize.height;
@@ -37,4 +43,13 @@ public class MainFrame extends JFrame {
 		
 		setVisible(true);
 	}
+	
+	public static MainFrame getInstance() {
+		if(instance == null) {
+			instance = new MainFrame();
+		}
+		return instance;
+	}
+	
+	
 }
