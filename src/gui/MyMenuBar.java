@@ -45,8 +45,23 @@ public class MyMenuBar extends JMenuBar {
 		JMenuItem fileClose = new JMenuItem("Close",closeIcon);
 		
 		JMenuItem openStudenti = new JMenuItem("Studenti",studentIcon);
+		openStudenti.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewPanel.tabovi.setSelectedIndex(0);
+			}
+		});
 		JMenuItem openPredmeti = new JMenuItem("Predmeti",subjectIcon);
+		openPredmeti.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewPanel.tabovi.setSelectedIndex(2);
+			}
+		});
 		JMenuItem openProfesori = new JMenuItem("Profesori",profIcon);
+		openProfesori.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewPanel.tabovi.setSelectedIndex(1);
+			}
+		});
 		JMenuItem openKatedre = new JMenuItem("Katedre",tableIcon);
 		
 		JMenuItem editEdit = new JMenuItem("Edit",editIcon);

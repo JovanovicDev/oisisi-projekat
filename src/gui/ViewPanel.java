@@ -20,11 +20,12 @@ public class ViewPanel extends JPanel {
 	public static JTable studentiTable;
 	public static JTable  profesoriTable;
 	public static  JTable predmetiTable;
+	public static JTabbedPane tabovi;
 	
 	public ViewPanel(Dimension d) {
 	
 
-		JTabbedPane tabovi=new JTabbedPane();
+		 tabovi=new JTabbedPane();
 		tabovi.setPreferredSize(new Dimension(d.width *3/4 - 50,d.height * 3/4 - 140));
 		
 		studentiTable=new StudentiJTable();
