@@ -23,6 +23,12 @@ public class ProfesoriJTable extends JTable {
 	
 	}
 	
+	public static void azurirajPrikaz(String akcija, int vrednost) {
+		AbstractTableModelProfesori model = (AbstractTableModelProfesori) ViewPanel.profesoriTable.getModel();
+		model.fireTableDataChanged();
+		
+	}
+	
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 		Component c = super.prepareRenderer(renderer, row, column);
 

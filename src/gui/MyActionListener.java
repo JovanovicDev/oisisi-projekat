@@ -9,10 +9,10 @@ public class MyActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		switch(ViewPanel.tabIndex) {
 		case 0: 
-			new AddStudentDialog();
+			new StudentDialog();
 			break;
 		case 1:
-			
+			new ProfesorDialog();
 			break;
 		default:
 			

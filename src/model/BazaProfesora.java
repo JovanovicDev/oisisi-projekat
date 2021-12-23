@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
+
+import gui.MainFrame;
 
 public class BazaProfesora extends AbstractTableModel {
 	
@@ -66,6 +69,21 @@ public class BazaProfesora extends AbstractTableModel {
 	
 	public String getColumnName(int index) {
 		return this.kolone.get(index);
+	}
+	
+	public void dodajProfesora(Profesor p) {
+		
+		for(Profesor p1 : profesori) {
+			
+			if(p1.getNumberID().equals(p.getNumberID())){
+				
+				JOptionPane.showMessageDialog(MainFrame.getInstance(), "Profesori moraju da imaju razlicite brojeve licnih karti!", "Greska!",
+				        JOptionPane.ERROR_MESSAGE);
+					return;
+			}
+			;
+		}
+		this.profesori.add(p);
 	}
 
 	@Override

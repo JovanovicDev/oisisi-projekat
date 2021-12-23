@@ -21,6 +21,7 @@ public class Profesor {
 	
 	public Profesor() {
 		super();
+		subjectsList = new ArrayList<Predmet>();
 	}
 
 
