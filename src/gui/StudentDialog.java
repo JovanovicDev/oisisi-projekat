@@ -362,7 +362,7 @@ public class StudentDialog extends JDialog {
                     int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
                     if(dialogResult == JOptionPane.YES_OPTION) {
                     	StudentKontroler.getInstance().DodajStudenta(s);
-                    	
+                    	dispose();
                     } else {
                     	return;
                     }

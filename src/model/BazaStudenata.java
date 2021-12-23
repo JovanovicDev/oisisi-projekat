@@ -47,13 +47,13 @@ public class BazaStudenata extends AbstractTableModel {
 		
 		this.studenti = new ArrayList<Student>();
 		
-		studenti.add(new Student("1","Petrovic","Dusan",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","index",2020,2,StatusEnum.B,10.00));
-		studenti.add(new Student("2","Zlatko","Dusan",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","index",2020,2,StatusEnum.B,10.00));
-		studenti.add(new Student("3","Zmaj","Dusan",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","index",2020,2,StatusEnum.B,10.00));
-		studenti.add(new Student("4","Zmaj","Zlatko",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","index",2020,2,StatusEnum.B,10.00));
-		studenti.add(new Student("5","Zmaj","Aleksa",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","index",2020,2,StatusEnum.B,10.00));
-		studenti.add(new Student("4","Zmaj","Zlatko",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","index",2020,2,StatusEnum.B,10.00));
-		studenti.add(new Student("5","Zmaj","Aleksa",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","index",2020,2,StatusEnum.B,10.00));
+		studenti.add(new Student("1","Petrovic","Dusan",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","RA-43-2019",2020,2,StatusEnum.B,10.00));
+		studenti.add(new Student("2","Zlatko","Dusan",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","RA-44-2019",2020,2,StatusEnum.B,10.00));
+		studenti.add(new Student("3","Zmaj","Dusan",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","RA-144-2019",2020,2,StatusEnum.B,10.00));
+		studenti.add(new Student("4","Zmaj","Zlatko",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","RA-145-2019",2020,2,StatusEnum.B,10.00));
+		studenti.add(new Student("5","Zmaj","Aleksa",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","RA-69-2019",2020,2,StatusEnum.B,10.00));
+		studenti.add(new Student("4","Zmaj","Zlatko",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","RA-169-2019",2020,2,StatusEnum.B,10.00));
+		studenti.add(new Student("5","Zmaj","Aleksa",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","RA-227-2019",2020,2,StatusEnum.B,10.00));
 	}
 	
 	public List<Student> getStudenti() {
