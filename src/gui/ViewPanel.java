@@ -3,6 +3,7 @@ package gui;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -16,13 +17,17 @@ public class ViewPanel extends JPanel {
 	private static final long serialVersionUID = 7445755320045782268L;
 	public static int tabIndex = 0;
 	
+	public static JTable studentiTable;
+	public static JTable  profesoriTable;
+	public static  JTable predmetiTable;
+	
 	public ViewPanel(Dimension d) {
 	
 
 		JTabbedPane tabovi=new JTabbedPane();
 		tabovi.setPreferredSize(new Dimension(d.width *3/4 - 50,d.height * 3/4 - 140));
 		
-		StudentiJTable studentiTable=new StudentiJTable();
+		studentiTable=new StudentiJTable();
 		JScrollPane studentPane=new JScrollPane(studentiTable);
 		
 		studentiTable.setFillsViewportHeight(true);
@@ -31,7 +36,7 @@ public class ViewPanel extends JPanel {
 		tabovi.addTab("Studenti",studentPane);
 		this.add(BorderLayout.CENTER,tabovi);
 		
-		ProfesoriJTable profesoriTable = new ProfesoriJTable();
+		 profesoriTable = new ProfesoriJTable();
 		JScrollPane profesorPane=new JScrollPane(profesoriTable);
 		
 		profesoriTable.setFillsViewportHeight(true);
@@ -40,7 +45,7 @@ public class ViewPanel extends JPanel {
 		this.add(BorderLayout.CENTER,tabovi);
 		
 
-		PredmetiJTable predmetiTable = new PredmetiJTable();
+		 predmetiTable = new PredmetiJTable();
 		JScrollPane predmetiPane=new JScrollPane(predmetiTable);
 		
 		predmetiTable.setFillsViewportHeight(true);
@@ -56,6 +61,10 @@ public class ViewPanel extends JPanel {
 		
 		setVisible(true);
 	}
+	
+
+	
+
 
 }
 

@@ -7,12 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
+import controllers.StudentKontroler;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,9 +23,7 @@ import model.Student.StatusEnum;
 
 public class AddStudentDialog extends JDialog {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	public AddStudentDialog() {
@@ -350,6 +346,7 @@ public class AddStudentDialog extends JDialog {
 					s.setIndex(indexTxt.getText());
 					s.setEnrollmentYear(Integer.parseInt(upisTxt.getText()));
 					s.setStudyYear(godinaCmb.getSelectedIndex()+1);
+					s.setAverageGrade(0.0);
 					if(finansiranjeCmb.getSelectedIndex() == 0) {
 						s.setStatus(StatusEnum.B);
 					} else {
@@ -358,8 +355,8 @@ public class AddStudentDialog extends JDialog {
 					int dialogButton = JOptionPane.YES_NO_OPTION;
                     int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
                     if(dialogResult == JOptionPane.YES_OPTION) {
-                    	dispose();
-                    	//
+                    	StudentKontroler.getInstance().DodajStudenta(s);;
+                    	
                     } else {
                     	return;
                     }

@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
+
+import gui.MainFrame;
 import model.Student.StatusEnum;
 
 public class BazaStudenata extends AbstractTableModel {
@@ -75,6 +78,21 @@ public class BazaStudenata extends AbstractTableModel {
 		return this.kolone.get(index);
 	}
 
+	public void dodajStudenta(Student s) {
+		
+		for(Student s1 : studenti) {
+			
+			if(s1.getIndex().equals(s.getIndex())){
+				
+				JOptionPane.showMessageDialog(MainFrame.getInstance(), "Studenti moraju da imaju razlicite indexe!", "Greska!",
+				        JOptionPane.ERROR_MESSAGE);
+					return;
+			}
+			;
+		}
+		this.studenti.add(s);
+	}
+	
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 

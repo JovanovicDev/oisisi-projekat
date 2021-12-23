@@ -11,8 +11,7 @@ public class StudentiJTable extends JTable {
 
 	
 	private static final long serialVersionUID = -2380068608318367706L;
-	public static int rowSelectedIndex = -1;
-	
+
 public StudentiJTable() {	
 	
 	this.setRowSelectionAllowed(true);
@@ -21,6 +20,12 @@ public StudentiJTable() {
 	this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	this.setModel(new AbstractTableModelStudenti());
 			
+}
+
+public static void azurirajPrikaz(String akcija, int vrednost) {
+	AbstractTableModelStudenti model = (AbstractTableModelStudenti) ViewPanel.studentiTable.getModel();
+	model.fireTableDataChanged();
+	
 }
 
 @Override
