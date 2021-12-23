@@ -5,8 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
-
-
+import model.Student.StatusEnum;
 
 public class BazaStudenata extends AbstractTableModel {
 	

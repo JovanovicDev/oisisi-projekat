@@ -30,7 +30,8 @@ public class Toolbar extends JToolBar {
 
 			@Override
 			   public void actionPerformed(ActionEvent e) {
-			      System.out.println("Ctrl + N is pressed.");
+					MyActionListener listener = new MyActionListener();
+					listener.actionPerformed(e);
 			   }
 
 		};

@@ -39,9 +39,7 @@ public class MainFrame extends JFrame {
 		StatusBar statBar = new StatusBar(width,getTitle());
 		add(statBar,BorderLayout.SOUTH);
 		
-	
 		ViewPanel vp = new ViewPanel(screenSize);
-		
 		add(vp);
 		
 		

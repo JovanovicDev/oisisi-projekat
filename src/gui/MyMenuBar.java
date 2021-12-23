@@ -40,6 +40,7 @@ public class MyMenuBar extends JMenuBar {
 		open.setIcon(openIcon);
 		
 		JMenuItem fileNew = new JMenuItem("New",newIcon);
+		fileNew.addActionListener(new MyActionListener());
 		JMenuItem fileSave = new JMenuItem("Save",saveIcon);
 		JMenuItem fileClose = new JMenuItem("Close",closeIcon);
 		

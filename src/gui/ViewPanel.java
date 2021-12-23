@@ -3,6 +3,9 @@ package gui;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 
@@ -11,7 +14,8 @@ public class ViewPanel extends JPanel {
 
 
 	private static final long serialVersionUID = 7445755320045782268L;
-
+	public static int tabIndex = 0;
+	
 	public ViewPanel(Dimension d) {
 	
 
@@ -44,6 +48,11 @@ public class ViewPanel extends JPanel {
 		tabovi.addTab("Predmeti",predmetiPane);
 		this.add(BorderLayout.CENTER,tabovi);
 		
+		tabovi.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				tabIndex = tabovi.getSelectedIndex();
+			}
+		});
 		
 		setVisible(true);
 	}

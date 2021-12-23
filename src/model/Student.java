@@ -5,12 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-enum StatusEnum{B,S};
-
-
 public class Student {
 
-
+	public enum StatusEnum{B,S};
 	private String id;
 	private String surname;
 	private String name;
