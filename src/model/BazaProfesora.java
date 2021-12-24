@@ -7,7 +7,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
-import gui.MainFrame;
+import view.MainFrame;
 
 public class BazaProfesora extends AbstractTableModel {
 	

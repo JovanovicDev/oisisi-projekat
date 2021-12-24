@@ -1,9 +1,9 @@
 package controllers;
 
 
-import gui.ProfesoriJTable;
 import model.BazaProfesora;
 import model.Profesor;
+import view.ProfesoriJTable;
 
 
 

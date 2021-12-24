@@ -5,8 +5,9 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
-import gui.MainFrame;
+
 import model.Student.StatusEnum;
+import view.MainFrame;
 
 public class BazaStudenata extends AbstractTableModel {
 	

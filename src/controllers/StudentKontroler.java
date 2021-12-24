@@ -1,8 +1,8 @@
 package controllers;
 
-import gui.StudentiJTable;
 import model.BazaStudenata;
 import model.Student;
+import view.StudentiJTable;
 
 public class StudentKontroler {
 

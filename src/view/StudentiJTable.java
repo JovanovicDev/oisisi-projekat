@@ -1,4 +1,4 @@
-package gui;
+package view;
 
 import java.awt.Component;
 import javax.swing.JTable;

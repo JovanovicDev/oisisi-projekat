@@ -1,4 +1,4 @@
-package gui;
+package view;
 
 import javax.swing.table.AbstractTableModel;
 import model.BazaStudenata;
