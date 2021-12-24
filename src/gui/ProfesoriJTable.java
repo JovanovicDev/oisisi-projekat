@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -12,6 +14,7 @@ public class ProfesoriJTable extends JTable {
 
 	private static final long serialVersionUID = -5663696672979969804L;
 	public static int rowSelectedIndex = -1;
+	public static JTable profesorTable;
 
 	public ProfesoriJTable() {
 		
@@ -20,6 +23,16 @@ public class ProfesoriJTable extends JTable {
 		this.getTableHeader().setReorderingAllowed(false);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelProfesori());
+		
+		this.addMouseListener(new MouseAdapter() {
+			public void mouseReleased(MouseEvent e) {
+				profesorTable = (JTable) e.getComponent();
+				if(profesorTable.getSelectedRow()!=-1) {
+					rowSelectedIndex = profesorTable.convertRowIndexToModel(profesorTable.getSelectedRow());
+				}
+			}
+			});
+	
 	
 	}
 	

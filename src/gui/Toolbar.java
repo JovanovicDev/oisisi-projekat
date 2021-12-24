@@ -30,7 +30,7 @@ public class Toolbar extends JToolBar {
 
 			@Override
 			   public void actionPerformed(ActionEvent e) {
-					MyActionListener listener = new MyActionListener();
+					MyActionListenerAdd listener = new MyActionListenerAdd();
 					listener.actionPerformed(e);
 			   }
 
@@ -49,8 +49,11 @@ public class Toolbar extends JToolBar {
 			private static final long serialVersionUID = 6368507878264246753L;
 			@Override
 			   public void actionPerformed(ActionEvent e) {
-				MyActionListener listener = new MyActionListener();
-				listener.actionPerformed(e);
+				
+				
+			MyActionListenerEdit listener = new MyActionListenerEdit();
+			listener.actionPerformed(e);
+					
 			   }
 
 		};

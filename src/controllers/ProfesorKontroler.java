@@ -6,6 +6,7 @@ import model.BazaProfesora;
 import model.Profesor;
 
 
+
 public class ProfesorKontroler {
 
 	private static ProfesorKontroler instance = null;
@@ -24,6 +25,14 @@ public class ProfesorKontroler {
 		BazaProfesora.getInstance().dodajProfesora(p);
 		ProfesoriJTable.azurirajPrikaz("Dodat", -1);
 
+	}
+	
+	public void izmeniProfesora(Profesor p) {
+		if (ProfesoriJTable.rowSelectedIndex < 0) {
+			return;
+		}
+		BazaProfesora.getInstance().izmeniProfesora(p);
+		ProfesoriJTable.azurirajPrikaz("Azuriran", -1);
 	}
 	
 }

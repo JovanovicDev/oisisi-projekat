@@ -40,7 +40,8 @@ public class MyMenuBar extends JMenuBar {
 		open.setIcon(openIcon);
 		
 		JMenuItem fileNew = new JMenuItem("New",newIcon);
-		fileNew.addActionListener(new MyActionListener());
+		MyActionListenerAdd listener = new MyActionListenerAdd();
+		fileNew.addActionListener(listener);
 		JMenuItem fileSave = new JMenuItem("Save",saveIcon);
 		JMenuItem fileClose = new JMenuItem("Close",closeIcon);
 		
@@ -65,7 +66,8 @@ public class MyMenuBar extends JMenuBar {
 		JMenuItem openKatedre = new JMenuItem("Katedre",tableIcon);
 		
 		JMenuItem editEdit = new JMenuItem("Edit",editIcon);
-		editEdit.addActionListener(new MyActionListener());
+		MyActionListenerEdit listener2 = new MyActionListenerEdit();
+		editEdit.addActionListener(listener2);
 		JMenuItem editDelete = new JMenuItem("Delete",deleteIcon);
 		
 		JMenuItem helpHelp = new JMenuItem("Help",helpIcon);

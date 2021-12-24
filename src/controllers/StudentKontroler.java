@@ -23,6 +23,15 @@ public class StudentKontroler {
 		StudentiJTable.azurirajPrikaz("Dodat", -1);
 	}
 	
+	public void izmeniStudenta(Student s) {
+		if (StudentiJTable.rowSelectedIndex < 0) {
+			return;
+		}
+		BazaStudenata.getInstance().izmeniStudenta(s);
+		StudentiJTable.azurirajPrikaz("Azuriran", -1);
+	}
+	
+	
 	
 	
 	

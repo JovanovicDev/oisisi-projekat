@@ -3,10 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
-
 import gui.MainFrame;
 import model.Student.StatusEnum;
 
@@ -48,12 +46,12 @@ public class BazaStudenata extends AbstractTableModel {
 		this.studenti = new ArrayList<Student>();
 		
 		studenti.add(new Student("1","Petrovic","Dusan",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","RA-43-2019",2020,2,StatusEnum.B,10.00));
-		studenti.add(new Student("2","Zlatko","Dusan",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","RA-44-2019",2020,2,StatusEnum.B,10.00));
-		studenti.add(new Student("3","Zmaj","Dusan",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","RA-144-2019",2020,2,StatusEnum.B,10.00));
-		studenti.add(new Student("4","Zmaj","Zlatko",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","RA-145-2019",2020,2,StatusEnum.B,10.00));
-		studenti.add(new Student("5","Zmaj","Aleksa",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","RA-69-2019",2020,2,StatusEnum.B,10.00));
-		studenti.add(new Student("4","Zmaj","Zlatko",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","RA-169-2019",2020,2,StatusEnum.B,10.00));
-		studenti.add(new Student("5","Zmaj","Aleksa",new Date(),new Adresa("ulica",29,"grad","srbija"),"063","email","RA-227-2019",2020,2,StatusEnum.B,10.00));
+		studenti.add(new Student("2","Zlatko","Dusan",new Date(),new Adresa("ulica1",30,"grad","srbija"),"063","email","RA-44-2019",2020,2,StatusEnum.S,10.00));
+		studenti.add(new Student("3","Zmaj","Dusan",new Date(),new Adresa("ulica2",31,"grad","srbija"),"063","email","RA-144-2019",2020,2,StatusEnum.B,10.00));
+		studenti.add(new Student("4","Zmaj","Zlatko",new Date(),new Adresa("ulica3",32,"grad","srbija"),"063","email","RA-145-2019",2020,2,StatusEnum.B,10.00));
+		studenti.add(new Student("5","Zmaj","Aleksa",new Date(),new Adresa("ulica4",33,"grad","srbija"),"063","email","RA-69-2019",2020,2,StatusEnum.S,10.00));
+		studenti.add(new Student("6","Zmaj","Zlatko",new Date(),new Adresa("ulica5",34,"grad","srbija"),"063","email","RA-169-2019",2020,2,StatusEnum.B,10.00));
+		studenti.add(new Student("7","Zmaj","Aleksa",new Date(),new Adresa("ulica6",35,"grad","srbija"),"063","email","RA-227-2019",2020,2,StatusEnum.B,10.00));
 	}
 	
 	public List<Student> getStudenti() {
@@ -93,6 +91,26 @@ public class BazaStudenata extends AbstractTableModel {
 		this.studenti.add(s);
 	}
 	
+	public void izmeniStudenta(Student s1) {
+		for (Student s : studenti) {
+			if (s.getIndex().equals(s1.getIndex())) {
+			
+				s.setName(s1.getName());
+				s.setSurname(s1.getSurname());
+				s.setEmail(s1.getEmail());
+				s.setEnrollmentYear(s1.getEnrollmentYear());
+				s.setAdress(s1.getAdress());
+				s.setBirthDate(s1.getBirthDate());
+				s.setAverageGrade(s1.getAverageGrade());
+				s.setPhone(s1.getPhone());
+				s.setStatus(s1.getStatus());
+				s.setStudyYear(s1.getStudyYear());
+			}
+		}
+	}
+	public Student getRow(int rowIndex) {
+		return this.studenti.get(rowIndex);
+		}
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 
@@ -105,7 +123,7 @@ public class BazaStudenata extends AbstractTableModel {
 			case 2:
 				return student.getSurname();
 			case 3:
-				return student.getEnrollmentYear();
+				return student.getStudyYear();
 			case 4:
 				return student.getStatus();
 			case 5:
