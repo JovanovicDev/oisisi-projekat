@@ -1,11 +1,8 @@
 package controllers;
 
-
 import model.BazaProfesora;
 import model.Profesor;
 import view.ProfesoriJTable;
-
-
 
 public class ProfesorKontroler {
 
@@ -33,6 +30,11 @@ public class ProfesorKontroler {
 		}
 		BazaProfesora.getInstance().izmeniProfesora(p);
 		ProfesoriJTable.azurirajPrikaz("Azuriran", -1);
+	}
+	
+	public void obrisiProfesora(Profesor p) {
+		BazaProfesora.getInstance().obrisiProfesora(p);
+		ProfesoriJTable.azurirajPrikaz("Obrisan", -1);
 	}
 	
 }

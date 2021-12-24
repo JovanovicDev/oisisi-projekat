@@ -32,8 +32,7 @@ public class ProfesoriJTable extends JTable {
 				}
 			}
 			});
-	
-	
+		
 	}
 	
 	public static void azurirajPrikaz(String akcija, int vrednost) {

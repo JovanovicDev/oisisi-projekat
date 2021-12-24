@@ -6,7 +6,6 @@ import view.StudentiJTable;
 
 public class StudentKontroler {
 
-	
 	private static StudentKontroler instance = null;
 	
 	public static StudentKontroler getInstance() {
@@ -31,8 +30,9 @@ public class StudentKontroler {
 		StudentiJTable.azurirajPrikaz("Azuriran", -1);
 	}
 	
-	
-	
-	
+	public void obrisiStudenta(Student s) {
+		BazaStudenata.getInstance().obrisiStudenta(s);
+		StudentiJTable.azurirajPrikaz("Obrisan", -1);
+	}
 	
 }

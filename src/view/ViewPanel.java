@@ -10,9 +10,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 
-
 public class ViewPanel extends JPanel {
-
 
 	private static final long serialVersionUID = 7445755320045782268L;
 	public static int tabIndex = 0;
@@ -24,7 +22,6 @@ public class ViewPanel extends JPanel {
 	
 	public ViewPanel(Dimension d) {
 	
-
 		 tabovi=new JTabbedPane();
 		tabovi.setPreferredSize(new Dimension(d.width *3/4 - 50,d.height * 3/4 - 140));
 		
@@ -63,9 +60,4 @@ public class ViewPanel extends JPanel {
 		setVisible(true);
 	}
 	
-
-	
-
-
 }
-

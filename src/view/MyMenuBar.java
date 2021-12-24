@@ -34,14 +34,13 @@ public class MyMenuBar extends JMenuBar {
 		ImageIcon subjectIcon = new ImageIcon("./src/Images/imageBook.jpg");
 		ImageIcon tableIcon = new ImageIcon("./src/Images/imageTable.png");
 		ImageIcon profIcon = new ImageIcon("./src/Images/imageProf.png");
-		
-		
+			
 		JMenu open = new JMenu("Open");
 		open.setIcon(openIcon);
 		
 		JMenuItem fileNew = new JMenuItem("New",newIcon);
-		MyActionListenerAdd listener = new MyActionListenerAdd();
-		fileNew.addActionListener(listener);
+		MyActionListenerAdd listenerAdd = new MyActionListenerAdd();
+		fileNew.addActionListener(listenerAdd);
 		JMenuItem fileSave = new JMenuItem("Save",saveIcon);
 		JMenuItem fileClose = new JMenuItem("Close",closeIcon);
 		
@@ -66,9 +65,11 @@ public class MyMenuBar extends JMenuBar {
 		JMenuItem openKatedre = new JMenuItem("Katedre",tableIcon);
 		
 		JMenuItem editEdit = new JMenuItem("Edit",editIcon);
-		MyActionListenerEdit listener2 = new MyActionListenerEdit();
-		editEdit.addActionListener(listener2);
+		MyActionListenerEdit listenerEdit = new MyActionListenerEdit();
+		editEdit.addActionListener(listenerEdit);
 		JMenuItem editDelete = new JMenuItem("Delete",deleteIcon);
+		MyActionListenerDelete listenerDelete = new MyActionListenerDelete();
+		editDelete.addActionListener(listenerDelete);
 		
 		JMenuItem helpHelp = new JMenuItem("Help",helpIcon);
 		JMenuItem helpAbout = new JMenuItem("About",aboutIcon);

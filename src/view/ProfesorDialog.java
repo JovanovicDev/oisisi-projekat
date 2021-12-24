@@ -19,10 +19,8 @@ import controllers.ProfesorKontroler;
 import model.Adresa;
 import model.Profesor;
 
-
 public class ProfesorDialog extends JDialog {
 
-	
 	private static final long serialVersionUID = 3346592901014711454L;
 
 	public ProfesorDialog() {
@@ -405,7 +403,7 @@ public class ProfesorDialog extends JDialog {
 					p.setYearsOfService(Integer.parseInt(godineTxt.getText()));
 					
 					int dialogButton = JOptionPane.YES_NO_OPTION;
-                    int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+                    int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda unosa", dialogButton);
                     if(dialogResult == JOptionPane.YES_OPTION) {
                     	
                     	ProfesorKontroler.getInstance().DodajProfesora(p);
@@ -848,7 +846,7 @@ public class ProfesorDialog extends JDialog {
 					p.setYearsOfService(Integer.parseInt(godineTxt.getText()));
 					
 					int dialogButton = JOptionPane.YES_NO_OPTION;
-                    int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+                    int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda izmene", dialogButton);
                     if(dialogResult == JOptionPane.YES_OPTION) {
                     	
                     	ProfesorKontroler.getInstance().izmeniProfesora(p);

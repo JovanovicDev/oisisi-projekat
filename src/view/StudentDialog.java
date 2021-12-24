@@ -23,7 +23,6 @@ import model.Student.StatusEnum;
 
 public class StudentDialog extends JDialog {
 
-
 	private static final long serialVersionUID = 1L;
 	
 	public StudentDialog( ) {
@@ -359,7 +358,7 @@ public class StudentDialog extends JDialog {
 						s.setStatus(StatusEnum.S);
 					}
 					int dialogButton = JOptionPane.YES_NO_OPTION;
-                    int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+                    int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda unosa", dialogButton);
                     if(dialogResult == JOptionPane.YES_OPTION) {
                     	StudentKontroler.getInstance().DodajStudenta(s);
                     	dispose();
@@ -746,7 +745,7 @@ public class StudentDialog extends JDialog {
 						s.setStatus(StatusEnum.S);
 					}
 					int dialogButton = JOptionPane.YES_NO_OPTION;
-                    int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+                    int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda izmene", dialogButton);
                     if(dialogResult == JOptionPane.YES_OPTION) {
                     	StudentKontroler.getInstance().izmeniStudenta(s);
                     	dispose();
@@ -783,9 +782,5 @@ public class StudentDialog extends JDialog {
 		setVisible(true);
 		
 	}
-	
-	
-	
-	
 	
 }

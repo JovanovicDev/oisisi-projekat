@@ -11,7 +11,6 @@ import java.awt.Color;
 
 public class StudentiJTable extends JTable {
 
-	
 	private static final long serialVersionUID = -2380068608318367706L;
 	public static JTable StudentTable;
 	public static int rowSelectedIndex = -1;
@@ -41,8 +40,6 @@ public static void azurirajPrikaz(String akcija, int vrednost) {
 	model.fireTableDataChanged();
 	
 }
-
-
 
 @Override
 public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {

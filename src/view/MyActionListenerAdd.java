@@ -5,8 +5,6 @@ import java.awt.event.ActionListener;
 
 public class MyActionListenerAdd implements ActionListener {
 
-
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch(ViewPanel.tabIndex) {
@@ -22,7 +20,5 @@ public class MyActionListenerAdd implements ActionListener {
 		}
 		
 	}
-
-	
 	
 }

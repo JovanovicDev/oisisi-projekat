@@ -104,12 +104,14 @@ public class BazaProfesora extends AbstractTableModel {
 		}
 	}
 	
-	//Profesor(String surname, String name, Date birthDate, Adresa adress, String phone, String email,
-	//Adresa officeAdress, String numberID, String title, int yearsOfService)
+	public void obrisiProfesora(Profesor p) {
+		profesori.remove(p);
+	}
 	
 	public Profesor getRow(int rowIndex) {
 		return this.profesori.get(rowIndex);
-		}
+	}
+	
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 
