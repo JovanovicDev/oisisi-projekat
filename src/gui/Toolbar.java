@@ -49,7 +49,8 @@ public class Toolbar extends JToolBar {
 			private static final long serialVersionUID = 6368507878264246753L;
 			@Override
 			   public void actionPerformed(ActionEvent e) {
-			      System.out.println("Ctrl + E is pressed.");
+				MyActionListener listener = new MyActionListener();
+				listener.actionPerformed(e);
 			   }
 
 		};
@@ -67,7 +68,7 @@ public class Toolbar extends JToolBar {
 			private static final long serialVersionUID = -4406310354123286787L;
 			@Override
 			   public void actionPerformed(ActionEvent e) {
-			      System.out.println("Ctrl + D is pressed.");
+		
 			   }
 
 		};

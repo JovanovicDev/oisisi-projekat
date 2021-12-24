@@ -65,6 +65,7 @@ public class MyMenuBar extends JMenuBar {
 		JMenuItem openKatedre = new JMenuItem("Katedre",tableIcon);
 		
 		JMenuItem editEdit = new JMenuItem("Edit",editIcon);
+		editEdit.addActionListener(new MyActionListener());
 		JMenuItem editDelete = new JMenuItem("Delete",deleteIcon);
 		
 		JMenuItem helpHelp = new JMenuItem("Help",helpIcon);
