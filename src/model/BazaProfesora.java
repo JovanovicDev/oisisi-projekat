@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 import view.MainFrame;
+import view.ProfesoriJTable;
 
 public class BazaProfesora extends AbstractTableModel {
 	
@@ -102,10 +103,12 @@ public class BazaProfesora extends AbstractTableModel {
 	
 			}
 		}
+		ProfesoriJTable.rowSelectedIndex = -1;
 	}
 	
 	public void obrisiProfesora(Profesor p) {
 		profesori.remove(p);
+		ProfesoriJTable.rowSelectedIndex = -1;
 	}
 	
 	public Profesor getRow(int rowIndex) {

@@ -8,6 +8,7 @@ import javax.swing.table.AbstractTableModel;
 
 import model.Student.StatusEnum;
 import view.MainFrame;
+import view.StudentiJTable;
 
 public class BazaStudenata extends AbstractTableModel {
 	
@@ -107,10 +108,12 @@ public class BazaStudenata extends AbstractTableModel {
 				s.setStudyYear(s1.getStudyYear());
 			}
 		}
+		StudentiJTable.rowSelectedIndex = -1;
 	}
 	
 	public void obrisiStudenta(Student s) {
 		studenti.remove(s);
+		StudentiJTable.rowSelectedIndex = -1;
 	}
 	
 	public Student getRow(int rowIndex) {

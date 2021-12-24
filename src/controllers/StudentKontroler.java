@@ -20,6 +20,7 @@ public class StudentKontroler {
 	public void DodajStudenta(Student s) {
 		BazaStudenata.getInstance().dodajStudenta(s);
 		StudentiJTable.azurirajPrikaz("Dodat", -1);
+		
 	}
 	
 	public void izmeniStudenta(Student s) {
