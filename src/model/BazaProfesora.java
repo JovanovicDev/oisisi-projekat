@@ -1,5 +1,7 @@
 package model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -43,9 +45,23 @@ public class BazaProfesora extends AbstractTableModel {
 		
 		this.profesori = new ArrayList<Profesor>();
 		
-		profesori.add(new Profesor("Zlatkovic","Zlatko",new Date(),new Adresa("T",29,"C","M"),"061","@gmail.com",new Adresa("A",29,"C","M"),"1","Doca",5));
-		profesori.add(new Profesor("Markovic","Zlatko",new Date(),new Adresa("K",30,"C","M"),"061","@gmail.com",new Adresa("B",28,"D","M"),"2","Docent",5));
-		profesori.add(new Profesor("Zmajovic","Zlatko",new Date(),new Adresa("K",1,"C","M"),"061","@gmail.com",new Adresa("C",31,"G","M"),"3","Boca",5));
+		Date d = new Date();
+		try {
+			d = new SimpleDateFormat("dd.MM.yyyy").parse("27.08.1986");	
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		profesori.add(new Profesor("Zlatkovic","Jovan",d,new Adresa("Skolska",39,"Beograd","Srbija"),"0612133215","zlatkovicjovan@gmail.com",new Adresa("Vojnicka",32,"Subotica","Srbija"),"657506348"+ "","Doca",15));
+		profesori.add(new Profesor("Markovic","Bata",d,new Adresa("Temerinska",30,"Temerin","Srbija"),"0613221315","markovicbata@gmail.com",new Adresa("Zlatarska",72,"Sombor","Srbija"),"149924490","Docent",12));
+		profesori.add(new Profesor("Zmajovic","Goran",d,new Adresa("Kninska",12,"Cuprija","Srbija"),"0613213215","zmajovicgoran@gmail.com",new Adresa("Srbobranska",96,"Aleksandrovac","Srbija"),"768078525","Boca",18));
+		profesori.add(new Profesor("Borovic","Zlatko",d,new Adresa("Banatska",89,"Loznica","Srbija"),"0612211335","boroviczlatko@gmail.com",new Adresa("Pivska",1,"Vrsac","Srbija"),"680529925","Gospodin",20));
+		profesori.add(new Profesor("Simic","Marko",d,new Adresa("Gorska",37,"Vrbas","Srbija"),"0613212135","simicmarko@gmail.com",new Adresa("Kninska",1,"Grad","Srbija"),"797962484","Majstor",12));
+		profesori.add(new Profesor("Marovic","Bogdan",d,new Adresa("Pivska",1,"Vrsac","Srbija"),"0632112135","marovicbogdan@gmail.com",new Adresa("Gorska",37,"Vrbas","Srbija"),"181714190","Poglavar",5));
+		profesori.add(new Profesor("Soric","Filip",d,new Adresa("Srbobranska",96,"Aleksandrovac","Srbija"),"0611521332","soricfilip@gmail.com",new Adresa("Kninska",12,"Cuprija","Srbija"),"209133592","Maestro",7));
+		profesori.add(new Profesor("Vujovic","Darko",d,new Adresa("Zlatarska",72,"Sombor","Srbija"),"0621121335","vujovicdarko@gmail.com",new Adresa("Temerinska",30,"Temerin","Srbija"),"211061702","Docent",19));
+		profesori.add(new Profesor("Filipovic","Stevan",d,new Adresa("Vojnicka",32,"Subotica","Srbija"),"0611213325","filipovicstevan@gmail.com",new Adresa("Skolska",39,"Beograd","Srbija"),"517201783","Doca",8));
 		
 		
 	}

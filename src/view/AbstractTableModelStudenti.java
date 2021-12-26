@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.table.AbstractTableModel;
+
 import model.BazaStudenata;
 
 public class AbstractTableModelStudenti extends AbstractTableModel {

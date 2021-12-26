@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import controllers.ProfesorKontroler;
-import controllers.StudentKontroler;
+import controller.ProfesorKontroler;
+import controller.StudentKontroler;
 import model.BazaProfesora;
 import model.BazaStudenata;
 import model.Profesor;
