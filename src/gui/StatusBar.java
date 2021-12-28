@@ -28,6 +28,10 @@ public class StatusBar extends JPanel{
 	     JLabel name = new JLabel(title);
 	     statusBar.add(name,BorderLayout.WEST);
 	     
+	     JLabel tab = new JLabel("PH");
+	     statusBar.add(tab);
+	     tab.setHorizontalAlignment(JLabel.CENTER);
+	     
 	     JLabel dateTime = new JLabel();
 	     statusBar.add(dateTime, BorderLayout.EAST);
 	     Timer timee = new Timer(100, new ActionListener() {
