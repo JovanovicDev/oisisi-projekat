@@ -54,6 +54,17 @@ public class ViewPanel extends JPanel {
 		tabovi.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				tabIndex = tabovi.getSelectedIndex();
+				switch(tabIndex) {
+		     	case 0:
+		     		StatusBar.tab.setText("Studenti");
+		     		break;
+		     	case 1:
+		     		StatusBar.tab.setText("Profesori");
+		     		break;
+		     	default:
+		     		StatusBar.tab.setText("Predmeti");
+		     		break;
+		     }
 			}
 		});
 		
