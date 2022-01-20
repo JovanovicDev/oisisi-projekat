@@ -39,8 +39,8 @@ public StudentiJTable() {
 			}
 		}
 	});
-	this.setRowSorter(rowSorter);
 	this.setAutoCreateRowSorter(true);
+	this.setRowSorter(rowSorter);
 }
 
 public static void azurirajPrikaz(String akcija, int vrednost) {
