@@ -105,7 +105,7 @@ public class Toolbar extends JToolBar {
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
 				if(ViewPanel.tabIndex==0) {
-					
+					if(search.getText().equals("")) StudentiJTable.azurirajPrikaz("1", 1);
 				}
 				else if(ViewPanel.tabIndex==1) {
 				

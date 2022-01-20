@@ -23,11 +23,8 @@ public class ProfesoriJTable extends JTable {
 	private static final long serialVersionUID = -5663696672979969804L;
 	public static int rowSelectedIndex = -1;
 	public static JTable profesorTable;
-	public static AbstractTableModelProfesori modelProfesora;
     public static TableRowSorter<TableModel> rowSorter;
   
-
-
 	public ProfesoriJTable() {
 		
 		this.setRowSelectionAllowed(true);
@@ -38,6 +35,7 @@ public class ProfesoriJTable extends JTable {
 		this.setSelectionBackground(new Color(245, 229, 193));
 		this.setRowHeight(30);
 		rowSorter= new TableRowSorter<>(this.getModel());
+		
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
 				profesorTable = (JTable) e.getComponent();
@@ -45,7 +43,7 @@ public class ProfesoriJTable extends JTable {
 					rowSelectedIndex = profesorTable.convertRowIndexToModel(profesorTable.getSelectedRow());
 				}
 			}
-			});
+		});
 		this.setAutoCreateRowSorter(true);
 		
     	this.setRowSorter(rowSorter);
@@ -53,7 +51,7 @@ public class ProfesoriJTable extends JTable {
 	}
 	
 	public static void azurirajPrikaz(String akcija, int vrednost) {
-		 rowSorter.setRowFilter(null);
+		rowSorter.setRowFilter(null);
 		AbstractTableModelProfesori model = (AbstractTableModelProfesori) ViewPanel.profesoriTable.getModel();
 		model.fireTableDataChanged();
 		
