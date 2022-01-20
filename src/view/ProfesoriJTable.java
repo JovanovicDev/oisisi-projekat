@@ -10,6 +10,8 @@ import java.util.List;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
@@ -35,9 +37,7 @@ public class ProfesoriJTable extends JTable {
 		this.setModel(new AbstractTableModelProfesori());
 		this.setSelectionBackground(new Color(245, 229, 193));
 		this.setRowHeight(30);
-		rowSorter
-	    = new TableRowSorter<>(this.getModel());
-		this.setRowSorter(rowSorter);
+		rowSorter= new TableRowSorter<>(this.getModel());
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
 				profesorTable = (JTable) e.getComponent();
@@ -46,8 +46,9 @@ public class ProfesoriJTable extends JTable {
 				}
 			}
 			});
+		this.setAutoCreateRowSorter(true);
 		
-
+    	this.setRowSorter(rowSorter);
 		
 	}
 	

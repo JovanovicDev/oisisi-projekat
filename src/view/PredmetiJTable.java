@@ -32,7 +32,7 @@ public class PredmetiJTable extends JTable {
 		rowSorter
 	    = new TableRowSorter<>(this.getModel());
 		this.setRowSorter(rowSorter);
-		
+		this.setAutoCreateRowSorter(true);
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
 				predmetiTable = (JTable) e.getComponent();
