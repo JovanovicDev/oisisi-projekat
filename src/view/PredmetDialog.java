@@ -442,7 +442,7 @@ public class PredmetDialog extends JDialog {
                     int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda unosa", dialogButton);
                     if(dialogResult == JOptionPane.YES_OPTION) {
                     	
-                    	PredmetKontroler.getInstance().DodajPredmet(p);
+                    	PredmetKontroler.getInstance().izmeniPredmet(p);
                     	dispose();
                     	
                     } else {
@@ -451,6 +451,11 @@ public class PredmetDialog extends JDialog {
 				}
 			}
 		});
+		
+		layout.putConstraint(SpringLayout.NORTH, potvrdiBtn, 230, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, potvrdiBtn, 70, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, odustaniBtn, 160, SpringLayout.WEST, potvrdiBtn);
+		layout.putConstraint(SpringLayout.NORTH, odustaniBtn, 0, SpringLayout.NORTH, potvrdiBtn);
 
 		add(sifraLbl);
 		add(sifraTxt);

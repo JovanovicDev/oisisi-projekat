@@ -36,7 +36,7 @@ public class MyActionListenerEdit implements ActionListener {
 			
 			break;
 		default:
-			if(ProfesoriJTable.rowSelectedIndex>-1) {
+			if(PredmetiJTable.rowSelectedIndex>-1) {
 				
 				Predmet b = BazaPredmeta.getInstance().getRow(PredmetiJTable.rowSelectedIndex);
 				 new PredmetDialog(b.getSubjectID(),b.getName(),b.getSemester(),b.getYear(),b.getProf(),b.getEspb());
