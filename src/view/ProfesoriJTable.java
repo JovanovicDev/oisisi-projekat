@@ -53,6 +53,7 @@ public class ProfesoriJTable extends JTable {
 	}
 	
 	public static void azurirajPrikaz(String akcija, int vrednost) {
+		 rowSorter.setRowFilter(null);
 		AbstractTableModelProfesori model = (AbstractTableModelProfesori) ViewPanel.profesoriTable.getModel();
 		model.fireTableDataChanged();
 		

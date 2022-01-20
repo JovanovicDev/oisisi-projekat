@@ -38,6 +38,7 @@ public class StudentDialog extends JDialog {
 	
 	public static JTabbedPane tabovi;
 	public static JTable polozeniIspitiTable;
+	public static JTable nepolozeniIspitiTable;
 	public static JPanel panel1;
 	public static JPanel panel2;
 	public static JPanel panel3;
@@ -1174,6 +1175,29 @@ public class StudentDialog extends JDialog {
 		
 		tabovi.addTab("Nepolozeni", panel3);
 		panel3.setLayout(layout);
+		
+		nepolozeniIspitiTable = new NepolozeniJTable();
+		JScrollPane nepolozeniIspitiPane = new JScrollPane(nepolozeniIspitiTable);
+		nepolozeniIspitiPane.setPreferredSize(new Dimension(700,300));
+		nepolozeniIspitiTable.setFillsViewportHeight(true);
+		layout.putConstraint(SpringLayout.NORTH, nepolozeniIspitiPane, 120, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, nepolozeniIspitiPane, 170, SpringLayout.WEST, this);
+		panel3.add(nepolozeniIspitiPane);
+		
+		JButton dodajBtn = new JButton("Dodaj");
+		layout.putConstraint(SpringLayout.NORTH, dodajBtn, 60, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, dodajBtn, 170, SpringLayout.WEST, this);
+		panel3.add(dodajBtn);
+		
+		JButton obrisiBtn = new JButton("Obrisi");
+		layout.putConstraint(SpringLayout.NORTH, obrisiBtn, 60, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, obrisiBtn, 270, SpringLayout.WEST, this);
+		panel3.add(obrisiBtn);
+		
+		JButton polaganjeBtn = new JButton("Polaganje");
+		layout.putConstraint(SpringLayout.NORTH, polaganjeBtn, 60, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, polaganjeBtn, 370, SpringLayout.WEST, this);
+		panel3.add(polaganjeBtn);
 		
 		setVisible(true);
 		

@@ -24,12 +24,12 @@ public class Student {
 	private StatusEnum status;
 	private Double averageGrade;
 	private List<Ocena> passedExams;
-	private List<Predmet> failedExams;
+	private List<Ocena> failedExams;
 	
 	public Student() {
 		super();
 		passedExams = new ArrayList<Ocena>();
-		failedExams = new ArrayList<Predmet>();
+		failedExams = new ArrayList<Ocena>();
 	}
 	
 	public Student(String id, String surname, String name, Date birthDate, Adresa adress, String phone, String email,
@@ -51,7 +51,11 @@ public class Student {
 		passedExams.add(new Ocena(this,new Predmet("1","Matematika",SemesterEnum.summer,2,null,6),GradeEnum.DESET, new Date()));
 		passedExams.add(new Ocena(this,new Predmet("2","Srpski",SemesterEnum.summer,2,null,6),GradeEnum.OSAM, new Date()));
 		passedExams.add(new Ocena(this,new Predmet("5","Muzicko",SemesterEnum.summer,2,null,3),GradeEnum.SEST, new Date()));
-		failedExams = new ArrayList<Predmet>();
+		failedExams = new ArrayList<Ocena>();
+		failedExams.add(new Ocena(this,new Predmet("3","Algebra",SemesterEnum.summer,2,null,6),GradeEnum.PET, new Date()));
+		failedExams.add(new Ocena(this,new Predmet("7","Analiza",SemesterEnum.summer,2,null,6),GradeEnum.PET, new Date()));
+		failedExams.add(new Ocena(this,new Predmet("6","Arhitektura",SemesterEnum.summer,2,null,6),GradeEnum.PET, new Date()));
+		
 	}
 
 	public String getId() {
@@ -154,7 +158,7 @@ public class Student {
 		return passedExams;
 	}
 
-	public List<Predmet> getFailedExams() {
+	public List<Ocena> getFailedExams() {
 		return failedExams;
 	}
 

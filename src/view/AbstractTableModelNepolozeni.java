@@ -1,27 +1,29 @@
 package view;
 
-
 import javax.swing.table.AbstractTableModel;
 
+import model.BazaNepolozenih;
 import model.BazaOcena;
 import model.BazaStudenata;
 import model.Student;
 
-public class AbstractTableModelPolozeni extends AbstractTableModel {
+public class AbstractTableModelNepolozeni extends AbstractTableModel {
 
-
-	private static final long serialVersionUID = -6481089898389356408L;
-	BazaOcena bo;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6471159366595247891L;
+	BazaNepolozenih bo;
 	
-	public AbstractTableModelPolozeni() {
+	public AbstractTableModelNepolozeni() {
 		Student s = BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex);
-		 bo = new BazaOcena(s);
+		 bo = new BazaNepolozenih(s);
 	}
 
 	@Override
 	public int getRowCount() {
 		Student s = BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex);
-		int len = s.getPassedExams().size();
+		int len = s.getFailedExams().size();
 		return len;
 	}
 
@@ -40,5 +42,6 @@ public class AbstractTableModelPolozeni extends AbstractTableModel {
 	public String getColumnName(int column) {
 		return bo.getColumnName(column);
 	}
+	
 
 }

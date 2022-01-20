@@ -6,7 +6,7 @@ public class Ocena {
 	
 	public enum GradeEnum {
 		
-		SEST(6),SEDAM(7),OSAM(8),DEVET(9),DESET(10);
+		PET(5),SEST(6),SEDAM(7),OSAM(8),DEVET(9),DESET(10);
 		
 		private int numVal;
 		

@@ -5,40 +5,33 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-public class BazaOcena extends AbstractTableModel {
-	
+public class BazaNepolozenih extends AbstractTableModel {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3201856542698285898L;
-	private List<Ocena> ocene;
+	private static final long serialVersionUID = -8038686070866423758L;
+	
+	private List<Ocena> nepolozeni;
 	private List<String> kolone;
 	
-	public BazaOcena(Student s) {
+	public BazaNepolozenih(Student s) {
 		
 		this.kolone = new ArrayList<String>();
 		this.kolone.add("SIFRA PREDMETA");
 		this.kolone.add("NAZIV PREDMETA");
 		this.kolone.add("ESPB");
-		this.kolone.add("OCENA");
-		this.kolone.add("DATUM");
+		this.kolone.add("GODINA STUDIJA");
+		this.kolone.add("SEMESTAR");
 		
-		initOcene(s);
+		initNepolozeni(s);
 
 	}
 	
-	public void initOcene(Student s) {
-		this.ocene = s.getPassedExams();
-	}
-	
-	public List<Ocena> getOcene() {
-		return ocene;
+	public void initNepolozeni(Student s) {
+		this.nepolozeni = s.getFailedExams();
 	}
 
-	public void setOcene(List<Ocena> ocene) {
-		this.ocene = ocene;
-	}
-	
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
@@ -54,11 +47,11 @@ public class BazaOcena extends AbstractTableModel {
 	public String getColumnName(int index) {
 		return this.kolone.get(index);
 	}
-	
+
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 
-		Ocena o = this.ocene.get(rowIndex);
+		Ocena o = this.nepolozeni.get(rowIndex);
 		switch (columnIndex) {
 		case 0:
 			return o.getSubject().getSubjectID();
@@ -67,13 +60,21 @@ public class BazaOcena extends AbstractTableModel {
 		case 2:
 			return o.getSubject().getEspb();
 		case 3:
-			return o.getGrade().getNumVal();
+			return o.getSubject().getYear();
 		case 4:
-			return o.getExamDate();
+			return o.getSubject().getSemester();
 		default:
 			return 0;
-
+		}
 	}
-}
+
+
+	public List<Ocena> getNepolozeni() {
+		return nepolozeni;
+	}
+
+	public void setNepolozeni(List<Ocena> nepolozeni) {
+		this.nepolozeni = nepolozeni;
+	}
 
 }

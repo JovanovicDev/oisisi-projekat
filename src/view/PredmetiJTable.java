@@ -29,9 +29,7 @@ public class PredmetiJTable extends JTable {
 		this.setModel(new AbstractTableModelPredmeti());
 		this.setSelectionBackground(new Color(245, 229, 193));
 		this.setRowHeight(30);
-		rowSorter
-	    = new TableRowSorter<>(this.getModel());
-		this.setRowSorter(rowSorter);
+		rowSorter = new TableRowSorter<>(this.getModel());
 		this.setAutoCreateRowSorter(true);
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
@@ -41,10 +39,14 @@ public class PredmetiJTable extends JTable {
 				}
 			}
 			});
+		this.setAutoCreateRowSorter(true);
+		
+    	this.setRowSorter(rowSorter);
 		
 	}
 	
 	public static void azurirajPrikaz(String akcija, int vrednost) {
+		 rowSorter.setRowFilter(null);
 		AbstractTableModelPredmeti model = (AbstractTableModelPredmeti) ViewPanel.predmetiTable.getModel();
 		model.fireTableDataChanged();
 		

@@ -6,10 +6,14 @@ import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+
 import java.awt.Dimension;
 import java.awt.event.*;
 import java.awt.Color;
@@ -86,6 +90,35 @@ public class Toolbar extends JToolBar {
 	   
 		JTextField search = new JTextField();
 		search.setMaximumSize(new Dimension(5000,700));
+		search.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(ViewPanel.tabIndex==0) {
+					
+				}
+				else if(ViewPanel.tabIndex==1) {
+				
+					if(search.getText().equals("")) ProfesoriJTable.azurirajPrikaz("1", 1);
+				}
+				else {
+					
+					if(search.getText().equals("")) PredmetiJTable.azurirajPrikaz("1", 1);
+				}
+			}
+			
+		});
+		
 		this.add(search);
 		
 		Action actionSearch = new AbstractAction() {
