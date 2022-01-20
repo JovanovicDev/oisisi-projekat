@@ -37,4 +37,6 @@ public class ProfesorKontroler {
 		ProfesoriJTable.azurirajPrikaz("Obrisan", -1);
 	}
 	
+
+	
 }

@@ -4,10 +4,16 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class ProfesoriJTable extends JTable {
 
@@ -15,6 +21,10 @@ public class ProfesoriJTable extends JTable {
 	private static final long serialVersionUID = -5663696672979969804L;
 	public static int rowSelectedIndex = -1;
 	public static JTable profesorTable;
+	public static AbstractTableModelProfesori modelProfesora;
+    public static TableRowSorter<TableModel> rowSorter;
+  
+
 
 	public ProfesoriJTable() {
 		
@@ -25,7 +35,9 @@ public class ProfesoriJTable extends JTable {
 		this.setModel(new AbstractTableModelProfesori());
 		this.setSelectionBackground(new Color(245, 229, 193));
 		this.setRowHeight(30);
-		
+		rowSorter
+	    = new TableRowSorter<>(this.getModel());
+		this.setRowSorter(rowSorter);
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
 				profesorTable = (JTable) e.getComponent();
@@ -34,6 +46,8 @@ public class ProfesoriJTable extends JTable {
 				}
 			}
 			});
+		
+
 		
 	}
 	
@@ -61,6 +75,42 @@ public class ProfesoriJTable extends JTable {
 	        color = null;
 	     }
 		return c;
+	}
+	
+
+	
+	public static void Search(String p) {
+		
+		
+		String delovi[] = p.split(",");
+		String ime = "";
+		String prezime = "";
+		int length = delovi.length;
+		if(length == 2) {
+			
+			ime = delovi[0];
+			prezime = delovi[1];
+		}
+		else prezime = p;
+		
+		if(length == 1) {
+		  if (p.trim().length() == 0) {
+		     rowSorter.setRowFilter(null);
+		  } else {
+		     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)"+ p,1));
+		  }
+		}
+		else {
+			
+			  if (p.trim().length() == 0) {
+				     rowSorter.setRowFilter(null);
+				  } else {
+				     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)"+ime ,0));
+				     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)"+prezime ,1));
+				  }
+			
+		}
+		
 	}
 	
 }

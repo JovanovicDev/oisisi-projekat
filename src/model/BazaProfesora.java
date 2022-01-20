@@ -5,9 +5,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import view.ViewPanel;
 
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import view.MainFrame;
 import view.ProfesoriJTable;
@@ -26,7 +30,9 @@ public class BazaProfesora extends AbstractTableModel {
 	}
 	
 	private List<Profesor> profesori;
+	private List <Profesor> pretragaProf;
 	private List<String> kolone;
+
 	
 	private BazaProfesora() {
 		
@@ -44,6 +50,7 @@ public class BazaProfesora extends AbstractTableModel {
 	private void initProfesori() {
 		
 		this.profesori = new ArrayList<Profesor>();
+		this.pretragaProf = new ArrayList<Profesor>();
 		
 		Date d = new Date();
 		try {
@@ -122,6 +129,7 @@ public class BazaProfesora extends AbstractTableModel {
 		ProfesoriJTable.rowSelectedIndex = -1;
 	}
 	
+	
 	public void obrisiProfesora(Profesor p) {
 		profesori.remove(p);
 		ProfesoriJTable.rowSelectedIndex = -1;
@@ -149,5 +157,4 @@ public class BazaProfesora extends AbstractTableModel {
 			
 		}
 	}
-
 }

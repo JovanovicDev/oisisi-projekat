@@ -94,7 +94,9 @@ public class Toolbar extends JToolBar {
 
 			@Override
 			   public void actionPerformed(ActionEvent e) {
-			      System.out.println("Ctrl + S is pressed.");
+				MyActionListenerSearch listenerSearch = new MyActionListenerSearch();
+				listenerSearch.setS(search.getText());
+				listenerSearch.actionPerformed(e);
 			   }
 
 		};
