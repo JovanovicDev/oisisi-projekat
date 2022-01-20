@@ -2,6 +2,8 @@ package view;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -11,6 +13,8 @@ public class PredmetiJTable extends JTable {
 	
 
 	private static final long serialVersionUID = -7326079776292848557L;
+	public static int rowSelectedIndex = -1;
+	public static JTable predmetiTable;
 
 	public PredmetiJTable() {
 		
@@ -21,6 +25,22 @@ public class PredmetiJTable extends JTable {
 		this.setModel(new AbstractTableModelPredmeti());
 		this.setSelectionBackground(new Color(245, 229, 193));
 		this.setRowHeight(30);
+		
+		this.addMouseListener(new MouseAdapter() {
+			public void mouseReleased(MouseEvent e) {
+				predmetiTable = (JTable) e.getComponent();
+				if(predmetiTable.getSelectedRow()!=-1) {
+					rowSelectedIndex = predmetiTable.convertRowIndexToModel(predmetiTable.getSelectedRow());
+				}
+			}
+			});
+		
+	}
+	
+	public static void azurirajPrikaz(String akcija, int vrednost) {
+		AbstractTableModelPredmeti model = (AbstractTableModelPredmeti) ViewPanel.predmetiTable.getModel();
+		model.fireTableDataChanged();
+		
 	}
 	
 	@Override
