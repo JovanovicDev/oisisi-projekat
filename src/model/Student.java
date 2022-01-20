@@ -21,12 +21,12 @@ public class Student {
 	private StatusEnum status;
 	private Double averageGrade;
 	private List<Ocena> passedExams;
-	private List<Ocena> failedExams;
+	private List<Predmet> failedExams;
 	
 	public Student() {
 		super();
 		passedExams = new ArrayList<Ocena>();
-		failedExams = new ArrayList<Ocena>();
+		failedExams = new ArrayList<Predmet>();
 	}
 	
 	public Student(String id, String surname, String name, Date birthDate, Adresa adress, String phone, String email,
@@ -45,7 +45,7 @@ public class Student {
 		this.status = status;
 		this.averageGrade = averageGrade;
 		passedExams = new ArrayList<Ocena>();
-		failedExams = new ArrayList<Ocena>();
+		failedExams = new ArrayList<Predmet>();
 		
 
 	}
@@ -150,7 +150,7 @@ public class Student {
 		return passedExams;
 	}
 
-	public List<Ocena> getFailedExams() {
+	public List<Predmet> getFailedExams() {
 		return failedExams;
 	}
 
