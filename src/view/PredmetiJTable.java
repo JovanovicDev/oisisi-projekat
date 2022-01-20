@@ -7,7 +7,10 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class PredmetiJTable extends JTable {
 	
@@ -15,6 +18,7 @@ public class PredmetiJTable extends JTable {
 	private static final long serialVersionUID = -7326079776292848557L;
 	public static int rowSelectedIndex = -1;
 	public static JTable predmetiTable;
+	public static TableRowSorter<TableModel> rowSorter;
 
 	public PredmetiJTable() {
 		
@@ -25,6 +29,9 @@ public class PredmetiJTable extends JTable {
 		this.setModel(new AbstractTableModelPredmeti());
 		this.setSelectionBackground(new Color(245, 229, 193));
 		this.setRowHeight(30);
+		rowSorter
+	    = new TableRowSorter<>(this.getModel());
+		this.setRowSorter(rowSorter);
 		
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
@@ -62,5 +69,12 @@ public class PredmetiJTable extends JTable {
 	     }
 		return c;
 	}
+	public static void Search(String p) {
 
+		  if (p.trim().length() == 0) {
+		     rowSorter.setRowFilter(null);
+		  } else {
+		     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)"+ p,1));
+		  }
+	}
 }

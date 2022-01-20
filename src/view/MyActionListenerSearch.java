@@ -3,7 +3,6 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JTextField;
 
 
 
@@ -28,6 +27,8 @@ public class MyActionListenerSearch implements ActionListener {
 			
 			break;
 		case 2:
+			
+			   PredmetiJTable.Search(s);
 			
 		default:
 			break;
