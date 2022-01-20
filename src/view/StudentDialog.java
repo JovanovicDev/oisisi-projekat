@@ -30,6 +30,7 @@ import javax.swing.event.ChangeListener;
 
 import controller.StudentKontroler;
 import model.Adresa;
+import model.BazaStudenata;
 import model.Ocena;
 import model.Student;
 import model.Student.StatusEnum;
@@ -1224,13 +1225,14 @@ public class StudentDialog extends JDialog {
 		layout.putConstraint(SpringLayout.NORTH, polaganjeBtn, 60, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, polaganjeBtn, 370, SpringLayout.WEST, this);
 		panel3.add(polaganjeBtn);
-		
+	
 		polaganjeBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(NepolozeniJTable.rowSelectedIndex>-1) {
 				Ocena o = AbstractTableModelNepolozeni.bo.getRow(NepolozeniJTable.rowSelectedIndex);
-				new UnosOceneDialog(o,s);
+				new UnosOceneDialog(o, BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex));
+				System.out.println(s.getPassedExams());
 				}
 			}
 

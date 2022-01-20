@@ -121,16 +121,22 @@ public class UnosOceneDialog extends JDialog {
 				
 				AbstractTableModelNepolozeni.bo.deleteOcena(o);
 				AbstractTableModelPolozeni.bo.dodajOcenu(o);
-				BazaStudenata.getInstance().dodavanjeOcene(s,o);
-				BazaStudenata.getInstance().brisanjeNepolozenog(s,o);
-				
-				
-				
-				
+				dispose();
+
 			}
 
 		});
-		
+		odustaniBtn.addActionListener(new ActionListener() {
+			
+			
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				dispose();
+			}
+			
+		});
 		setVisible(true);
 	}
 
