@@ -30,7 +30,6 @@ public class ViewPanel extends JPanel {
 		
 		studentiTable.setFillsViewportHeight(true);
 		
-	
 		tabovi.addTab("Studenti",studentPane);
 		this.add(BorderLayout.CENTER,tabovi);
 		
@@ -41,7 +40,6 @@ public class ViewPanel extends JPanel {
 		
 		tabovi.addTab("Profesori",profesorPane);
 		this.add(BorderLayout.CENTER,tabovi);
-		
 
 		 predmetiTable = new PredmetiJTable();
 		JScrollPane predmetiPane=new JScrollPane(predmetiTable);
