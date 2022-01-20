@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import model.Predmet.SemesterEnum;
+
 public class BazaPredmeta extends AbstractTableModel{
 
 	private static final long serialVersionUID = 6330596085326878785L;

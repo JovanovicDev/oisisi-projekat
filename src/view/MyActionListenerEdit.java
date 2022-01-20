@@ -2,8 +2,11 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import model.BazaPredmeta;
 import model.BazaProfesora;
 import model.BazaStudenata;
+import model.Predmet;
 import model.Profesor;
 import model.Student;
 
@@ -33,6 +36,12 @@ public class MyActionListenerEdit implements ActionListener {
 			
 			break;
 		default:
+			if(ProfesoriJTable.rowSelectedIndex>-1) {
+				
+				Predmet b = BazaPredmeta.getInstance().getRow(PredmetiJTable.rowSelectedIndex);
+				 new PredmetDialog(b.getSubjectID(),b.getName(),b.getSemester(),b.getYear(),b.getProf(),b.getEspb());
+					 
+			}
 			break;
 		}		
 		
