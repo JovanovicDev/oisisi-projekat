@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import view.NepolozeniJTable;
+
 public class BazaOcena extends AbstractTableModel {
 	
 	/**
@@ -53,6 +55,10 @@ public class BazaOcena extends AbstractTableModel {
 	
 	public String getColumnName(int index) {
 		return this.kolone.get(index);
+	}
+	public void dodajOcenu(Ocena o) {
+		this.ocene.add(o);
+		NepolozeniJTable.azurirajPrikaz("Dodat", -1);
 	}
 	
 	@Override

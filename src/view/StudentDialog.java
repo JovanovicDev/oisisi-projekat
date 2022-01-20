@@ -25,9 +25,12 @@ import java.awt.Color;
 
 import javax.swing.SpringLayout;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import controller.StudentKontroler;
 import model.Adresa;
+import model.Ocena;
 import model.Student;
 import model.Student.StatusEnum;
 import model.Ocena.GradeEnum;
@@ -42,6 +45,7 @@ public class StudentDialog extends JDialog {
 	public static JPanel panel1;
 	public static JPanel panel2;
 	public static JPanel panel3;
+	int tabIndex;
 	
 	public StudentDialog( ) {
 		super();
@@ -1058,7 +1062,7 @@ public class StudentDialog extends JDialog {
 				dispose();
 			}
 		});
-		
+		Student s = new Student();
 		potvrdiBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -1072,7 +1076,7 @@ public class StudentDialog extends JDialog {
 						        JOptionPane.WARNING_MESSAGE);
 							return;
 					} else {
-						Student s = new Student();
+					
 						s.setName(imeTxt.getText());
 						s.setSurname(prezimeTxt.getText());
 						String datum = datumTxt.getText(); 
@@ -1157,15 +1161,36 @@ public class StudentDialog extends JDialog {
 		layout.putConstraint(SpringLayout.NORTH, polozeniIspitiPane, 120, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, polozeniIspitiPane, 170, SpringLayout.WEST, this);
 		panel2.add(polozeniIspitiPane);
-		int sumaOcena = 0;
-		int sumaEspb = 0;
-	    for(int i = 0; i < polozeniIspitiTable.getRowCount(); i++) {
-	    	sumaOcena += (int) polozeniIspitiTable.getModel().getValueAt(i, 3);
-	    	sumaEspb += (int) polozeniIspitiTable.getModel().getValueAt(i, 2);
-	    }
-		double prosek = sumaOcena / polozeniIspitiTable.getRowCount();
-		JLabel prosekLbl = new JLabel("Prosecna ocena: " + prosek);
-		JLabel espbLbl = new JLabel("Ukupno ESPB: " + sumaEspb);
+		
+	int sumaEspb = 0;
+	double prosek = 0;
+	
+	JLabel prosekLbl = new JLabel("Prosecna ocena: " + prosek);
+	JLabel espbLbl = new JLabel("Ukupno ESPB: " + sumaEspb);
+		
+		tabovi.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				tabIndex = tabovi.getSelectedIndex();
+				switch(tabIndex) {
+		     	case 0:
+		     		
+		     		break;
+		     	case 1:
+		     		int sumaEspb = suma();
+		    		double prosek = prosekOcena();
+		    		prosekLbl.setText("Prosecna ocena: " + prosek);
+		    		espbLbl.setText("Ukupno ESPB: " + sumaEspb);
+		     		break;
+		     	case 2:
+		     		break;
+		     	default:
+		     		StatusBar.tab.setText("Predmeti");
+		     		break;
+		     }
+			}
+		});
+		
+
 		panel2.add(prosekLbl);
 		panel2.add(espbLbl);
 		layout.putConstraint(SpringLayout.NORTH, prosekLbl, 450, SpringLayout.NORTH, this);
@@ -1195,11 +1220,46 @@ public class StudentDialog extends JDialog {
 		panel3.add(obrisiBtn);
 		
 		JButton polaganjeBtn = new JButton("Polaganje");
+		polaganjeBtn.addActionListener(finansiranjeCmb);
 		layout.putConstraint(SpringLayout.NORTH, polaganjeBtn, 60, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, polaganjeBtn, 370, SpringLayout.WEST, this);
 		panel3.add(polaganjeBtn);
 		
+		polaganjeBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(NepolozeniJTable.rowSelectedIndex>-1) {
+				Ocena o = AbstractTableModelNepolozeni.bo.getRow(NepolozeniJTable.rowSelectedIndex);
+				new UnosOceneDialog(o,s);
+				}
+			}
+
+		});
+		
 		setVisible(true);
+		
+	}
+	public static double prosekOcena() {
+		
+		double sumaOcena = 0.0;
+		
+	    for(int i = 0; i < polozeniIspitiTable.getRowCount(); i++) {
+	    	sumaOcena += (int) polozeniIspitiTable.getModel().getValueAt(i, 3);
+	    	
+	    }
+		double prosek = sumaOcena / polozeniIspitiTable.getRowCount();
+		
+		return prosek;
+	}
+	public static int suma() {
+	
+		int sumaEspb = 0;
+	    for(int i = 0; i < polozeniIspitiTable.getRowCount(); i++) {
+	 
+	    	sumaEspb += (int) polozeniIspitiTable.getModel().getValueAt(i, 2);
+	    }
+		
+		return sumaEspb;
 		
 	}
 	

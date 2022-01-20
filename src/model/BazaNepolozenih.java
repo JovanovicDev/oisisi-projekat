@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import view.NepolozeniJTable;
+import view.PredmetiJTable;
+
 public class BazaNepolozenih extends AbstractTableModel {
 
 	/**
@@ -43,6 +46,12 @@ public class BazaNepolozenih extends AbstractTableModel {
 		// TODO Auto-generated method stub
 		return 4;
 	}
+	public void deleteOcena(Ocena o) {
+		
+		this.nepolozeni.remove(o);
+		NepolozeniJTable.azurirajPrikaz("Dodat", -1);
+		
+	}
 	
 	public String getColumnName(int index) {
 		return this.kolone.get(index);
@@ -67,6 +76,10 @@ public class BazaNepolozenih extends AbstractTableModel {
 			return 0;
 		}
 	}
+	
+	public Ocena getRow(int rowIndex) {
+		return this.nepolozeni.get(rowIndex);
+		}
 
 
 	public List<Ocena> getNepolozeni() {
