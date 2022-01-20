@@ -18,6 +18,8 @@ public class StatusBar extends JPanel{
 	
 	private static final long serialVersionUID = 7798455317309824882L;
 
+	public static JLabel tab;
+	
 	public StatusBar(int width,String title) {
 		
 		 JPanel statusBar = new JPanel();
@@ -29,6 +31,10 @@ public class StatusBar extends JPanel{
 	     
 	     JLabel name = new JLabel(title);
 	     statusBar.add(name,BorderLayout.WEST);
+	     
+	     tab = new JLabel("Studenti");
+	     statusBar.add(tab);
+	     tab.setHorizontalAlignment(JLabel.CENTER);
 	     
 	     JLabel dateTime = new JLabel();
 	     statusBar.add(dateTime, BorderLayout.EAST);
