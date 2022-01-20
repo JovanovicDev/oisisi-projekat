@@ -3,9 +3,14 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
+import view.MainFrame;
+import view.PredmetiJTable;
 import view.ProfesoriJTable;
+import view.StudentiJTable;
+import model.Predmet.SemesterEnum;
 
 public class BazaPredmeta extends AbstractTableModel{
 
@@ -50,11 +55,6 @@ public class BazaPredmeta extends AbstractTableModel{
 		predmeti.add(new Predmet("6","Fizicko",SemesterEnum.winter,2,null,3));
 		
 	}
-	public void deletePredmet() {
-		
-		
-		
-	}
 	public List<Predmet> getPredmeti() {
 		return predmeti;
 		}
@@ -75,12 +75,39 @@ public class BazaPredmeta extends AbstractTableModel{
 	public String getColumnName(int index) {
 		return this.kolone.get(index);
 	}
-	public void obrisiPredmet(Predmet p) {
-	if(p.getProf() == null) {
-		predmeti.remove(p);
-		ProfesoriJTable.rowSelectedIndex = -1;
+	
+	public void dodajPredmet(Predmet p) {
+	
+		for(Predmet s1 : predmeti) {
+			
+			if(s1.getSubjectID().equals(p.getSubjectID())){
+				
+				JOptionPane.showMessageDialog(MainFrame.getInstance(), "Predmeti moraju da imaju razlicite sifre!", "Greska!",
+				        JOptionPane.ERROR_MESSAGE);
+					return;
+			}
+			;
+		}
+		this.predmeti.add(p);
 	}
-		
+	
+	public void izmeniPredmet(Predmet s1) {
+		for (Predmet s : predmeti) {
+			if (s.getSubjectID().equals(s1.getSubjectID())) {
+				s.setName(s1.getName());
+				s.setEspb(s1.getEspb());
+				s.setYear(s1.getYear());
+				s.setSemester(s1.getSemester());
+			}
+		}
+		PredmetiJTable.rowSelectedIndex = -1;
+	}
+	
+	public void obrisiPredmet(Predmet p) {
+		if(p.getProf() == null) {
+			predmeti.remove(p);
+			ProfesoriJTable.rowSelectedIndex = -1;
+		}
 	}
 	
 	public Predmet getRow(int rowIndex) {

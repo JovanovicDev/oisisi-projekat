@@ -3,11 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-enum SemesterEnum {summer,winter };
-
 public class Predmet {
 	
-	
+	public enum SemesterEnum {summer,winter };
 	private String subjectID;
 	private String name;
 	private SemesterEnum semester; 

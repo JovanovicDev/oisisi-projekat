@@ -15,7 +15,7 @@ public class MyActionListenerAdd implements ActionListener {
 			new ProfesorDialog();
 			break;
 		default:
-			
+			new PredmetDialog();
 			break;
 		}
 		
