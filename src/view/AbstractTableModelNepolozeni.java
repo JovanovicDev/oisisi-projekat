@@ -13,7 +13,7 @@ public class AbstractTableModelNepolozeni extends AbstractTableModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 6471159366595247891L;
-	BazaNepolozenih bo;
+	public static BazaNepolozenih bo;
 	
 	public AbstractTableModelNepolozeni() {
 		Student s = BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex);

@@ -11,7 +11,7 @@ public class AbstractTableModelPolozeni extends AbstractTableModel {
 
 
 	private static final long serialVersionUID = -6481089898389356408L;
-	BazaOcena bo;
+	public static BazaOcena bo;
 	
 	public AbstractTableModelPolozeni() {
 		Student s = BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex);

@@ -132,6 +132,33 @@ public class BazaStudenata extends AbstractTableModel {
 		studenti.remove(s);
 		StudentiJTable.rowSelectedIndex = -1;
 	}
+	public void dodavanjeOcene(Student s,Ocena o) {
+		
+		for(Student s1 : studenti) {
+			
+			if(s1.getIndex().equals(s.getIndex())){
+				
+				s1.getPassedExams().add(o);
+				
+			}
+		}
+		
+	}
+	public void brisanjeNepolozenog(Student s, Ocena o) {
+		
+		int index = 0;
+		
+		for(Student s1 : studenti) {
+			
+			if(s1.getIndex().equals(s.getIndex())){
+				
+				s1.getFailedExams().remove(o);
+				
+			}
+		}
+		
+		
+	}
 	
 	public Student getRow(int rowIndex) {
 		return this.studenti.get(rowIndex);
