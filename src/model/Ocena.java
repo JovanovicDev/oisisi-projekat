@@ -2,20 +2,22 @@ package model;
 
 import java.util.Date;
 
-enum GradeEnum {
-	
-	SEST(6),SEDAM(7),OSAM(8),DEVET(9),DESET(10);
-	
-	private int numVal;
-	
-	GradeEnum(int numVal){
-		this.numVal= numVal;
-	}
-};
-
-
 public class Ocena {
 	
+	public enum GradeEnum {
+		
+		SEST(6),SEDAM(7),OSAM(8),DEVET(9),DESET(10);
+		
+		private int numVal;
+		
+		private GradeEnum(int numVal){
+			this.numVal= numVal;
+		}
+		
+		public int getNumVal() {
+			return numVal;
+		}
+	};
 	private Student student;
 	private Predmet subject;
 	private GradeEnum grade;

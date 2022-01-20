@@ -6,6 +6,9 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import java.awt.Dimension;
@@ -17,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.SpringLayout;
@@ -26,10 +30,17 @@ import controller.StudentKontroler;
 import model.Adresa;
 import model.Student;
 import model.Student.StatusEnum;
+import model.Ocena.GradeEnum;
 
 public class StudentDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static JTabbedPane tabovi;
+	public static JTable polozeniIspitiTable;
+	public static JPanel panel1;
+	public static JPanel panel2;
+	public static JPanel panel3;
 	
 	public StudentDialog( ) {
 		super();
@@ -569,12 +580,20 @@ public class StudentDialog extends JDialog {
 			String index, int enrollmentYear, int studyYear, StatusEnum status, Double averageGrade) {
 		
 		super();
+		tabovi = new JTabbedPane();
+		panel1 = new JPanel();
+		panel2 = new JPanel();
+		panel3 = new JPanel();
+		tabovi.setPreferredSize(new Dimension(1000, 700));
+		this.add(BorderLayout.CENTER, tabovi);
+		tabovi.addTab("Informacije", panel1);
+		
 		setModal(true);
 		setTitle("Izmena studenta");
 		setResizable(false);
 		SpringLayout layout = new SpringLayout();
-		setLayout(layout);
-		setSize(400, 700);
+		panel1.setLayout(layout);
+		setSize(1050, 700);
 		setLocationRelativeTo(null);
 		
 		JButton potvrdiBtn = new JButton("Potvrdi");		
@@ -585,7 +604,7 @@ public class StudentDialog extends JDialog {
 		JTextField imeTxt = new JTextField();
 		imeTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, imeLbl, 30, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, imeLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, imeLbl, 380, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, imeTxt, 160, SpringLayout.WEST, imeLbl);
 		layout.putConstraint(SpringLayout.NORTH, imeTxt, -5, SpringLayout.NORTH, imeLbl);
 		imeTxt.addKeyListener(new KeyListener() {
@@ -622,7 +641,7 @@ public class StudentDialog extends JDialog {
 		JTextField prezimeTxt = new JTextField();
 		prezimeTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, prezimeLbl, 70, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, prezimeLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, prezimeLbl, 380, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, prezimeTxt, 160, SpringLayout.WEST, prezimeLbl);
 		layout.putConstraint(SpringLayout.NORTH, prezimeTxt, -5, SpringLayout.NORTH, prezimeLbl);
 		prezimeTxt.addKeyListener(new KeyListener() {
@@ -658,7 +677,7 @@ public class StudentDialog extends JDialog {
 		JTextField datumTxt = new JTextField();
 		datumTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, datumLbl, 110, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, datumLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, datumLbl, 380, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, datumTxt, 160, SpringLayout.WEST, datumLbl);
 		layout.putConstraint(SpringLayout.NORTH, datumTxt, -5, SpringLayout.NORTH, datumLbl);
 		datumTxt.addKeyListener(new KeyListener() {
@@ -692,13 +711,13 @@ public class StudentDialog extends JDialog {
 	
 		JLabel adresaLbl = new JLabel("Adresa stanovanja:");
 		layout.putConstraint(SpringLayout.NORTH, adresaLbl, 150, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, adresaLbl, 20, SpringLayout.WEST, this);	
+		layout.putConstraint(SpringLayout.WEST, adresaLbl, 360, SpringLayout.WEST, this);	
 		
 		JLabel ulicaLbl = new JLabel("Ulica*");
 		JTextField ulicaTxt = new JTextField();
 		ulicaTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, ulicaLbl, 190, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, ulicaLbl, 60, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, ulicaLbl, 400, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, ulicaTxt, 140, SpringLayout.WEST, ulicaLbl);
 		layout.putConstraint(SpringLayout.NORTH, ulicaTxt, -5, SpringLayout.NORTH, ulicaLbl);
 		ulicaTxt.addKeyListener(new KeyListener() {
@@ -734,7 +753,7 @@ public class StudentDialog extends JDialog {
 		JTextField brojTxt = new JTextField();
 		brojTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, brojLbl, 230, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, brojLbl, 60, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, brojLbl, 400, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, brojTxt, 140, SpringLayout.WEST, brojLbl);
 		layout.putConstraint(SpringLayout.NORTH, brojTxt, -5, SpringLayout.NORTH, brojLbl);
 		brojTxt.addKeyListener(new KeyListener() {
@@ -770,7 +789,7 @@ public class StudentDialog extends JDialog {
 		JTextField gradTxt = new JTextField();
 		gradTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, gradLbl, 270, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, gradLbl, 60, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, gradLbl, 400, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, gradTxt, 140, SpringLayout.WEST, gradLbl);
 		layout.putConstraint(SpringLayout.NORTH, gradTxt, -5, SpringLayout.NORTH, gradLbl);
 		gradTxt.addKeyListener(new KeyListener() {
@@ -806,7 +825,7 @@ public class StudentDialog extends JDialog {
 		JTextField drzavaTxt = new JTextField();
 		drzavaTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, drzavaLbl, 310, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, drzavaLbl, 60, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, drzavaLbl, 400, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, drzavaTxt, 140, SpringLayout.WEST, drzavaLbl);
 		layout.putConstraint(SpringLayout.NORTH, drzavaTxt, -5, SpringLayout.NORTH, drzavaLbl);
 		drzavaTxt.addKeyListener(new KeyListener() {
@@ -842,7 +861,7 @@ public class StudentDialog extends JDialog {
 		JTextField telefonTxt = new JTextField();
 		telefonTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, telefonLbl, 350, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, telefonLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, telefonLbl, 380, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, telefonTxt, 160, SpringLayout.WEST, telefonLbl);
 		layout.putConstraint(SpringLayout.NORTH, telefonTxt, -5, SpringLayout.NORTH, telefonLbl);
 		telefonTxt.addKeyListener(new KeyListener() {
@@ -878,7 +897,7 @@ public class StudentDialog extends JDialog {
 		JTextField emailTxt = new JTextField();
 		emailTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, emailLbl, 390, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, emailLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, emailLbl, 380, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, emailTxt, 160, SpringLayout.WEST, emailLbl);
 		layout.putConstraint(SpringLayout.NORTH, emailTxt, -5, SpringLayout.NORTH, emailLbl);
 		emailTxt.addKeyListener(new KeyListener() {
@@ -913,7 +932,7 @@ public class StudentDialog extends JDialog {
 		JTextField indexTxt = new JTextField();
 		indexTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, indexLbl, 430, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, indexLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, indexLbl, 380, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, indexTxt, 160, SpringLayout.WEST, indexLbl);
 		layout.putConstraint(SpringLayout.NORTH, indexTxt, -5, SpringLayout.NORTH, indexLbl);
 		indexTxt.addKeyListener(new KeyListener() {
@@ -949,7 +968,7 @@ public class StudentDialog extends JDialog {
 		JTextField upisTxt = new JTextField();
 		upisTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, upisLbl, 470, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, upisLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, upisLbl, 380, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, upisTxt, 160, SpringLayout.WEST, upisLbl);
 		layout.putConstraint(SpringLayout.NORTH, upisTxt, -5, SpringLayout.NORTH, upisLbl);
 		upisTxt.addKeyListener(new KeyListener() {
@@ -989,7 +1008,7 @@ public class StudentDialog extends JDialog {
 		godinaCmb.addItem("3 (treca)");
 		godinaCmb.addItem("4 (cetvrta)");
 		layout.putConstraint(SpringLayout.NORTH, godinaLbl, 510, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, godinaLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, godinaLbl, 380, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, godinaCmb, 160, SpringLayout.WEST, godinaLbl);
 		layout.putConstraint(SpringLayout.NORTH, godinaCmb, -5, SpringLayout.NORTH, godinaLbl);
 		
@@ -999,12 +1018,12 @@ public class StudentDialog extends JDialog {
 		finansiranjeCmb.addItem("Budzet");
 		finansiranjeCmb.addItem("Samofinansiranje");
 		layout.putConstraint(SpringLayout.NORTH, finansiranjeLbl, 550, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, finansiranjeLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, finansiranjeLbl, 380, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, finansiranjeCmb, 160, SpringLayout.WEST, finansiranjeLbl);
 		layout.putConstraint(SpringLayout.NORTH, finansiranjeCmb, -5, SpringLayout.NORTH, finansiranjeLbl);
 		
 		layout.putConstraint(SpringLayout.NORTH, potvrdiBtn, 590, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, potvrdiBtn, 70, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, potvrdiBtn, 410, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, odustaniBtn, 160, SpringLayout.WEST, potvrdiBtn);
 		layout.putConstraint(SpringLayout.NORTH, odustaniBtn, 0, SpringLayout.NORTH, potvrdiBtn);
 		
@@ -1093,35 +1112,68 @@ public class StudentDialog extends JDialog {
 			}
 		});
 		
-		add(imeLbl);
-		add(imeTxt);
-		add(prezimeLbl);
-		add(prezimeTxt);
-		add(datumLbl);
-		add(datumTxt);
-		add(adresaLbl);
-		add(ulicaLbl);
-		add(ulicaTxt);
-		add(brojLbl);
-		add(brojTxt);
-		add(gradLbl);
-		add(gradTxt);
-		add(drzavaLbl);
-		add(drzavaTxt);
-		add(telefonLbl);
-		add(telefonTxt);
-		add(emailLbl);
-		add(emailTxt);
-		add(indexLbl);
-		add(indexTxt);
-		add(upisLbl);
-		add(upisTxt);
-		add(godinaLbl);
-		add(godinaCmb);
-		add(finansiranjeLbl);
-		add(finansiranjeCmb);
-		add(potvrdiBtn);
-		add(odustaniBtn);
+		panel1.add(imeLbl);
+		panel1.add(imeTxt);
+		panel1.add(prezimeLbl);
+		panel1.add(prezimeTxt);
+		panel1.add(datumLbl);
+		panel1.add(datumTxt);
+		panel1.add(adresaLbl);
+		panel1.add(ulicaLbl);
+		panel1.add(ulicaTxt);
+		panel1.add(brojLbl);
+		panel1.add(brojTxt);
+		panel1.add(gradLbl);
+		panel1.add(gradTxt);
+		panel1.add(drzavaLbl);
+		panel1.add(drzavaTxt);
+		panel1.add(telefonLbl);
+		panel1.add(telefonTxt);
+		panel1.add(emailLbl);
+		panel1.add(emailTxt);
+		panel1.add(indexLbl);
+		panel1.add(indexTxt);
+		panel1.add(upisLbl);
+		panel1.add(upisTxt);
+		panel1.add(godinaLbl);
+		panel1.add(godinaCmb);
+		panel1.add(finansiranjeLbl);
+		panel1.add(finansiranjeCmb);
+		panel1.add(potvrdiBtn);
+		panel1.add(odustaniBtn);
+		
+		tabovi.addTab("Polozeni", panel2);
+		panel2.setLayout(layout);
+		panel2.setPreferredSize(new Dimension(400, 400));
+		JButton ponistiBtn = new JButton("Ponisti ocenu");
+		layout.putConstraint(SpringLayout.NORTH, ponistiBtn, 60, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, ponistiBtn, 170, SpringLayout.WEST, this);
+		panel2.add(ponistiBtn);
+		polozeniIspitiTable = new PolozeniJTable();
+		JScrollPane polozeniIspitiPane = new JScrollPane(polozeniIspitiTable);
+		polozeniIspitiPane.setPreferredSize(new Dimension(700,300));
+		polozeniIspitiTable.setFillsViewportHeight(true);
+		layout.putConstraint(SpringLayout.NORTH, polozeniIspitiPane, 120, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, polozeniIspitiPane, 170, SpringLayout.WEST, this);
+		panel2.add(polozeniIspitiPane);
+		int sumaOcena = 0;
+		int sumaEspb = 0;
+	    for(int i = 0; i < polozeniIspitiTable.getRowCount(); i++) {
+	    	sumaOcena += (int) polozeniIspitiTable.getModel().getValueAt(i, 3);
+	    	sumaEspb += (int) polozeniIspitiTable.getModel().getValueAt(i, 2);
+	    }
+		double prosek = sumaOcena / polozeniIspitiTable.getRowCount();
+		JLabel prosekLbl = new JLabel("Prosecna ocena: " + prosek);
+		JLabel espbLbl = new JLabel("Ukupno ESPB: " + sumaEspb);
+		panel2.add(prosekLbl);
+		panel2.add(espbLbl);
+		layout.putConstraint(SpringLayout.NORTH, prosekLbl, 450, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, prosekLbl, 750, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.NORTH, espbLbl, 470, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, espbLbl, 750, SpringLayout.WEST, this);
+		
+		tabovi.addTab("Nepolozeni", panel3);
+		panel3.setLayout(layout);
 		
 		setVisible(true);
 		

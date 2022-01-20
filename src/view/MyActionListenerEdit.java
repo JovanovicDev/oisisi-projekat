@@ -21,7 +21,7 @@ public class MyActionListenerEdit implements ActionListener {
 				
 				Student s = BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex);
 				 new StudentDialog(s.getId(),s.getSurname(),s.getName(),s.getBirthDate(),s.getAdress(),s.getPhone()
-						,s.getEmail(),s.getIndex(),s.getEnrollmentYear(),s.getStudyYear(),s.getStatus(),s.getAverageGrade());
+							,s.getEmail(),s.getIndex(),s.getEnrollmentYear(),s.getStudyYear(),s.getStatus(),s.getAverageGrade());
 								
 			}
 			break;

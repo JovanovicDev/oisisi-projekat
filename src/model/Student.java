@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import model.Ocena.GradeEnum;
+import model.Predmet.SemesterEnum;
+
 public class Student {
 
 	public enum StatusEnum{B,S};
@@ -45,9 +48,10 @@ public class Student {
 		this.status = status;
 		this.averageGrade = averageGrade;
 		passedExams = new ArrayList<Ocena>();
+		passedExams.add(new Ocena(this,new Predmet("1","Matematika",SemesterEnum.summer,2,null,6),GradeEnum.DESET, new Date()));
+		passedExams.add(new Ocena(this,new Predmet("2","Srpski",SemesterEnum.summer,2,null,6),GradeEnum.OSAM, new Date()));
+		passedExams.add(new Ocena(this,new Predmet("5","Muzicko",SemesterEnum.summer,2,null,3),GradeEnum.SEST, new Date()));
 		failedExams = new ArrayList<Predmet>();
-		
-
 	}
 
 	public String getId() {
