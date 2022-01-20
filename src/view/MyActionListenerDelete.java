@@ -5,10 +5,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import controller.PredmetKontroler;
 import controller.ProfesorKontroler;
 import controller.StudentKontroler;
+import model.BazaPredmeta;
 import model.BazaProfesora;
 import model.BazaStudenata;
+import model.Predmet;
 import model.Profesor;
 import model.Student;
 
@@ -51,6 +54,33 @@ public class MyActionListenerDelete implements ActionListener {
 			}
 			
 			break;
+		case 2:
+		if(PredmetiJTable.rowSelectedIndex>-1) {
+				
+				Predmet p = BazaPredmeta.getInstance().getRow(PredmetiJTable.rowSelectedIndex);
+				if(p.getProf() == null) {
+				int dialogButton = JOptionPane.YES_NO_OPTION;
+                int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), 
+                		"Da li ste sigurni da zelite da obrisete predmet " + p.getName() + "?", 
+                		"Potvrda brisanja", dialogButton);
+                if(dialogResult == JOptionPane.YES_OPTION) {
+                	PredmetKontroler.getInstance().obrisiPredmet(p);
+                } else {
+                	return;
+                }
+				}else {
+					
+					JOptionPane.showMessageDialog(
+							MainFrame.getInstance(), 
+						    "Ne mozete izbrisati predmet dok ne skinete profesora sa tog predmeta", 
+						    "",
+						    JOptionPane.INFORMATION_MESSAGE); 
+					
+				}
+					 
+			}
+			
+			
 		default:
 			
 			break;

@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import view.ProfesoriJTable;
+
 public class BazaPredmeta extends AbstractTableModel{
 
 	private static final long serialVersionUID = 6330596085326878785L;
@@ -40,15 +42,19 @@ public class BazaPredmeta extends AbstractTableModel{
 		
 		this.predmeti = new ArrayList<Predmet>();
 		
-		predmeti.add(new Predmet("1","Matematika",SemesterEnum.summer,2,new Profesor(),6));
-		predmeti.add(new Predmet("2","Srpski",SemesterEnum.summer,2,new Profesor(),6));
+		predmeti.add(new Predmet("1","Matematika",SemesterEnum.summer,2,null,6));
+		predmeti.add(new Predmet("2","Srpski",SemesterEnum.summer,2,null,6));
 		predmeti.add(new Predmet("3","Fizika",SemesterEnum.winter,2,new Profesor(),6));
 		predmeti.add(new Predmet("4","Hemija",SemesterEnum.summer,2,new Profesor(),6));
-		predmeti.add(new Predmet("5","Muzicko",SemesterEnum.summer,2,new Profesor(),3));
-		predmeti.add(new Predmet("6","Fizicko",SemesterEnum.winter,2,new Profesor(),3));
+		predmeti.add(new Predmet("5","Muzicko",SemesterEnum.summer,2,null,3));
+		predmeti.add(new Predmet("6","Fizicko",SemesterEnum.winter,2,null,3));
 		
 	}
-	
+	public void deletePredmet() {
+		
+		
+		
+	}
 	public List<Predmet> getPredmeti() {
 		return predmeti;
 		}
@@ -68,6 +74,17 @@ public class BazaPredmeta extends AbstractTableModel{
 	
 	public String getColumnName(int index) {
 		return this.kolone.get(index);
+	}
+	public void obrisiPredmet(Predmet p) {
+	if(p.getProf() == null) {
+		predmeti.remove(p);
+		ProfesoriJTable.rowSelectedIndex = -1;
+	}
+		
+	}
+	
+	public Predmet getRow(int rowIndex) {
+		return this.predmeti.get(rowIndex);
 	}
 	
 	@Override
