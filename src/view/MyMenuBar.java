@@ -5,8 +5,15 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
-import java.awt.event.KeyEvent;
+
+import model.BazaAdresa;
+import model.BazaKatedri;
+import model.BazaPredmeta;
+import model.BazaProfesora;
+import model.BazaStudenata;
+
 import java.awt.event.*;
+import java.io.IOException;
 
 public class MyMenuBar extends JMenuBar {
 
@@ -42,6 +49,24 @@ public class MyMenuBar extends JMenuBar {
 		MyActionListenerAdd listenerAdd = new MyActionListenerAdd();
 		fileNew.addActionListener(listenerAdd);
 		JMenuItem fileSave = new JMenuItem("Save",saveIcon);
+		
+		fileSave.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try { 
+					 BazaKatedri.getInstance().save();
+					 BazaStudenata.getInstance().save();
+					 BazaPredmeta.getInstance().save(); 
+					 BazaProfesora.getInstance().save();
+					 BazaAdresa.getInstance().save(); 
+				} catch (IOException e1) { // TODO
+					e1.printStackTrace(); 
+				}
+				
+			}
+	
+		});
 		JMenuItem fileClose = new JMenuItem("Close",closeIcon);
 		
 		JMenuItem openStudenti = new JMenuItem("Studenti",studentIcon);
