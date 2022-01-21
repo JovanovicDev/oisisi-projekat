@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import view.NepolozeniJTable;
+import view.PolozeniJTable;
 
 public class BazaOcena extends AbstractTableModel {
 	
@@ -60,7 +61,16 @@ public class BazaOcena extends AbstractTableModel {
 	}
 	public void dodajOcenu(Ocena o) {
 		this.ocene.add(o);
-		NepolozeniJTable.azurirajPrikaz("Dodat", -1);
+		PolozeniJTable.azurirajPrikaz("Dodat", -1);
+	}
+	
+	public Ocena getRow(int rowIndex) {
+		return this.ocene.get(rowIndex);
+		}
+	public void ponistiOcenu(Ocena o) {
+		
+		ocene.remove(o);
+		PolozeniJTable.azurirajPrikaz("Dodat", -1);
 	}
 	
 	@Override

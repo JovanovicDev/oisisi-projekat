@@ -1152,6 +1152,31 @@ public class StudentDialog extends JDialog {
 		panel2.setLayout(layout);
 		panel2.setPreferredSize(new Dimension(400, 400));
 		JButton ponistiBtn = new JButton("Ponisti ocenu");
+		
+		ponistiBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int dialogButton = JOptionPane.YES_NO_OPTION;
+                int dialogResult = JOptionPane.showConfirmDialog(null, 
+                		"Da li ste sigurni da zelite da ponistite ocenu  ?", 
+                		"Potvrda ponistavanja", dialogButton);
+                if(dialogResult == JOptionPane.YES_OPTION) {
+				if(PolozeniJTable.rowSelectedIndex>-1) {
+					Ocena o = AbstractTableModelPolozeni.bo.getRow(PolozeniJTable.rowSelectedIndex);
+					AbstractTableModelNepolozeni.bo.dodajPolozenUnepolozen(o);
+					AbstractTableModelPolozeni.bo.ponistiOcenu(o);
+					}
+				}
+                else {
+                	dispose();
+                	
+                }
+				
+			}
+				
+
+		});
 		layout.putConstraint(SpringLayout.NORTH, ponistiBtn, 60, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, ponistiBtn, 170, SpringLayout.WEST, this);
 		panel2.add(ponistiBtn);
@@ -1238,7 +1263,7 @@ public class StudentDialog extends JDialog {
 				if(NepolozeniJTable.rowSelectedIndex>-1) {
 				Ocena o = AbstractTableModelNepolozeni.bo.getRow(NepolozeniJTable.rowSelectedIndex);
 				new UnosOceneDialog(o, BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex));
-				System.out.println(s.getPassedExams());
+				
 				}
 			}
 
