@@ -3,15 +3,12 @@ package view;
 import javax.swing.table.AbstractTableModel;
 
 import model.BazaNepolozenih;
-import model.BazaOcena;
 import model.BazaStudenata;
 import model.Student;
 
 public class AbstractTableModelNepolozeni extends AbstractTableModel {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 6471159366595247891L;
 	public static BazaNepolozenih bo;
 	

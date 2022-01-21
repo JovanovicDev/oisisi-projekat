@@ -5,14 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.awt.Color;
 
-import javax.naming.Binding;
-import javax.script.Bindings;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -24,15 +20,10 @@ import javax.swing.SpringLayout;
 import javax.swing.border.LineBorder;
 
 import controller.PredmetKontroler;
-import model.Adresa;
 import model.BazaPredmeta;
-import model.BazaProfesora;
-import model.BazaStudenata;
 import model.Predmet;
 import model.Profesor;
-import model.Student;
 import model.Predmet.SemesterEnum;
-import model.Student.StatusEnum;
 
 public class PredmetDialog extends JDialog {
 

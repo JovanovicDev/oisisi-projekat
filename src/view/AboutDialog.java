@@ -8,6 +8,9 @@ import javax.swing.SpringLayout;
 
 public class AboutDialog extends JDialog {
 	
+
+	private static final long serialVersionUID = 2566945927276159128L;
+
 	public AboutDialog() {
 		super();
 		setModal(true);

@@ -121,6 +121,7 @@ public class UnosOceneDialog extends JDialog {
 				
 				AbstractTableModelNepolozeni.bo.deleteOcena(o);
 				AbstractTableModelPolozeni.bo.dodajOcenu(o);
+				BazaStudenata.getInstance().racunajProsek();
 				dispose();
 
 			}

@@ -1,10 +1,5 @@
 package model;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,7 +7,6 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import view.NepolozeniJTable;
 import view.PolozeniJTable;
 
 public class BazaOcena extends AbstractTableModel {

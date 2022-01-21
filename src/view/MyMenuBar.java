@@ -65,7 +65,7 @@ public class MyMenuBar extends JMenuBar {
 		JMenuItem openKatedre = new JMenuItem("Katedre",tableIcon);
 		openKatedre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				KatedraDialog kd = new KatedraDialog();
+				new KatedraDialog();
 			}
 		});
 		
@@ -79,13 +79,13 @@ public class MyMenuBar extends JMenuBar {
 		JMenuItem helpHelp = new JMenuItem("Help",helpIcon);
 		helpHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				HelpDialog help = new HelpDialog();
+				new HelpDialog();
 			}
 		});
 		JMenuItem helpAbout = new JMenuItem("About",aboutIcon);
 		helpAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AboutDialog about = new AboutDialog();
+				 new AboutDialog();
 			}
 		});
 		
