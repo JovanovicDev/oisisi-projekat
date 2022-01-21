@@ -101,8 +101,8 @@ public class ProfesoriJTable extends JTable {
 			  if (p.trim().length() == 0) {
 				     rowSorter.setRowFilter(null);
 				  } else {
-				     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)"+ime ,0));
-				     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)"+prezime ,1));
+				     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)"+prezime ,0));
+				     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)"+ime ,1));
 				  }
 			
 		}

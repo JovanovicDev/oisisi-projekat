@@ -76,7 +76,8 @@ public class PredmetiJTable extends JTable {
 		  if (p.trim().length() == 0) {
 		     rowSorter.setRowFilter(null);
 		  } else {
-		     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)"+ p,1));
+		     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)"+ p,0,1));
+		    
 		  }
 	}
 }
