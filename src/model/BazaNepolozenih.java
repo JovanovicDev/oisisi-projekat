@@ -92,7 +92,13 @@ public class BazaNepolozenih extends AbstractTableModel {
 	public void setNepolozeni(List<Ocena> nepolozeni) {
 		this.nepolozeni = nepolozeni;
 	}
-
+	public void dodajPolozenUnepolozen(Ocena o) {
+		
+		o.setGrade(GradeEnum.PET);
+		nepolozeni.add(o);
+		NepolozeniJTable.azurirajPrikaz("Dodat", -1);
+		
+	}
 	public void dodajNepolozen(Predmet p) {
 		Ocena o = new Ocena(BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex), p, GradeEnum.PET, new Date());
 		nepolozeni.add(o);
