@@ -490,9 +490,8 @@ public class PredmetDialog extends JDialog {
                 if(dialogResult == JOptionPane.YES_OPTION) {
                 	
                 	Predmet p = BazaPredmeta.getInstance().getRow(PredmetiJTable.rowSelectedIndex);
-                	BazaProfesora.getInstance().skiniPredmeProfesoru(proff, p);
                 	proff = new Profesor();
-					p.setProf(null);
+					
 					p.setSubjectID(sifraTxt.getText());
 					p.setName(nazivTxt.getText());
 					p.setEspb(Integer.parseInt(espbTxt.getText()));
@@ -548,7 +547,6 @@ public class PredmetDialog extends JDialog {
 						p.setSemester(SemesterEnum.winter);
 					}
 					p.setProf(proff);
-					BazaProfesora.getInstance().dodajPredmetProfesoru(proff, p);
 					int dialogButton = JOptionPane.YES_NO_OPTION;
                     int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda unosa", dialogButton);
                     if(dialogResult == JOptionPane.YES_OPTION) {
