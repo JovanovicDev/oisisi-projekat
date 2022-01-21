@@ -44,9 +44,9 @@ public class Profesor {
 		this.title = title;
 		this.yearsOfService = yearsOfService;
 		subjectsList = new ArrayList<Predmet>();
-		subjectsList.add(new Predmet("1","Matematika",SemesterEnum.summer,2,null,6));
-		subjectsList.add(new Predmet("2","Srpski",SemesterEnum.summer,2,null,6));
-		subjectsList.add(new Predmet("5","Muzicko",SemesterEnum.summer,2,null,3));
+		subjectsList.add(new Predmet("1","Matematika",SemesterEnum.LETNJI,2,null,6));
+		subjectsList.add(new Predmet("2","Srpski",SemesterEnum.LETNJI,2,null,6));
+		subjectsList.add(new Predmet("5","Muzicko",SemesterEnum.LETNJI,2,null,3));
 	}
 
 

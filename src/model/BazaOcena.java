@@ -77,7 +77,7 @@ public class BazaOcena extends AbstractTableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 
 		Ocena o = this.ocene.get(rowIndex);
-		DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+		DateFormat df = new SimpleDateFormat("dd.MM.yyyy.");
 		String strdate = df.format(o.getExamDate());
 		switch (columnIndex) {
 		case 0:

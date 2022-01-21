@@ -227,15 +227,15 @@ public class ProfesorDialog extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if(brojTxt.getText().matches("[0-9]*")|| brojTxt.getText().equals("")) {
+				if(brojTxt.getText().matches("[0-9a-z]*")|| brojTxt.getText().equals("")) {
 					potvrdiBtn.setEnabled(true);
 					brojTxt.setBorder(new LineBorder(new Color(122, 138, 153),1));
 				} else {
 					brojTxt.setBorder(new LineBorder(Color.RED,2));
 					potvrdiBtn.setEnabled(false);
-					JOptionPane.showMessageDialog(new JPanel(), "Broj kuce ili stana sadrzi iskljucivo brojeve", "Warning",
+					JOptionPane.showMessageDialog(new JPanel(), "Broj kuce ili stana sadrzi iskljucivo brojeve i slova", "Warning",
 					        JOptionPane.WARNING_MESSAGE);
-					brojTxt.setText(brojTxt.getText().replaceAll("[^0-9]", "").substring(0,brojTxt.getText().length()-1));
+					brojTxt.setText(brojTxt.getText().replaceAll("[^0-9a-z]", "").substring(0,brojTxt.getText().length()-1));
 					potvrdiBtn.setEnabled(true);
 				}
 			}
@@ -669,16 +669,16 @@ public class ProfesorDialog extends JDialog {
 					p.setName(imeTxt.getText());
 					p.setSurname(prezimeTxt.getText());
 					try {
-						Date d = new SimpleDateFormat("dd.MM.yyyy").parse(datumTxt.getText());
+						Date d = new SimpleDateFormat("dd.MM.yyyy.").parse(datumTxt.getText());
 						p.setBirthDate(d);	
 					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
-						JOptionPane.showMessageDialog(new JPanel(), "Format datuma je dd.MM.yyyy .", "Warning",
+						JOptionPane.showMessageDialog(new JPanel(), "Format datuma je dd.MM.yyyy.", "Warning",
 						        JOptionPane.WARNING_MESSAGE);
 					}
 					String ulica = ulicaTxt.getText();
-					int broj = Integer.parseInt(brojTxt.getText());
+					String broj = brojTxt.getText();
 					String grad = gradTxt.getText();
 					String drzava = drzavaTxt.getText();
 					Adresa a = new Adresa(ulica,broj,grad,drzava);
@@ -686,7 +686,7 @@ public class ProfesorDialog extends JDialog {
 					p.setPhone(telefonTxt.getText());
 					p.setEmail(emailTxt.getText());
 					String ulicaKanc = ulicaKancTxt.getText();
-					int brojKanc = Integer.parseInt(brojKancTxt.getText());
+					String brojKanc = brojKancTxt.getText();
 					String gradKanc = gradKancTxt.getText();
 					String drzavaKanc = drzavaKancTxt.getText();
 					Adresa a1 = new Adresa(ulicaKanc,brojKanc,gradKanc,drzavaKanc);
@@ -945,15 +945,15 @@ public class ProfesorDialog extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if(brojTxt.getText().matches("[0-9]*")|| brojTxt.getText().equals("")) {
+				if(brojTxt.getText().matches("[0-9a-z]*")|| brojTxt.getText().equals("")) {
 					potvrdiBtn.setEnabled(true);
 					brojTxt.setBorder(new LineBorder(new Color(122, 138, 153),1));
 				} else {
 					brojTxt.setBorder(new LineBorder(Color.RED,2));
 					potvrdiBtn.setEnabled(false);
-					JOptionPane.showMessageDialog(new JPanel(), "Broj kuce ili stana sadrzi iskljucivo brojeve", "Warning",
+					JOptionPane.showMessageDialog(new JPanel(), "Broj kuce ili stana sadrzi iskljucivo brojeve i slova", "Warning",
 					        JOptionPane.WARNING_MESSAGE);
-					brojTxt.setText(brojTxt.getText().replaceAll("[^0-9]", "").substring(0,brojTxt.getText().length()-1));
+					brojTxt.setText(brojTxt.getText().replaceAll("[^0-9a-z]", "").substring(0,brojTxt.getText().length()-1));
 					potvrdiBtn.setEnabled(true);
 				}
 			}
@@ -1371,17 +1371,17 @@ public class ProfesorDialog extends JDialog {
 		
 		imeTxt.setText(name);
 		prezimeTxt.setText(surname);
-		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");  
+		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");  
         String strDate = dateFormat.format(birthDate); 
         datumTxt.setText(strDate);
         ulicaTxt.setText(adress.getStreet());
-		brojTxt.setText(Integer.toString(adress.getNumber()));
+		brojTxt.setText(adress.getNumber());
 		gradTxt.setText(adress.getCity());
 		drzavaTxt.setText(adress.getCountry());
 		telefonTxt.setText(phone);
 		emailTxt.setText(email);
 		ulicaKancTxt.setText(officeAdress.getStreet());
-		brojKancTxt.setText(Integer.toString(officeAdress.getNumber()));
+		brojKancTxt.setText(officeAdress.getNumber());
 		gradKancTxt.setText(officeAdress.getCity());
 		drzavaKancTxt.setText(officeAdress.getCountry());
 		brIDTxt.setText(numberID);
@@ -1413,14 +1413,14 @@ public class ProfesorDialog extends JDialog {
 					String datum = datumTxt.getText(); 
 					Date date;
 					try {
-						date = new SimpleDateFormat("dd.MM.yyyy").parse(datum);
+						date = new SimpleDateFormat("dd.MM.yyyy.").parse(datum);
 						p.setBirthDate(date);
 					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} 
 					String ulica = ulicaTxt.getText();
-					int broj = Integer.parseInt(brojTxt.getText());
+					String broj = brojTxt.getText();
 					String grad = gradTxt.getText();
 					String drzava = drzavaTxt.getText();
 					Adresa a = new Adresa(ulica,broj,grad,drzava);
@@ -1428,7 +1428,7 @@ public class ProfesorDialog extends JDialog {
 					p.setPhone(telefonTxt.getText());
 					p.setEmail(emailTxt.getText());
 					String ulicaKanc = ulicaKancTxt.getText();
-					int brojKanc = Integer.parseInt(brojKancTxt.getText());
+					String brojKanc = brojKancTxt.getText();
 					String gradKanc = gradKancTxt.getText();
 					String drzavaKanc = drzavaKancTxt.getText();
 					Adresa a1 = new Adresa(ulicaKanc,brojKanc,gradKanc,drzavaKanc);

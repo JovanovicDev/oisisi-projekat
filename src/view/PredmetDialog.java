@@ -213,9 +213,9 @@ public class PredmetDialog extends JDialog {
 					p.setEspb(Integer.parseInt(espbTxt.getText()));
 					p.setYear(godinaCmb.getSelectedIndex()+1);
 					if(semestarCmb.getSelectedIndex() == 0) {
-						p.setSemester(SemesterEnum.summer);
+						p.setSemester(SemesterEnum.LETNJI);
 					} else {
-						p.setSemester(SemesterEnum.winter);
+						p.setSemester(SemesterEnum.ZIMSKI);
 					}
 					int dialogButton = JOptionPane.YES_NO_OPTION;
                     int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda unosa", dialogButton);
@@ -416,7 +416,7 @@ public class PredmetDialog extends JDialog {
 				break;
 		}
 		switch(semester) {
-			case summer:
+			case LETNJI:
 				semestarCmb.setSelectedIndex(0);
 				break;
 			default:
@@ -497,9 +497,9 @@ public class PredmetDialog extends JDialog {
 					p.setEspb(Integer.parseInt(espbTxt.getText()));
 					p.setYear(godinaCmb.getSelectedIndex()+1);
 					if(semestarCmb.getSelectedIndex() == 0) {
-						p.setSemester(SemesterEnum.summer);
+						p.setSemester(SemesterEnum.LETNJI);
 					} else {
-						p.setSemester(SemesterEnum.winter);
+						p.setSemester(SemesterEnum.ZIMSKI);
 					}
 					p.setProf(proff);
 				
@@ -542,9 +542,9 @@ public class PredmetDialog extends JDialog {
 					p.setEspb(Integer.parseInt(espbTxt.getText()));
 					p.setYear(godinaCmb.getSelectedIndex()+1);
 					if(semestarCmb.getSelectedIndex() == 0) {
-						p.setSemester(SemesterEnum.summer);
+						p.setSemester(SemesterEnum.LETNJI);
 					} else {
-						p.setSemester(SemesterEnum.winter);
+						p.setSemester(SemesterEnum.ZIMSKI);
 					}
 					p.setProf(proff);
 					int dialogButton = JOptionPane.YES_NO_OPTION;

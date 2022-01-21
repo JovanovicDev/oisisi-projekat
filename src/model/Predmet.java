@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Predmet {
 	
-	public enum SemesterEnum {summer,winter };
+	public enum SemesterEnum {LETNJI,ZIMSKI };
 	private String subjectID;
 	private String name;
 	private SemesterEnum semester; 
