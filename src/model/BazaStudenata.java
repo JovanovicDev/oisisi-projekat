@@ -1,10 +1,21 @@
 package model;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.zip.DeflaterOutputStream;
+
+
+
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
@@ -12,7 +23,7 @@ import model.Student.StatusEnum;
 import view.MainFrame;
 import view.StudentiJTable;
 
-public class BazaStudenata extends AbstractTableModel {
+public class BazaStudenata extends AbstractTableModel  {
 	
 
 	private static final long serialVersionUID = -7046834571972915803L;
@@ -69,6 +80,68 @@ public class BazaStudenata extends AbstractTableModel {
 		studenti.add(new Student(Integer.toString(++gen),"Rapic","Nikola",d,new Adresa("Gorska","43","Subotica","Srbija"),"0631516692","rapicnikola@gmail.com","RA-269-2019",2020,2,StatusEnum.S,8.50));
 		studenti.add(new Student(Integer.toString(++gen),"Gakovic","Sergej",d,new Adresa("Skolska","42","Grad","Aleksandrovac"),"0693156216","gakovicsergej@gmail.com","RA-187-2019",2020,2,StatusEnum.S,10.00));
 		studenti.add(new Student(Integer.toString(++gen),"Milisavljevic","Tomislav",d,new Adresa("Sremska","41","Vrsac","Srbija"),"0639211566","milisavljevictoma@gmail.com","RA-201-2019",2020,2,StatusEnum.B,7.00));
+	}
+	
+	public void save() throws IOException {
+		
+		File f = new File("student1.txt");
+		BufferedWriter pw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
+		try {
+			for(Student s : studenti) {
+			pw.write(s.getId()+",");
+			pw.write(s.getIndex()+",");	
+			pw.write(s.getName()+",");
+		    pw.write(s.getSurname()+",");
+		    pw.write(s.getStudyYear()+",");
+			DateFormat df = new SimpleDateFormat("dd.MM.yyyy.");
+		String strdate = df.format(s.getBirthDate());
+			pw.write(strdate+",");
+			pw.write(s.getAdress().getId()+",");
+			pw.write(s.getPhone()+",");
+			pw.write(s.getEmail()+",");
+			pw.write(s.getStatus()+",");
+			pw.write(s.getEnrollmentYear()+"");
+			pw.newLine();
+
+			}
+		} finally {
+			pw.close();
+		}
+		
+		f = new File("ocena1.txt");
+		pw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
+		try {
+			for(Student s : BazaStudenata.getInstance().getStudenti()) {
+					for(Ocena o : s.getPassedExams()) {
+				pw.write(o.getStudent().getId()+",");
+				pw.write(o.getSubject().getSubjectID()+",");
+				pw.write(o.getGrade().getNumVal()+",");
+				DateFormat df = new SimpleDateFormat("dd.MM.yyyy.");
+				String strdate = df.format(o.getExamDate());
+				pw.write(strdate);
+				pw.newLine();
+					}
+			}
+		} finally {
+			pw.close();
+		}
+		f = new File("nepolozeni1.txt");
+		
+		pw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
+		try {
+			for(Student s : BazaStudenata.getInstance().getStudenti()) {
+				for(Ocena o : s.getFailedExams()) {
+					pw.write(o.getStudent().getId()+",");
+					pw.write(o.getSubject().getSubjectID());	
+					pw.newLine();
+					}
+			}
+		} finally {
+			pw.close();
+		}
+		
+		
+		
 	}
 	
 	public List<Student> getStudenti() {

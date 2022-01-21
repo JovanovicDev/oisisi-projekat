@@ -20,6 +20,13 @@ public class Profesor {
 	private String title;
 	private int yearsOfService;
 	private List<Predmet> subjectsList ;
+	private int id=0;
+
+	public int getId() {
+		return id;
+	}
+
+
 	
 	
 	public Profesor() {
@@ -27,12 +34,14 @@ public class Profesor {
 		subjectsList = new ArrayList<Predmet>();
 		this.name = "";
 		this.surname = "";
+		++this.id ;
 	}
 
 
 	public Profesor(String surname, String name, Date birthDate, Adresa adress, String phone, String email,
 			Adresa officeAdress, String numberID, String title, int yearsOfService) {
 		super();
+		++this.id ;
 		this.surname = surname;
 		this.name = name;
 		this.birthDate = birthDate;

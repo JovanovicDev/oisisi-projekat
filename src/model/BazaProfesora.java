@@ -1,5 +1,11 @@
 package model;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -69,6 +75,46 @@ public class BazaProfesora extends AbstractTableModel {
 		profesori.add(new Profesor("Vujovic","Darko",d,new Adresa("Zlatarska","72","Sombor","Srbija"),"0621121335","vujovicdarko@gmail.com",new Adresa("Temerinska","30","Temerin","Srbija"),"211061702","Docent",19));
 		profesori.add(new Profesor("Filipovic","Stevan",d,new Adresa("Vojnicka","32","Subotica","Srbija"),"0611213325","filipovicstevan@gmail.com",new Adresa("Skolska","39","Beograd","Srbija"),"517201783","Doca",8));
 		
+		
+	}
+	public void save() throws IOException {
+		
+		File f = new File("profesori1.txt");
+		BufferedWriter pw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
+		try {
+			for(Profesor p : profesori) {
+			pw.write(p.getId()+",");
+			pw.write(p.getNumberID()+",");	
+			pw.write(p.getName()+",");
+		    pw.write(p.getSurname()+",");
+			DateFormat df = new SimpleDateFormat("dd.MM.yyyy.");
+		    String strdate = df.format(p.getBirthDate());
+			pw.write(strdate+",");
+			pw.write(p.getAdress().getId()+",");
+			pw.write(p.getPhone()+",");
+			pw.write(p.getEmail()+",");
+			pw.write(p.getOfficeAdress().getId()+",");
+			pw.write(p.getYearsOfService()+",");
+			pw.write(p.getTitle()+",");
+			for(Katedra k : BazaKatedri.getInstance().getKatedre()) {
+				
+				for(Profesor prof : k.getProfs()) {
+					
+					if(p.getNumberID().equals(prof.getNumberID())) {
+						
+						pw.write(k.getId());
+						
+					}
+					
+				}
+				
+			}
+			pw.newLine();
+
+			}
+		} finally {
+			pw.close();
+		}
 		
 	}
 

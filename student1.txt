@@ -1,0 +1,14 @@
+1,RA-43-2019,Dusan,Petrovic,4,25.04.2000.,-59,0631569216,petrovicdusan@gmail.com,B,2020
+2,RA-44-2019,Aleksandar,Jovanovic,4,25.04.2000.,-58,0632115696,jovanovicaleksandar@gmail.com,S,2020
+3,RA-144-2019,Coban,Zindovic,4,25.04.2000.,-57,0639215616,zindoviccoban@gmail.com,B,2020
+4,RA-145-2019,Marko,Nikolic,4,25.04.2000.,-56,0632115696,nikolicmarko@gmail.com,B,2020
+5,RA-69-2019,Vanja,Grbic,3,25.04.2000.,-55,0631215696,grbicvanja@gmail.com,S,2020
+6,RA-169-2019,Mateja,Milic,2,25.04.2000.,-54,0635692116,milicmateja@gmail.com,B,2020
+7,RA-227-2019,Lazar,Vukasinovic,2,25.04.2000.,-53,0656931216,vukasinoviclazar@gmail.com,B,2020
+8,RA-48-2019,Lana,Peric,2,25.04.2000.,-52,0616315692,periclana@gmail.com,B,2020
+9,RA-49-2019,Dragan,Kojic,2,25.04.2000.,-51,0692131566,kojicdragan@gmail.com,S,2020
+10,RA-148-2019,Dusan,Tomasevic,2,25.04.2000.,-50,0639211566,tomasevicdragan@gmail.com,B,2020
+11,RA-149-2019,Marko,Markovic,2,25.04.2000.,-49,0621315696,markovicmarko@gmail.com,B,2020
+12,RA-269-2019,Nikola,Rapic,2,25.04.2000.,-48,0631516692,rapicnikola@gmail.com,S,2020
+13,RA-187-2019,Sergej,Gakovic,2,25.04.2000.,-47,0693156216,gakovicsergej@gmail.com,S,2020
+14,RA-201-2019,Tomislav,Milisavljevic,2,25.04.2000.,-46,0639211566,milisavljevictoma@gmail.com,B,2020

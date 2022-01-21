@@ -1,5 +1,10 @@
 package model;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,6 +36,7 @@ public class BazaOcena extends AbstractTableModel {
 		initOcene(s);
 
 	}
+
 	
 	public void initOcene(Student s) {
 		this.ocene = s.getPassedExams();

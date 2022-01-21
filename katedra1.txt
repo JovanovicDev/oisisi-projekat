@@ -1,0 +1,5 @@
+1,1,Katedra za elektroniku,1
+2,2,Katedra za elektricna merenja,1
+3,3,Katedra za racunarske nauke,1
+4,4,Katedra za automatiku,1
+5,5,Katedra za racunarske komunikacije,1

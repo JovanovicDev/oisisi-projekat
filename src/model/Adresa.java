@@ -2,10 +2,12 @@ package model;
 
 public class Adresa {
 	
+	private int id;
 	private String street;
 	private String number;
 	private String city;
 	private String country;
+	public static int gen = 0;
 	
 	public Adresa() {
 		super();
@@ -13,6 +15,7 @@ public class Adresa {
 
 	public Adresa(String street, String number, String city, String country) {
 		super();
+		this.id = ++gen-60;
 		this.street = street;
 		this.number = number;
 		this.city = city;
@@ -49,6 +52,14 @@ public class Adresa {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

@@ -1,5 +1,11 @@
 package model;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -45,6 +51,27 @@ public class BazaPredmeta extends AbstractTableModel{
 		
 		initPredmeti();
 
+	}
+	public void save() throws IOException {
+		int id = 0;
+		File f = new File("predmet1.txt");
+		BufferedWriter pw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
+		try {
+			for(Predmet p : predmeti) {
+			pw.write(++id+ ",");
+			pw.write(p.getSubjectID()+",");
+			pw.write(p.getName()+",");
+		    pw.write(p.getYear()+",");
+		    pw.write(p.getEspb()+",");
+			pw.write(p.getProf().getId()+",");
+			pw.write(p.getSemester()+"");
+			pw.newLine();
+
+			}
+		} finally {
+			pw.close();
+		}
+		
 	}
 	
 	public BazaPredmeta(Profesor p) {

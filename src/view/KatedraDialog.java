@@ -77,7 +77,10 @@ public class KatedraDialog extends JDialog {
 				int dialogButton = JOptionPane.YES_NO_OPTION;
                 int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda snimanja", dialogButton);
                 if(dialogResult == JOptionPane.YES_OPTION) {
-                	BazaKatedri.getInstance().postaviSefaKatedre((Katedra)katedraCmb.getSelectedItem(), (Profesor)profesorCmb.getSelectedItem());
+                	Katedra k = (Katedra)katedraCmb.getSelectedItem();
+                	System.out.println(k.getName());
+                	Profesor p = (Profesor)profesorCmb.getSelectedItem();
+                	BazaKatedri.getInstance().postaviSefaKatedre(k, p);
                 	JOptionPane.showMessageDialog(
 							null, 
 						   "Profesor " + profesorCmb.getSelectedItem() + " je postavljen za sefa " + katedraCmb.getSelectedItem() + ".", 
