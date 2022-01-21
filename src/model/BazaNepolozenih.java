@@ -99,4 +99,9 @@ public class BazaNepolozenih extends AbstractTableModel {
 		NepolozeniJTable.azurirajPrikaz("Dodat", -1);
 	}
 	
+	public void obrisiNepolozen(Ocena o) {
+		nepolozeni.remove(o);
+		NepolozeniJTable.azurirajPrikaz("Dodat", -1);
+	}
+	
 }

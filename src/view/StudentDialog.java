@@ -35,6 +35,7 @@ import model.Ocena;
 import model.Student;
 import model.Student.StatusEnum;
 import model.Ocena.GradeEnum;
+import model.Predmet;
 
 public class StudentDialog extends JDialog {
 
@@ -47,6 +48,7 @@ public class StudentDialog extends JDialog {
 	public static JPanel panel2;
 	public static JPanel panel3;
 	int tabIndex;
+	int ind = -1;
 	
 	public StudentDialog( ) {
 		super();
@@ -1222,6 +1224,24 @@ public class StudentDialog extends JDialog {
 		panel3.add(dodajBtn);
 		
 		JButton obrisiBtn = new JButton("Obrisi");
+		obrisiBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+	
+				ind = NepolozeniJTable.rowSelectedIndex;
+				if(ind == -1) JOptionPane.showMessageDialog(new JPanel(), "Nesto iz liste mora biti odabrano.", "Warning",
+				        JOptionPane.WARNING_MESSAGE);
+				else {
+					int dialogButton = JOptionPane.YES_NO_OPTION;
+                    int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda uklanjanja", dialogButton);
+                    if(dialogResult == JOptionPane.YES_OPTION) {
+                    	Ocena o = AbstractTableModelNepolozeni.bo.getRow(NepolozeniJTable.rowSelectedIndex);
+    					AbstractTableModelNepolozeni.bo.obrisiNepolozen(o);
+                    }
+				}
+			}
+
+		});
 		layout.putConstraint(SpringLayout.NORTH, obrisiBtn, 60, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, obrisiBtn, 270, SpringLayout.WEST, this);
 		panel3.add(obrisiBtn);
@@ -1238,7 +1258,6 @@ public class StudentDialog extends JDialog {
 				if(NepolozeniJTable.rowSelectedIndex>-1) {
 				Ocena o = AbstractTableModelNepolozeni.bo.getRow(NepolozeniJTable.rowSelectedIndex);
 				new UnosOceneDialog(o, BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex));
-				System.out.println(s.getPassedExams());
 				}
 			}
 
