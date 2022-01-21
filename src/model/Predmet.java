@@ -14,10 +14,14 @@ public class Predmet {
 	private int espb;
 	private List<Student> passedStudents;
 	private List<Student> failedStudents;
+
 	
-	
+
+
+
 	public Predmet() {
 		super();
+	
 		passedStudents = new ArrayList<Student>();
 		failedStudents = new ArrayList<Student>();
 	}

@@ -1,0 +1,9 @@
+1,1,Matematika,2,6,1,LETNJI
+2,2,Srpski,2,6,1,LETNJI
+3,3,Algebra,2,6,1,LETNJI
+4,4,Hemija,3,6,1,LETNJI
+5,5,Muzicko,2,3,1,LETNJI
+6,6,Arhitektura,2,6,1,LETNJI
+7,7,Analiza,2,6,1,LETNJI
+8,8,Fizicko,4,3,1,ZIMSKI
+9,9,Fizika,4,6,1,ZIMSKI
