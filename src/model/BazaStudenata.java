@@ -55,11 +55,11 @@ public class BazaStudenata extends AbstractTableModel {
 			e1.printStackTrace();
 		}
 		
-		studenti.add(new Student(Integer.toString(++gen),"Petrovic","Dusan",d,new Adresa("Skolska",40,"Beograd","Srbija"),"0631569216","petrovicdusan@gmail.com","RA-43-2019",2020,2,StatusEnum.B,9.00));
-		studenti.add(new Student(Integer.toString(++gen),"Jovanovic","Aleksandar",d,new Adresa("Radnicka",30,"Paracin","Srbija"),"0632115696","jovanovicaleksandar@gmail.com","RA-44-2019",2020,2,StatusEnum.S,8.50));
-		studenti.add(new Student(Integer.toString(++gen),"Zindovic","Coban",d,new Adresa("Temerinska",31,"Veternik","Srbija"),"0639215616","zindoviccoban@gmail.com","RA-144-2019",2020,2,StatusEnum.B,10.00));
-		studenti.add(new Student(Integer.toString(++gen),"Nikolic","Marko",d,new Adresa("Vojnicka",32,"Beograd","Srbija"),"0632115696","nikolicmarko@gmail.com","RA-145-2019",2020,2,StatusEnum.B,7.00));
-		studenti.add(new Student(Integer.toString(++gen),"Grbic","Vanja",d,new Adresa("Bombaska",33,"Uzice","Srbija"),"0631215696","grbicvanja@gmail.com","RA-69-2019",2020,2,StatusEnum.S,8.50));
+		studenti.add(new Student(Integer.toString(++gen),"Petrovic","Dusan",d,new Adresa("Skolska",40,"Beograd","Srbija"),"0631569216","petrovicdusan@gmail.com","RA-43-2019",2020,4,StatusEnum.B,9.00));
+		studenti.add(new Student(Integer.toString(++gen),"Jovanovic","Aleksandar",d,new Adresa("Radnicka",30,"Paracin","Srbija"),"0632115696","jovanovicaleksandar@gmail.com","RA-44-2019",2020,4,StatusEnum.S,8.50));
+		studenti.add(new Student(Integer.toString(++gen),"Zindovic","Coban",d,new Adresa("Temerinska",31,"Veternik","Srbija"),"0639215616","zindoviccoban@gmail.com","RA-144-2019",2020,4,StatusEnum.B,10.00));
+		studenti.add(new Student(Integer.toString(++gen),"Nikolic","Marko",d,new Adresa("Vojnicka",32,"Beograd","Srbija"),"0632115696","nikolicmarko@gmail.com","RA-145-2019",2020,4,StatusEnum.B,7.00));
+		studenti.add(new Student(Integer.toString(++gen),"Grbic","Vanja",d,new Adresa("Bombaska",33,"Uzice","Srbija"),"0631215696","grbicvanja@gmail.com","RA-69-2019",2020,3,StatusEnum.S,8.50));
 		studenti.add(new Student(Integer.toString(++gen),"Milic","Mateja",d,new Adresa("Kninska",34,"Vrbas","Srbija"),"0635692116","milicmateja@gmail.com","RA-169-2019",2020,2,StatusEnum.B,9.00));
 		studenti.add(new Student(Integer.toString(++gen),"Vukasinovic","Lazar",d,new Adresa("Juznobanatska",35,"Palanka","Srbija"),"0656931216","vukasinoviclazar@gmail.com","RA-227-2019",2020,2,StatusEnum.B,9.50));
 		studenti.add(new Student(Integer.toString(++gen),"Peric","Lana",d,new Adresa("Borska",36,"Futog","Srbija"),"0616315692","periclana@gmail.com","RA-48-2019",2020,2,StatusEnum.B,7.80));

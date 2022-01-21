@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -10,6 +11,7 @@ import view.MainFrame;
 import view.PredmetiJTable;
 import view.ProfesoriJTable;
 import view.StudentiJTable;
+import model.Ocena.GradeEnum;
 import model.Predmet.SemesterEnum;
 
 public class BazaPredmeta extends AbstractTableModel{
@@ -46,14 +48,17 @@ public class BazaPredmeta extends AbstractTableModel{
 	private void initPredmeti() {
 		
 		this.predmeti = new ArrayList<Predmet>();
-		
 		predmeti.add(new Predmet("1","Matematika",SemesterEnum.summer,2,null,6));
 		predmeti.add(new Predmet("2","Srpski",SemesterEnum.summer,2,null,6));
-		predmeti.add(new Predmet("3","Fizika",SemesterEnum.winter,2,new Profesor(),6));
-		predmeti.add(new Predmet("4","Hemija",SemesterEnum.summer,2,new Profesor(),6));
+		predmeti.add(new Predmet("3","Algebra",SemesterEnum.summer,2,null,6));
+		predmeti.add(new Predmet("4","Hemija",SemesterEnum.summer,3,new Profesor(),6));
 		predmeti.add(new Predmet("5","Muzicko",SemesterEnum.summer,2,null,3));
-		predmeti.add(new Predmet("6","Fizicko",SemesterEnum.winter,2,null,3));
+		predmeti.add(new Predmet("6","Arhitektura",SemesterEnum.summer,2,null,6));
+		predmeti.add(new Predmet("7","Analiza",SemesterEnum.summer,2,null,6));
+		predmeti.add(new Predmet("8","Fizicko",SemesterEnum.winter,4,null,3));
+		predmeti.add(new Predmet("9","Fizika",SemesterEnum.winter,4,new Profesor(),6));
 		
+
 	}
 	public List<Predmet> getPredmeti() {
 		return predmeti;
@@ -134,8 +139,6 @@ public class BazaPredmeta extends AbstractTableModel{
 			
 		}
 	}
-	
-	
 	
 
 }

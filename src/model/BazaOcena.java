@@ -1,5 +1,7 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +67,8 @@ public class BazaOcena extends AbstractTableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 
 		Ocena o = this.ocene.get(rowIndex);
+		DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+		String strdate = df.format(o.getExamDate());
 		switch (columnIndex) {
 		case 0:
 			return o.getSubject().getSubjectID();
@@ -75,7 +79,7 @@ public class BazaOcena extends AbstractTableModel {
 		case 3:
 			return o.getGrade().getNumVal();
 		case 4:
-			return o.getExamDate();
+			return strdate;
 		default:
 			return 0;
 

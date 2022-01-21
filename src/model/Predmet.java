@@ -103,4 +103,12 @@ public class Predmet {
 	public List<Student> getFailedStudents() {
 		return failedStudents;
 	}
+	
+
+	@Override
+	public String toString() {
+		return subjectID + " - " + name;
+	}
+	
+	
 }

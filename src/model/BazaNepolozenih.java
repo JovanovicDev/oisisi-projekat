@@ -1,12 +1,15 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import model.Ocena.GradeEnum;
 import view.NepolozeniJTable;
 import view.PredmetiJTable;
+import view.StudentiJTable;
 
 public class BazaNepolozenih extends AbstractTableModel {
 
@@ -90,4 +93,10 @@ public class BazaNepolozenih extends AbstractTableModel {
 		this.nepolozeni = nepolozeni;
 	}
 
+	public void dodajNepolozen(Predmet p) {
+		Ocena o = new Ocena(BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex), p, GradeEnum.PET, new Date());
+		nepolozeni.add(o);
+		NepolozeniJTable.azurirajPrikaz("Dodat", -1);
+	}
+	
 }

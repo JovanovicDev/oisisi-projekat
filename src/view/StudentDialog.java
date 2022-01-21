@@ -1213,6 +1213,12 @@ public class StudentDialog extends JDialog {
 		JButton dodajBtn = new JButton("Dodaj");
 		layout.putConstraint(SpringLayout.NORTH, dodajBtn, 60, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, dodajBtn, 170, SpringLayout.WEST, this);
+		dodajBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Student s = BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex);
+				DodavanjePredmetaStudentuDialog d = new DodavanjePredmetaStudentuDialog(s);
+			}
+		});
 		panel3.add(dodajBtn);
 		
 		JButton obrisiBtn = new JButton("Obrisi");
