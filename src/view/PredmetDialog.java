@@ -11,6 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.awt.Color;
 
+import javax.naming.Binding;
+import javax.script.Bindings;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -23,8 +25,12 @@ import javax.swing.border.LineBorder;
 
 import controller.PredmetKontroler;
 import model.Adresa;
+import model.BazaPredmeta;
+import model.BazaProfesora;
+import model.BazaStudenata;
 import model.Predmet;
 import model.Profesor;
+import model.Student;
 import model.Predmet.SemesterEnum;
 import model.Student.StatusEnum;
 
@@ -32,6 +38,10 @@ public class PredmetDialog extends JDialog {
 
 	private static final long serialVersionUID = 3346592901014711454L;
 
+	JButton btnMinus;
+	JButton btnPlus;
+	public static JTextField profTxt;
+	public static Profesor proff;
 	/**
 	 * 
 	 */
@@ -249,7 +259,7 @@ public class PredmetDialog extends JDialog {
 		setResizable(false);
 		SpringLayout layout = new SpringLayout();
 		setLayout(layout);
-		setSize(400, 350);
+		setSize(470, 350);
 		setLocationRelativeTo(null);
 		
 		JButton potvrdiBtn = new JButton("Potvrdi");		
@@ -258,7 +268,7 @@ public class PredmetDialog extends JDialog {
 		
 		JLabel sifraLbl = new JLabel("Sifra predmeta*");
 		JTextField sifraTxt = new JTextField();
-		sifraTxt.setPreferredSize(new Dimension(150,30));
+		sifraTxt.setPreferredSize(new Dimension(170,30));
 		layout.putConstraint(SpringLayout.NORTH, sifraLbl, 30, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, sifraLbl, 40, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, sifraTxt, 160, SpringLayout.WEST, sifraLbl);
@@ -292,10 +302,10 @@ public class PredmetDialog extends JDialog {
 			
 		});
 
-		
+		profTxt = new JTextField();
 		JLabel nazivLbl = new JLabel("Naziv predmeta*");
 		JTextField nazivTxt = new JTextField();
-		nazivTxt.setPreferredSize(new Dimension(150,30));
+		nazivTxt.setPreferredSize(new Dimension(170,30));
 		layout.putConstraint(SpringLayout.NORTH, nazivLbl, 70, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, nazivLbl, 40, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, nazivTxt, 160, SpringLayout.WEST, nazivLbl);
@@ -331,7 +341,7 @@ public class PredmetDialog extends JDialog {
 		
 		JLabel espbLbl = new JLabel("Broj ESPB*");
 		JTextField espbTxt = new JTextField();
-		espbTxt.setPreferredSize(new Dimension(150,30));
+		espbTxt.setPreferredSize(new Dimension(170,30));
 		layout.putConstraint(SpringLayout.NORTH, espbLbl, 110, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, espbLbl, 40, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, espbTxt, 160, SpringLayout.WEST, espbLbl);
@@ -367,7 +377,7 @@ public class PredmetDialog extends JDialog {
 		
 		JLabel godinaLbl = new JLabel("Godina studija*");
 		JComboBox<String> godinaCmb = new JComboBox<String>();
-		godinaCmb.setPreferredSize(new Dimension(150,30));
+		godinaCmb.setPreferredSize(new Dimension(170,30));
 		godinaCmb.addItem("1 (prva)");
 		godinaCmb.addItem("2 (druga)");
 		godinaCmb.addItem("3 (treca)");
@@ -379,7 +389,7 @@ public class PredmetDialog extends JDialog {
 		
 		JLabel semestarLbl = new JLabel("Semestar*");
 		JComboBox<String> semestarCmb = new JComboBox<String>();
-		semestarCmb.setPreferredSize(new Dimension(150,30));
+		semestarCmb.setPreferredSize(new Dimension(170,30));
 		semestarCmb.addItem("letnji (summer)");
 		semestarCmb.addItem("zimski (winter)");
 		layout.putConstraint(SpringLayout.NORTH, semestarLbl, 190, SpringLayout.NORTH, this);
@@ -389,6 +399,7 @@ public class PredmetDialog extends JDialog {
 		
 		sifraTxt.setText(subjectID);
 		nazivTxt.setText(name);
+		profTxt.setText(prof.toString());
         espbTxt.setText(Integer.toString(espb));		
 		switch(year) {
 			case 1:
@@ -410,7 +421,105 @@ public class PredmetDialog extends JDialog {
 				break;
 			default:
 				semestarCmb.setSelectedIndex(1);
-		}		
+		}	
+		
+		JLabel labelProf = new JLabel("Profesor*");
+		
+		
+		profTxt.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(profTxt.getText().equals("")) {
+					btnMinus.setEnabled(false);
+					btnPlus.setEnabled(true);
+				}
+				else {
+					btnMinus.setEnabled(true);
+					btnPlus.setEnabled(false);
+				}
+			}
+		});
+		
+
+		profTxt.setPreferredSize(new Dimension(130,30));
+		
+		layout.putConstraint(SpringLayout.NORTH, labelProf, 230, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, labelProf, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, profTxt, 160, SpringLayout.WEST, labelProf);
+		layout.putConstraint(SpringLayout.NORTH, profTxt, -5, SpringLayout.NORTH, labelProf);
+		
+		
+		
+	    btnPlus = new JButton("+");
+		btnMinus = new JButton("-");
+		btnPlus.setPreferredSize(new Dimension(43,30));
+		btnMinus.setPreferredSize(new Dimension(43,30));
+		
+		if(prof.getName().equals("")) btnMinus.setEnabled(false);
+		else btnPlus.setEnabled(false);
+		
+		btnPlus.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Predmet p = BazaPredmeta.getInstance().getRow(PredmetiJTable.rowSelectedIndex);
+				new ListaProfesoraDialog(p);
+				btnPlus.setEnabled(false);
+				btnMinus.setEnabled(true);
+			}
+
+		});
+		btnMinus.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				int dialogButton = JOptionPane.YES_NO_OPTION;
+                int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Ukloni profesora", dialogButton);
+                if(dialogResult == JOptionPane.YES_OPTION) {
+                	
+                	Predmet p = BazaPredmeta.getInstance().getRow(PredmetiJTable.rowSelectedIndex);
+                	BazaProfesora.getInstance().skiniPredmeProfesoru(proff, p);
+                	proff = new Profesor();
+					p.setProf(null);
+					p.setSubjectID(sifraTxt.getText());
+					p.setName(nazivTxt.getText());
+					p.setEspb(Integer.parseInt(espbTxt.getText()));
+					p.setYear(godinaCmb.getSelectedIndex()+1);
+					if(semestarCmb.getSelectedIndex() == 0) {
+						p.setSemester(SemesterEnum.summer);
+					} else {
+						p.setSemester(SemesterEnum.winter);
+					}
+					p.setProf(proff);
+				
+                    	PredmetKontroler.getInstance().izmeniPredmet(p);
+                    	dispose();
+    
+                	
+                } else {
+                	return;
+                }
+			}
+			
+			
+		});
+		
+		layout.putConstraint(SpringLayout.NORTH, btnPlus, 225, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, btnPlus, 345, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, btnMinus, 405, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.NORTH, btnMinus, 225, SpringLayout.NORTH, this);
 		
 		odustaniBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -438,8 +547,10 @@ public class PredmetDialog extends JDialog {
 					} else {
 						p.setSemester(SemesterEnum.winter);
 					}
+					p.setProf(proff);
+					BazaProfesora.getInstance().dodajPredmetProfesoru(proff, p);
 					int dialogButton = JOptionPane.YES_NO_OPTION;
-                    int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda unosa", dialogButton);
+                    int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda unosa", dialogButton);
                     if(dialogResult == JOptionPane.YES_OPTION) {
                     	
                     	PredmetKontroler.getInstance().izmeniPredmet(p);
@@ -452,7 +563,7 @@ public class PredmetDialog extends JDialog {
 			}
 		});
 		
-		layout.putConstraint(SpringLayout.NORTH, potvrdiBtn, 230, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.NORTH, potvrdiBtn, 270, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, potvrdiBtn, 70, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, odustaniBtn, 160, SpringLayout.WEST, potvrdiBtn);
 		layout.putConstraint(SpringLayout.NORTH, odustaniBtn, 0, SpringLayout.NORTH, potvrdiBtn);
@@ -469,6 +580,10 @@ public class PredmetDialog extends JDialog {
 		add(semestarCmb);
 		add(potvrdiBtn);
 		add(odustaniBtn);
+		add(labelProf);
+		add(profTxt);
+		add(btnPlus);
+		add(btnMinus);
 		setVisible(true);
 		
 	}

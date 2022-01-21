@@ -22,6 +22,8 @@ public class Profesor {
 	public Profesor() {
 		super();
 		subjectsList = new ArrayList<Predmet>();
+		this.name = "";
+		this.surname = "";
 	}
 
 
@@ -144,5 +146,11 @@ public class Profesor {
 
 	public List<Predmet> getSubjectsList() {
 		return subjectsList;
+	}
+
+
+	@Override
+	public String toString() {
+		return name +" "+surname;
 	}
 }

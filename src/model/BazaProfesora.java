@@ -30,7 +30,6 @@ public class BazaProfesora extends AbstractTableModel {
 	}
 	
 	private List<Profesor> profesori;
-	private List <Profesor> pretragaProf;
 	private List<String> kolone;
 
 	
@@ -50,7 +49,6 @@ public class BazaProfesora extends AbstractTableModel {
 	private void initProfesori() {
 		
 		this.profesori = new ArrayList<Profesor>();
-		this.pretragaProf = new ArrayList<Profesor>();
 		
 		Date d = new Date();
 		try {
@@ -137,6 +135,28 @@ public class BazaProfesora extends AbstractTableModel {
 	
 	public Profesor getRow(int rowIndex) {
 		return this.profesori.get(rowIndex);
+	}
+	public void dodajPredmetProfesoru(Profesor p,Predmet pred) {
+		
+		for(Profesor profesor : profesori) {
+			
+			if(profesor.getNumberID().equals(p.getNumberID())) {
+				
+				profesor.getSubjectsList().add(pred);
+			}
+		}
+		
+	}
+	public void skiniPredmeProfesoru(Profesor p,Predmet pred) {
+		
+		for(Profesor profesor : profesori) {
+			
+			if(profesor.getNumberID().equals(p.getNumberID())) {
+				
+				profesor.getSubjectsList().remove(pred);
+			}
+		}
+		
 	}
 	
 	@Override
