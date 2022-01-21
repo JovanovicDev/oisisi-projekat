@@ -37,12 +37,8 @@ public class BazaPredmeta extends AbstractTableModel{
 	private BazaPredmeta() {
 
 		this.kolone = new ArrayList<String>();
-<<<<<<< HEAD
 		this.kolone.add("ŠIFRA PREDMETA");
-=======
 		this.predmeti = new ArrayList<Predmet>();
-		this.kolone.add("SIFRA PREDMETA");
->>>>>>> feature/average-grade
 		this.kolone.add("NAZIV PREDMETA");
 		this.kolone.add("BROJ ESPB BODOVA");
 		this.kolone.add("GODINA");
