@@ -27,7 +27,10 @@ import javax.swing.table.TableColumn;
 
 import controller.ProfesorKontroler;
 import model.Adresa;
+import model.BazaProfesora;
+import model.BazaStudenata;
 import model.Profesor;
+import model.Student;
 
 public class ProfesorDialog extends JDialog {
 
@@ -1489,6 +1492,12 @@ public class ProfesorDialog extends JDialog {
 		JButton dodajBtn = new JButton("Dodaj predmet");
 		layout.putConstraint(SpringLayout.NORTH, dodajBtn, 120, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, dodajBtn, 70, SpringLayout.WEST, this);
+		dodajBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Profesor p = BazaProfesora.getInstance().getRow(ProfesoriJTable.rowSelectedIndex);
+				DodavanjePredmetaProfesoruDialog d = new DodavanjePredmetaProfesoruDialog(p);
+			}
+		});
 		panel2.add(dodajBtn);
 		
 		JButton ukloniBtn = new JButton("Ukloni predmet");

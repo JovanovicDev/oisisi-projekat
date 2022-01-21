@@ -15,10 +15,12 @@ public class AbstractTableModelPredavaniPredmeti extends AbstractTableModel {
 
 	private static final long serialVersionUID = -6481089898389356408L;
 	public static BazaPredmeta bp;
+	public static BazaProfesora bprof;
 	
 	public AbstractTableModelPredavaniPredmeti() {
 		Profesor p = BazaProfesora.getInstance().getRow(ProfesoriJTable.rowSelectedIndex);
 		bp = new BazaPredmeta(p);
+		bprof = BazaProfesora.getInstance();
 	}
 
 	@Override

@@ -14,6 +14,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import view.MainFrame;
+import view.PredavaniPredmetiJTable;
 import view.ProfesoriJTable;
 
 public class BazaProfesora extends AbstractTableModel {
@@ -145,7 +146,7 @@ public class BazaProfesora extends AbstractTableModel {
 				profesor.getSubjectsList().add(pred);
 			}
 		}
-		
+		PredavaniPredmetiJTable.azurirajPrikaz("Dodat", -1);
 	}
 	public void skiniPredmeProfesoru(Profesor p,Predmet pred) {
 		
@@ -156,7 +157,7 @@ public class BazaProfesora extends AbstractTableModel {
 				profesor.getSubjectsList().remove(pred);
 			}
 		}
-		
+		PredavaniPredmetiJTable.azurirajPrikaz("Uklonjen", -1);
 	}
 	
 	@Override
