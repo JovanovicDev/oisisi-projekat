@@ -29,6 +29,8 @@ import controller.ProfesorKontroler;
 import model.Adresa;
 import model.BazaProfesora;
 import model.BazaStudenata;
+import model.Ocena;
+import model.Predmet;
 import model.Profesor;
 import model.Student;
 
@@ -39,6 +41,7 @@ public class ProfesorDialog extends JDialog {
 	public static JPanel panel1;
 	public static JPanel panel2;
 	public static JTable predavaniPredmetiTable;
+	int ind = -1;
 	
 	public ProfesorDialog() {
 		super();
@@ -1501,6 +1504,25 @@ public class ProfesorDialog extends JDialog {
 		panel2.add(dodajBtn);
 		
 		JButton ukloniBtn = new JButton("Ukloni predmet");
+		ukloniBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+	
+				ind = PredavaniPredmetiJTable.rowSelectedIndex;
+				if(ind == -1) JOptionPane.showMessageDialog(new JPanel(), "Nesto iz liste mora biti odabrano.", "Warning",
+				        JOptionPane.WARNING_MESSAGE);
+				else {
+					int dialogButton = JOptionPane.YES_NO_OPTION;
+                    int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda uklanjanja", dialogButton);
+                    if(dialogResult == JOptionPane.YES_OPTION) {
+                    	Profesor p = BazaProfesora.getInstance().getRow(ProfesoriJTable.rowSelectedIndex);
+                    	Predmet pred = AbstractTableModelPredavaniPredmeti.bp.getRow(PredavaniPredmetiJTable.rowSelectedIndex);
+    					AbstractTableModelPredavaniPredmeti.bprof.skiniPredmeProfesoru(p, pred);
+                    }
+				}
+			}
+
+		});
 		layout.putConstraint(SpringLayout.NORTH, ukloniBtn, 120, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, ukloniBtn, 240, SpringLayout.WEST, this);
 		panel2.add(ukloniBtn);
