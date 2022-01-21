@@ -336,16 +336,15 @@ public class ProfesorDialog extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if(telefonTxt.getText().matches("0[0-9]{0,9}")|| telefonTxt.getText().equals("")) {
+				if(telefonTxt.getText().matches("[0-9-/]*")|| telefonTxt.getText().equals("")) {
 					potvrdiBtn.setEnabled(true);
 					telefonTxt.setBorder(new LineBorder(new Color(122, 138, 153),1));
 				} else {
 					telefonTxt.setBorder(new LineBorder(Color.RED,2));
 					potvrdiBtn.setEnabled(false);
-					JOptionPane.showMessageDialog(new JPanel(), "Broj pocinje sa 0 i ima 10 cifara.", "Warning",
+					JOptionPane.showMessageDialog(new JPanel(), "Broj pocinje sa 0, sadrzi cifre, / i -", "Warning",
 					        JOptionPane.WARNING_MESSAGE);
-					
-					telefonTxt.setText(telefonTxt.getText().replaceAll("[^0-9]", "").substring(0, telefonTxt.getText().length()-1));
+					telefonTxt.setText(telefonTxt.getText().replaceAll("[^0-9//-]", "").substring(0,telefonTxt.getText().length()-1));
 					potvrdiBtn.setEnabled(true);
 				}
 			}
@@ -594,7 +593,7 @@ public class ProfesorDialog extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if(zvanjeTxt.getText().matches("[A-Za-z]*")|| zvanjeTxt.getText().equals("")) {
+				if(zvanjeTxt.getText().matches("[A-Z_]*")|| zvanjeTxt.getText().equals("")) {
 					potvrdiBtn.setEnabled(true);
 					zvanjeTxt.setBorder(new LineBorder(new Color(122, 138, 153),1));
 				} else {
@@ -602,7 +601,7 @@ public class ProfesorDialog extends JDialog {
 					potvrdiBtn.setEnabled(false);
 					JOptionPane.showMessageDialog(new JPanel(), "Zvanje sadrzi iskljucivo slova.", "Warning",
 					        JOptionPane.WARNING_MESSAGE);
-					zvanjeTxt.setText(zvanjeTxt.getText().replaceAll("[^a-zA-Z]", "").substring(0,zvanjeTxt.getText().length()-1));
+					zvanjeTxt.setText(zvanjeTxt.getText().replaceAll("[^A-Z_]", "").substring(0,zvanjeTxt.getText().length()-1));
 					potvrdiBtn.setEnabled(true);
 				}
 			}
@@ -1054,16 +1053,15 @@ public class ProfesorDialog extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if(telefonTxt.getText().matches("0[0-9]{0,9}")|| telefonTxt.getText().equals("")) {
+				if(telefonTxt.getText().matches("[0-9-/]*")|| telefonTxt.getText().equals("")) {
 					potvrdiBtn.setEnabled(true);
 					telefonTxt.setBorder(new LineBorder(new Color(122, 138, 153),1));
 				} else {
 					telefonTxt.setBorder(new LineBorder(Color.RED,2));
 					potvrdiBtn.setEnabled(false);
-					JOptionPane.showMessageDialog(new JPanel(), "Broj pocinje sa 0 i ima 10 cifara.", "Warning",
+					JOptionPane.showMessageDialog(new JPanel(), "Broj pocinje sa 0, sadrzi cifre, / i -", "Warning",
 					        JOptionPane.WARNING_MESSAGE);
-					
-					telefonTxt.setText(telefonTxt.getText().replaceAll("[^0-9]", "").substring(0, telefonTxt.getText().length()-1));
+					telefonTxt.setText(telefonTxt.getText().replaceAll("[^0-9//-]", "").substring(0,telefonTxt.getText().length()-1));
 					potvrdiBtn.setEnabled(true);
 				}
 			}
@@ -1312,7 +1310,7 @@ public class ProfesorDialog extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if(zvanjeTxt.getText().matches("[A-Za-z]*")|| zvanjeTxt.getText().equals("")) {
+				if(zvanjeTxt.getText().matches("[A-Z_]*")|| zvanjeTxt.getText().equals("")) {
 					potvrdiBtn.setEnabled(true);
 					zvanjeTxt.setBorder(new LineBorder(new Color(122, 138, 153),1));
 				} else {
@@ -1320,7 +1318,7 @@ public class ProfesorDialog extends JDialog {
 					potvrdiBtn.setEnabled(false);
 					JOptionPane.showMessageDialog(new JPanel(), "Zvanje sadrzi iskljucivo slova.", "Warning",
 					        JOptionPane.WARNING_MESSAGE);
-					zvanjeTxt.setText(zvanjeTxt.getText().replaceAll("[^a-zA-Z]", "").substring(0,zvanjeTxt.getText().length()-1));
+					zvanjeTxt.setText(zvanjeTxt.getText().replaceAll("[^A-Z_]", "").substring(0,zvanjeTxt.getText().length()-1));
 					potvrdiBtn.setEnabled(true);
 				}
 			}

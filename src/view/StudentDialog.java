@@ -343,15 +343,15 @@ public class StudentDialog extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if(telefonTxt.getText().matches("0[0-9]*")|| telefonTxt.getText().equals("")) {
+				if(telefonTxt.getText().matches("[0-9-/]*")|| telefonTxt.getText().equals("")) {
 					potvrdiBtn.setEnabled(true);
 					telefonTxt.setBorder(new LineBorder(new Color(122, 138, 153),1));
 				} else {
 					telefonTxt.setBorder(new LineBorder(Color.RED,2));
 					potvrdiBtn.setEnabled(false);
-					JOptionPane.showMessageDialog(new JPanel(), "Broj pocinje sa 0 i ima 10 cifara.", "Warning",
+					JOptionPane.showMessageDialog(new JPanel(), "Broj pocinje sa 0, sadrzi cifre, / i -", "Warning",
 					        JOptionPane.WARNING_MESSAGE);
-					telefonTxt.setText(telefonTxt.getText().replaceAll("[^0-9]", "").substring(0,telefonTxt.getText().length()-1));
+					telefonTxt.setText(telefonTxt.getText().replaceAll("[^0-9//-]", "").substring(0,telefonTxt.getText().length()-1));
 					potvrdiBtn.setEnabled(true);
 				}
 			}
@@ -414,15 +414,15 @@ public class StudentDialog extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if(indexTxt.getText().matches("[A-Z0-9-]*")|| indexTxt.getText().equals("")) {
+				if(indexTxt.getText().matches("[A-Z0-9 /]*")|| indexTxt.getText().equals("")) {
 					potvrdiBtn.setEnabled(true);
 					indexTxt.setBorder(new LineBorder(new Color(122, 138, 153),1));
 				} else {
 					indexTxt.setBorder(new LineBorder(Color.RED,2));
 					potvrdiBtn.setEnabled(false);
-					JOptionPane.showMessageDialog(new JPanel(), "Indeks sadrzi iskljucivo dva velika slova na pocetku, broj i godinu upisa.", "Warning",
+					JOptionPane.showMessageDialog(new JPanel(), "Indeks sadrzi dva velika slova na pocetku, razmak broj i / + godinu upisa.", "Warning",
 					        JOptionPane.WARNING_MESSAGE);
-					indexTxt.setText(indexTxt.getText().replaceAll("[^A-Z0-9-]", "").substring(0,indexTxt.getText().length()-1));
+					indexTxt.setText(indexTxt.getText().replaceAll("[^A-Z0-9 /]", "").substring(0,indexTxt.getText().length()-1));
 					potvrdiBtn.setEnabled(true);
 				}
 			}
@@ -888,15 +888,15 @@ public class StudentDialog extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if(telefonTxt.getText().matches("0[0-9]*")|| telefonTxt.getText().equals("")) {
+				if(telefonTxt.getText().matches("[0-9-/]*")|| telefonTxt.getText().equals("")) {
 					potvrdiBtn.setEnabled(true);
 					telefonTxt.setBorder(new LineBorder(new Color(122, 138, 153),1));
 				} else {
 					telefonTxt.setBorder(new LineBorder(Color.RED,2));
 					potvrdiBtn.setEnabled(false);
-					JOptionPane.showMessageDialog(new JPanel(), "Broj pocinje sa 0 i ima 10 cifara.", "Warning",
+					JOptionPane.showMessageDialog(new JPanel(), "Broj pocinje sa 0, sadrzi cifre, / i -", "Warning",
 					        JOptionPane.WARNING_MESSAGE);
-					telefonTxt.setText(telefonTxt.getText().replaceAll("[^0-9]", "").substring(0,telefonTxt.getText().length()-1));
+					telefonTxt.setText(telefonTxt.getText().replaceAll("[^0-9//-]", "").substring(0,telefonTxt.getText().length()-1));
 					potvrdiBtn.setEnabled(true);
 				}
 			}
@@ -959,15 +959,15 @@ public class StudentDialog extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if(indexTxt.getText().matches("[A-Z0-9-]*")|| indexTxt.getText().equals("")) {
+				if(indexTxt.getText().matches("[A-Z0-9 /]*")|| indexTxt.getText().equals("")) {
 					potvrdiBtn.setEnabled(true);
 					indexTxt.setBorder(new LineBorder(new Color(122, 138, 153),1));
 				} else {
 					indexTxt.setBorder(new LineBorder(Color.RED,2));
 					potvrdiBtn.setEnabled(false);
-					JOptionPane.showMessageDialog(new JPanel(), "Indeks sadrzi iskljucivo dva velika slova na pocetku, broj i godinu upisa.", "Warning",
+					JOptionPane.showMessageDialog(new JPanel(), "Indeks sadrzi dva velika slova na pocetku, razmak broj i / + godinu upisa.", "Warning",
 					        JOptionPane.WARNING_MESSAGE);
-					indexTxt.setText(indexTxt.getText().replaceAll("[^A-Z0-9-]", "").substring(0,indexTxt.getText().length()-1));
+					indexTxt.setText(indexTxt.getText().replaceAll("[^A-Z0-9 /]", "").substring(0,indexTxt.getText().length()-1));
 					potvrdiBtn.setEnabled(true);
 				}
 			}
