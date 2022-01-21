@@ -77,7 +77,17 @@ public class MyMenuBar extends JMenuBar {
 		editDelete.addActionListener(listenerDelete);
 		
 		JMenuItem helpHelp = new JMenuItem("Help",helpIcon);
+		helpHelp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				HelpDialog help = new HelpDialog();
+			}
+		});
 		JMenuItem helpAbout = new JMenuItem("About",aboutIcon);
+		helpAbout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AboutDialog about = new AboutDialog();
+			}
+		});
 		
 		open.add(openStudenti);
 		open.addSeparator();
