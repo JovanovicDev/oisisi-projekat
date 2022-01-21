@@ -9,13 +9,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import model.Student.StatusEnum;
+
 
 public class BazaAdresa {
 
@@ -32,18 +29,14 @@ public class BazaAdresa {
 	private List<Adresa> adrese;
 	
 	private BazaAdresa() {
-		adrese = new ArrayList<Adresa>();
-		/*
-		 * adrese.add(new Adresa("Tolstojeva","31","Grad","Drzava")); adrese.add(new
-		 * Adresa("Tolstojeva","31","Grad","Drzava"));
-		 */
+
 		
 	}
 	
 	public void save() throws IOException {
 		
 		
-		File f = new File("adresa1.txt");
+		File f = new File("adresa.txt");
 		BufferedWriter pw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
 		try {
 			for(Adresa a : adrese) {
@@ -61,6 +54,7 @@ public class BazaAdresa {
 	}
 
 	public void load() throws IOException {
+		this.adrese = new ArrayList<Adresa>();
 		File f = new File("adresa.txt");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
 		try {
@@ -80,9 +74,27 @@ public class BazaAdresa {
 		}
 	}
 	
+	public void dodajAdresu(Adresa a) {
+		adrese.add(a);
+		
+	}
+	
+	public void izmeniAdresu(Adresa a) {
+		
+		for(Adresa a1 : adrese) {
+			if(a1.getId() == a.getId()) {
+				
+				a1.setCity(a.getCity());
+				a1.setStreet(a.getStreet());
+				a1.setCountry(a.getCountry());
+				a1.setNumber(a.getNumber());
+			}
+		}
+	}
 	public List<Adresa> getAdrese() {
 		return adrese;
 	}
+	
 
 	public void setAdrese(List<Adresa> adrese) {
 		this.adrese = adrese;

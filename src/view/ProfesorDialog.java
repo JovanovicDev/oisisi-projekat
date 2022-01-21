@@ -29,11 +29,8 @@ import controller.ProfesorKontroler;
 import model.Adresa;
 import model.BazaAdresa;
 import model.BazaProfesora;
-import model.BazaStudenata;
-import model.Ocena;
 import model.Predmet;
 import model.Profesor;
-import model.Student;
 
 public class ProfesorDialog extends JDialog {
 
@@ -667,6 +664,7 @@ public class ProfesorDialog extends JDialog {
 						return;
 				} else {
 					Profesor p = new Profesor();
+					p.setId(BazaProfesora.getInstance().getProfesori().size()+1);
 					p.setName(imeTxt.getText());
 					p.setSurname(prezimeTxt.getText());
 					try {
@@ -683,6 +681,7 @@ public class ProfesorDialog extends JDialog {
 					String grad = gradTxt.getText();
 					String drzava = drzavaTxt.getText();
 					Adresa a = new Adresa(BazaAdresa.getInstance().getAdrese().size()+1,ulica,broj,grad,drzava);
+					BazaAdresa.getInstance().dodajAdresu(a);
 					p.setAdress(a);
 					p.setPhone(telefonTxt.getText());
 					p.setEmail(emailTxt.getText());
@@ -691,6 +690,7 @@ public class ProfesorDialog extends JDialog {
 					String gradKanc = gradKancTxt.getText();
 					String drzavaKanc = drzavaKancTxt.getText();
 					Adresa a1 = new Adresa(BazaAdresa.getInstance().getAdrese().size()+1,ulicaKanc,brojKanc,gradKanc,drzavaKanc);
+					BazaAdresa.getInstance().dodajAdresu(a1);
 					p.setOfficeAdress(a1);
 					p.setNumberID(brIDTxt.getText());
 					p.setTitle(zvanjeTxt.getText());
@@ -1418,21 +1418,21 @@ public class ProfesorDialog extends JDialog {
 						p.setBirthDate(date);
 					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						e1.printStackTrace();	
 					} 
+					
+					Profesor ps = BazaProfesora.getInstance().getRow(ProfesoriJTable.rowSelectedIndex);
+					
+					
 					String ulica = ulicaTxt.getText();
 					String broj = brojTxt.getText();
 					String grad = gradTxt.getText();
 					String drzava = drzavaTxt.getText();
 					
-					int id = -1;
-					for(Adresa a : BazaAdresa.getInstance().getAdrese()) {
-						if(a.getStreet().equals(ulica)) {
-							id = a.getId();
-						}
-					}
+		
 					
-					Adresa a = new Adresa(id,ulica,broj,grad,drzava);
+					Adresa a = new Adresa(ps.getAdress().getId(),ulica,broj,grad,drzava);
+					BazaAdresa.getInstance().izmeniAdresu(a);
 					p.setAdress(a);
 					p.setPhone(telefonTxt.getText());
 					p.setEmail(emailTxt.getText());
@@ -1441,12 +1441,9 @@ public class ProfesorDialog extends JDialog {
 					String gradKanc = gradKancTxt.getText();
 					String drzavaKanc = drzavaKancTxt.getText();
 					
-					for(Adresa a2 : BazaAdresa.getInstance().getAdrese()) {
-						if(a2.getStreet().equals(ulica)) {
-							id = a2.getId();
-						}
-					}
-					Adresa a1 = new Adresa(id,ulicaKanc,brojKanc,gradKanc,drzavaKanc);
+				
+					Adresa a1 = new Adresa(ps.getOfficeAdress().getId(),ulicaKanc,brojKanc,gradKanc,drzavaKanc);
+					BazaAdresa.getInstance().izmeniAdresu(a1);
 					p.setOfficeAdress(a1);
 					p.setNumberID(brIDTxt.getText());
 					p.setTitle(zvanjeTxt.getText());
@@ -1513,7 +1510,7 @@ public class ProfesorDialog extends JDialog {
 		dodajBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Profesor p = BazaProfesora.getInstance().getRow(ProfesoriJTable.rowSelectedIndex);
-				DodavanjePredmetaProfesoruDialog d = new DodavanjePredmetaProfesoruDialog(p);
+				new DodavanjePredmetaProfesoruDialog(p);
 			}
 		});
 		panel2.add(dodajBtn);

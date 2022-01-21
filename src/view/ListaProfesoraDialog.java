@@ -3,8 +3,6 @@ package view;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -15,12 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SpringLayout;
 
-import model.BazaPredmeta;
+
 import model.BazaProfesora;
-import model.Ocena;
 import model.Predmet;
 import model.Profesor;
-import model.Student;
 
 public class ListaProfesoraDialog extends JDialog{
 

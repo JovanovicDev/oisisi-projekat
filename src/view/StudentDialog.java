@@ -35,8 +35,6 @@ import model.BazaStudenata;
 import model.Ocena;
 import model.Student;
 import model.Student.StatusEnum;
-import model.Ocena.GradeEnum;
-import model.Predmet;
 
 public class StudentDialog extends JDialog {
 
@@ -527,6 +525,7 @@ public class StudentDialog extends JDialog {
 					String grad = gradTxt.getText();
 					String drzava = drzavaTxt.getText();
 					Adresa a = new Adresa(BazaAdresa.getInstance().getAdrese().size()+1,ulica,broj,grad,drzava);
+					BazaAdresa.getInstance().dodajAdresu(a);
 					s.setAdress(a);
 					s.setPhone(telefonTxt.getText());
 					s.setEmail(emailTxt.getText());
@@ -542,6 +541,7 @@ public class StudentDialog extends JDialog {
 					int dialogButton = JOptionPane.YES_NO_OPTION;
                     int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda unosa", dialogButton);
                     if(dialogResult == JOptionPane.YES_OPTION) {
+                    	s.setId(BazaStudenata.getInstance().getStudenti().size()+1);
                     	StudentKontroler.getInstance().DodajStudenta(s);
                     	dispose();
                     } else {
@@ -1097,18 +1097,18 @@ public class StudentDialog extends JDialog {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						} 
+						
+						Student g = BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex);
+						
+						
 						String ulica = ulicaTxt.getText();
 						String broj = brojTxt.getText();
 						String grad = gradTxt.getText();
 						String drzava = drzavaTxt.getText();
-						int id = -1;
-						for(Adresa a : BazaAdresa.getInstance().getAdrese()) {
-							if(a.getStreet().equals(ulica)) {
-								id = a.getId();
-							}
-						}
+				
 						
-						Adresa a = new Adresa(id,ulica,broj,grad,drzava);
+						Adresa a = new Adresa(g.getAdress().getId(),ulica,broj,grad,drzava);
+						BazaAdresa.getInstance().izmeniAdresu(a);
 						s.setAdress(a);
 						s.setPhone(telefonTxt.getText());
 						s.setEmail(emailTxt.getText());
@@ -1163,6 +1163,12 @@ public class StudentDialog extends JDialog {
 		panel1.add(potvrdiBtn);
 		panel1.add(odustaniBtn);
 		
+		int sumaEspb = 0;
+		double prosek = 0;
+		
+		JLabel prosekLbl = new JLabel("Prosecna ocena: " + prosek);
+		JLabel espbLbl = new JLabel("Ukupno ESPB: " + sumaEspb);
+		
 		tabovi.addTab("Polozeni", panel2);
 		panel2.setLayout(layout);
 		panel2.setPreferredSize(new Dimension(1050, 750));
@@ -1181,6 +1187,13 @@ public class StudentDialog extends JDialog {
 					Ocena o = AbstractTableModelPolozeni.bo.getRow(PolozeniJTable.rowSelectedIndex);
 					AbstractTableModelNepolozeni.bo.dodajPolozenUnepolozen(o);
 					AbstractTableModelPolozeni.bo.ponistiOcenu(o);
+					BazaStudenata.getInstance().racunajProsek();
+					
+					int sumaEspb = suma();
+		    		double prosek = prosekOcena();
+		    		prosekLbl.setText("Prosecna ocena: " + prosek);
+		    		espbLbl.setText("Ukupno ESPB: " + sumaEspb);
+					
 					}
 				}
                 else {
@@ -1204,11 +1217,7 @@ public class StudentDialog extends JDialog {
 		layout.putConstraint(SpringLayout.WEST, polozeniIspitiPane, 170, SpringLayout.WEST, this);
 		panel2.add(polozeniIspitiPane);
 		
-	int sumaEspb = 0;
-	double prosek = 0;
 	
-	JLabel prosekLbl = new JLabel("Prosecna ocena: " + prosek);
-	JLabel espbLbl = new JLabel("Ukupno ESPB: " + sumaEspb);
 		
 		tabovi.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
@@ -1257,7 +1266,7 @@ public class StudentDialog extends JDialog {
 		dodajBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Student s = BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex);
-				DodavanjePredmetaStudentuDialog d = new DodavanjePredmetaStudentuDialog(s);
+				new DodavanjePredmetaStudentuDialog(s);
 			}
 		});
 		panel3.add(dodajBtn);
@@ -1297,7 +1306,15 @@ public class StudentDialog extends JDialog {
 				if(NepolozeniJTable.rowSelectedIndex>-1) {
 				Ocena o = AbstractTableModelNepolozeni.bo.getRow(NepolozeniJTable.rowSelectedIndex);
 				new UnosOceneDialog(o, BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex));
+				BazaStudenata.getInstance().racunajProsek();
 
+				}
+				else {
+					
+					 JOptionPane.showMessageDialog(new JPanel(), "Nesto iz liste mora biti odabrano.", "Warning",
+					        JOptionPane.WARNING_MESSAGE);
+					
+					
 				}
 			}
 
@@ -1315,8 +1332,9 @@ public class StudentDialog extends JDialog {
 	    	
 	    }
 		double prosek = sumaOcena / polozeniIspitiTable.getRowCount();
-		
+		if(prosek >= 6 && prosek <=10)
 		return prosek;
+		else return 0;
 	}
 	public static int suma() {
 	

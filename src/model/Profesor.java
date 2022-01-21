@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import model.Ocena.GradeEnum;
-import model.Predmet.SemesterEnum;
 
 public class Profesor {
 

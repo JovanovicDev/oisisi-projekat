@@ -1,11 +1,7 @@
 package controller;
 
 import model.BazaPredmeta;
-import model.BazaStudenata;
 import model.Predmet;
-import model.Student;
-import view.ProfesoriJTable;
-import view.StudentiJTable;
 import view.PredmetiJTable;
 
 public class PredmetKontroler {

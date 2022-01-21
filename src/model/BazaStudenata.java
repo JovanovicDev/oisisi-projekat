@@ -8,15 +8,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.zip.DeflaterOutputStream;
 
 
 
@@ -25,7 +22,6 @@ import javax.swing.table.AbstractTableModel;
 
 import model.Ocena.GradeEnum;
 import model.Student.StatusEnum;
-import view.AbstractTableModelNepolozeni;
 import view.MainFrame;
 import view.StudentiJTable;
 
@@ -49,6 +45,7 @@ public class BazaStudenata extends AbstractTableModel  {
 	private BazaStudenata() {
 		
 		this.kolone = new ArrayList<String>();
+		this.studenti = new ArrayList<Student>();
 		this.kolone.add("INDEX");
 		this.kolone.add("IME");
 		this.kolone.add("PREZIME");
@@ -56,72 +53,13 @@ public class BazaStudenata extends AbstractTableModel  {
 		this.kolone.add("STATUS");
 		this.kolone.add("PROSEK");
 		
-		initStudenti();
 
 	}
 	
-	private void initStudenti() {
-		
-		this.studenti = new ArrayList<Student>();
-		
-		Date d = new Date();
-		try {
-			d = new SimpleDateFormat("dd.MM.yyyy").parse("25.04.2000");	
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		/*
-		 * studenti.add(new Student(++gen,"Petrovic","Dusan",d,new
-		 * Adresa("Skolska","40","Beograd","Srbija"),"0631569216",
-		 * "petrovicdusan@gmail.com","RA-43-2019",2020,4,StatusEnum.B,9.00));
-		 * studenti.add(new Student(++gen,"Jovanovic","Aleksandar",d,new
-		 * Adresa("Radnicka","30","Paracin","Srbija"),"0632115696",
-		 * "jovanovicaleksandar@gmail.com","RA-44-2019",2020,4,StatusEnum.S,8.50));
-		 * studenti.add(new Student(Integer.toString(++gen),"Zindovic","Coban",d,new
-		 * Adresa("Temerinska","31","Veternik","Srbija"),"0639215616",
-		 * "zindoviccoban@gmail.com","RA-144-2019",2020,4,StatusEnum.B,10.00));
-		 * studenti.add(new Student(Integer.toString(++gen),"Nikolic","Marko",d,new
-		 * Adresa("Vojnicka","32","Beograd","Srbija"),"0632115696",
-		 * "nikolicmarko@gmail.com","RA-145-2019",2020,4,StatusEnum.B,7.00));
-		 * studenti.add(new Student(Integer.toString(++gen),"Grbic","Vanja",d,new
-		 * Adresa("Bombaska","33","Uzice","Srbija"),"0631215696","grbicvanja@gmail.com",
-		 * "RA-69-2019",2020,3,StatusEnum.S,8.50)); studenti.add(new
-		 * Student(Integer.toString(++gen),"Milic","Mateja",d,new
-		 * Adresa("Kninska","34","Vrbas","Srbija"),"0635692116","milicmateja@gmail.com",
-		 * "RA-169-2019",2020,2,StatusEnum.B,9.00)); studenti.add(new
-		 * Student(Integer.toString(++gen),"Vukasinovic","Lazar",d,new
-		 * Adresa("Juznobanatska","35","Palanka","Srbija"),"0656931216",
-		 * "vukasinoviclazar@gmail.com","RA-227-2019",2020,2,StatusEnum.B,9.50));
-		 * studenti.add(new Student(Integer.toString(++gen),"Peric","Lana",d,new
-		 * Adresa("Borska","36","Futog","Srbija"),"0616315692","periclana@gmail.com",
-		 * "RA-48-2019",2020,2,StatusEnum.B,7.80)); studenti.add(new
-		 * Student(Integer.toString(++gen),"Kojic","Dragan",d,new
-		 * Adresa("Zlatarska","37","Ledinci","Srbija"),"0692131566",
-		 * "kojicdragan@gmail.com","RA-49-2019",2020,2,StatusEnum.S,10.00));
-		 * studenti.add(new Student(Integer.toString(++gen),"Tomasevic","Dusan",d,new
-		 * Adresa("Timocka","38","Beska","Srbija"),"0639211566",
-		 * "tomasevicdragan@gmail.com","RA-148-2019",2020,2,StatusEnum.B,6.00));
-		 * studenti.add(new Student(Integer.toString(++gen),"Markovic","Marko",d,new
-		 * Adresa("Vojvodjanska","39","Sombor","Srbija"),"0621315696",
-		 * "markovicmarko@gmail.com","RA-149-2019",2020,2,StatusEnum.B,9.00));
-		 * studenti.add(new Student(Integer.toString(++gen),"Rapic","Nikola",d,new
-		 * Adresa("Gorska","43","Subotica","Srbija"),"0631516692",
-		 * "rapicnikola@gmail.com","RA-269-2019",2020,2,StatusEnum.S,8.50));
-		 * studenti.add(new Student(Integer.toString(++gen),"Gakovic","Sergej",d,new
-		 * Adresa("Skolska","42","Grad","Aleksandrovac"),"0693156216",
-		 * "gakovicsergej@gmail.com","RA-187-2019",2020,2,StatusEnum.S,10.00));
-		 * studenti.add(new
-		 * Student(Integer.toString(++gen),"Milisavljevic","Tomislav",d,new
-		 * Adresa("Sremska","41","Vrsac","Srbija"),"0639211566",
-		 * "milisavljevictoma@gmail.com","RA-201-2019",2020,2,StatusEnum.B,7.00));
-		 */
-		}
 	
 	public void save() throws IOException {
 		
-		File f = new File("student1.txt");
+		File f = new File("student.txt");
 		BufferedWriter pw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
 		try {
 			for(Student s : studenti) {
@@ -149,13 +87,13 @@ public class BazaStudenata extends AbstractTableModel  {
 			pw.close();
 		}
 		
-		f = new File("ocena1.txt");
+		f = new File("ocena.txt");
 		pw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
 		try {
 			for(Student s : BazaStudenata.getInstance().getStudenti()) {
 					for(Ocena o : s.getPassedExams()) {
 				pw.write(o.getStudent().getId()+",");
-				pw.write(o.getSubject().getSubjectID()+",");
+				pw.write(o.getSubject().getId()+",");
 				pw.write(o.getGrade().getNumVal()+",");
 				DateFormat df = new SimpleDateFormat("dd.MM.yyyy.");
 				String strdate = df.format(o.getExamDate());
@@ -166,14 +104,14 @@ public class BazaStudenata extends AbstractTableModel  {
 		} finally {
 			pw.close();
 		}
-		f = new File("nepolozeni1.txt");
+		f = new File("nepolozeni.txt");
 		
 		pw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
 		try {
 			for(Student s : BazaStudenata.getInstance().getStudenti()) {
 				for(Ocena o : s.getFailedExams()) {
 					pw.write(o.getStudent().getId()+",");
-					pw.write(o.getSubject().getSubjectID());	
+					pw.write(o.getSubject().getId()+"");	
 					pw.newLine();
 					}
 			}
@@ -183,6 +121,7 @@ public class BazaStudenata extends AbstractTableModel  {
 	}
 	
 	public void load() throws IOException {
+		this.studenti = new ArrayList<Student>();
 		File f = new File("student.txt");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
 		try {
@@ -299,6 +238,7 @@ public class BazaStudenata extends AbstractTableModel  {
 					}
 					
 				}
+				racunajProsek();
 			} finally {
 				reader.close();
 			}
@@ -338,8 +278,23 @@ public class BazaStudenata extends AbstractTableModel  {
 			}
 			;
 		}
-		s.setId(++gen);
 		this.studenti.add(s);
+	}
+	
+	public void racunajProsek() {
+		
+		for(Student s: studenti) {
+			double suma = 0.0;
+			for(Ocena o : s.getPassedExams()) {
+				
+				suma += o.getGrade().getNumVal();
+				
+			}
+			if(suma/s.getPassedExams().size()>=6 &&  suma/s.getPassedExams().size()<= 10)
+			s.setAverageGrade(suma/s.getPassedExams().size());
+			else s.setAverageGrade(0.0);
+		}
+	  StudentiJTable.azurirajPrikaz("-1", 1);
 	}
 	
 	public void izmeniStudenta(Student s1) {

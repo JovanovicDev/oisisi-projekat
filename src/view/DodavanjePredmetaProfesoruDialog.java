@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.AbstractListModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -18,10 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.SpringLayout;
 
 import model.BazaPredmeta;
-import model.Ocena;
 import model.Predmet;
 import model.Profesor;
-import model.Student;
 
 public class DodavanjePredmetaProfesoruDialog extends JDialog {
 
