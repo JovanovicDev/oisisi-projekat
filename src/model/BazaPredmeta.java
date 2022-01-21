@@ -1,9 +1,12 @@
 package model;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -21,6 +24,7 @@ import view.ProfesoriJTable;
 import view.StudentiJTable;
 import model.Ocena.GradeEnum;
 import model.Predmet.SemesterEnum;
+import model.Student.StatusEnum;
 
 public class BazaPredmeta extends AbstractTableModel{
 
@@ -38,9 +42,6 @@ public class BazaPredmeta extends AbstractTableModel{
 	private List<String> kolone;
 	
 	private BazaPredmeta() {
-		
-	
-	
 
 		this.kolone = new ArrayList<String>();
 		this.kolone.add("SIFRA PREDMETA");
@@ -63,7 +64,11 @@ public class BazaPredmeta extends AbstractTableModel{
 			pw.write(p.getName()+",");
 		    pw.write(p.getYear()+",");
 		    pw.write(p.getEspb()+",");
-			pw.write(p.getProf().getId()+",");
+		    if(p.getProf() == null) {
+				pw.write("null,");
+			} else {
+				pw.write(p.getProf().getId()+",");
+			}
 			pw.write(p.getSemester()+"");
 			pw.newLine();
 
@@ -72,6 +77,43 @@ public class BazaPredmeta extends AbstractTableModel{
 			pw.close();
 		}
 		
+	}
+	
+	public void load() throws IOException {
+		File f = new File("predmet.txt");
+		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+		try {
+			String str;
+			while((str = reader.readLine()) != null) {
+				String[] delovi = str.split(",");
+				Predmet p = new Predmet();
+				p.setId(Integer.parseInt(delovi[0]));
+				p.setSubjectID(delovi[1]);
+				p.setName(delovi[2]);
+				p.setYear(Integer.parseInt(delovi[3]));
+				p.setEspb(Integer.parseInt(delovi[4]));
+				for(Profesor p1 : BazaProfesora.getInstance().getProfesori()) {
+					if(delovi[5].equals("null")) {
+						p.setProf(null);;
+					} else if (Integer.parseInt(delovi[5]) == p1.getId()) {
+						p.setProf(p1);;
+					}
+				}
+				switch(delovi[6]) {
+				case "ZIMSKI":
+					p.setSemester(SemesterEnum.ZIMSKI);
+					break;
+				case "LETNJI":
+					p.setSemester(SemesterEnum.LETNJI);
+					break;
+				default:
+					break;
+				}
+				predmeti.add(p);
+			}
+		} finally {
+			reader.close();
+		}
 	}
 	
 	public BazaPredmeta(Profesor p) {
@@ -102,16 +144,51 @@ public class BazaPredmeta extends AbstractTableModel{
 			e1.printStackTrace();
 		}
 		
-		predmeti.add(new Predmet("1","Matematika",SemesterEnum.LETNJI,2,new Profesor("Zlatkovic","Jovan",d,new Adresa("Skolska","39","Beograd","Srbija"),"0612133215","zlatkovicjovan@gmail.com",new Adresa("Vojnicka","32","Subotica","Srbija"),"657506348"+ "","Doca",15),6));
-		predmeti.add(new Predmet("2","Srpski",SemesterEnum.LETNJI,2,new Profesor("Markovic","Bata",d,new Adresa("Temerinska","30","Temerin","Srbija"),"0613221315","markovicbata@gmail.com",new Adresa("Zlatarska","72","Sombor","Srbija"),"149924490","Docent",12),6));
-		predmeti.add(new Predmet("3","Algebra",SemesterEnum.LETNJI,2,new Profesor("Zmajovic","Goran",d,new Adresa("Kninska","12","Cuprija","Srbija"),"0613213215","zmajovicgoran@gmail.com",new Adresa("Srbobranska","96","Aleksandrovac","Srbija"),"768078525","Boca",18),6));
-		predmeti.add(new Predmet("4","Hemija",SemesterEnum.LETNJI,3,new Profesor("Borovic","Zlatko",d,new Adresa("Banatska","89","Loznica","Srbija"),"0612211335","boroviczlatko@gmail.com",new Adresa("Pivska","1","Vrsac","Srbija"),"680529925","Gospodin",20),6));
-		predmeti.add(new Predmet("5","Muzicko",SemesterEnum.LETNJI,2,new Profesor("Simic","Marko",d,new Adresa("Gorska","37","Vrbas","Srbija"),"0613212135","simicmarko@gmail.com",new Adresa("Kninska","1","Grad","Srbija"),"797962484","Majstor",12),3));
-		predmeti.add(new Predmet("6","Arhitektura",SemesterEnum.LETNJI,2,new Profesor("Marovic","Bogdan",d,new Adresa("Pivska","1","Vrsac","Srbija"),"0632112135","marovicbogdan@gmail.com",new Adresa("Gorska","37","Vrbas","Srbija"),"181714190","Poglavar",5),6));
-		predmeti.add(new Predmet("7","Analiza",SemesterEnum.LETNJI,2,new Profesor("Soric","Filip",d,new Adresa("Srbobranska","96","Aleksandrovac","Srbija"),"0611521332","soricfilip@gmail.com",new Adresa("Kninska","12","Cuprija","Srbija"),"209133592","Maestro",7),6));
-		predmeti.add(new Predmet("8","Fizicko",SemesterEnum.ZIMSKI,4,new Profesor("Vujovic","Darko",d,new Adresa("Zlatarska","72","Sombor","Srbija"),"0621121335","vujovicdarko@gmail.com",new Adresa("Temerinska","30","Temerin","Srbija"),"211061702","Docent",19),3));
-		predmeti.add(new Predmet("9","Fizika",SemesterEnum.ZIMSKI,4,new Profesor("Zlatkovic","Jovan",d,new Adresa("Skolska","39","Beograd","Srbija"),"0612133215","zlatkovicjovan@gmail.com",new Adresa("Vojnicka","32","Subotica","Srbija"),"657506348"+ "","Doca",15),6));
-		
+		/*
+		 * predmeti.add(new Predmet("1","Matematika",SemesterEnum.LETNJI,2,new
+		 * Profesor("Zlatkovic","Jovan",d,new
+		 * Adresa("Skolska","39","Beograd","Srbija"),"0612133215",
+		 * "zlatkovicjovan@gmail.com",new
+		 * Adresa("Vojnicka","32","Subotica","Srbija"),"657506348"+ "","Doca",15),6));
+		 * predmeti.add(new Predmet("2","Srpski",SemesterEnum.LETNJI,2,new
+		 * Profesor("Markovic","Bata",d,new
+		 * Adresa("Temerinska","30","Temerin","Srbija"),"0613221315",
+		 * "markovicbata@gmail.com",new
+		 * Adresa("Zlatarska","72","Sombor","Srbija"),"149924490","Docent",12),6));
+		 * predmeti.add(new Predmet("3","Algebra",SemesterEnum.LETNJI,2,new
+		 * Profesor("Zmajovic","Goran",d,new
+		 * Adresa("Kninska","12","Cuprija","Srbija"),"0613213215",
+		 * "zmajovicgoran@gmail.com",new
+		 * Adresa("Srbobranska","96","Aleksandrovac","Srbija"),"768078525","Boca",18),6)
+		 * ); predmeti.add(new Predmet("4","Hemija",SemesterEnum.LETNJI,3,new
+		 * Profesor("Borovic","Zlatko",d,new
+		 * Adresa("Banatska","89","Loznica","Srbija"),"0612211335",
+		 * "boroviczlatko@gmail.com",new
+		 * Adresa("Pivska","1","Vrsac","Srbija"),"680529925","Gospodin",20),6));
+		 * predmeti.add(new Predmet("5","Muzicko",SemesterEnum.LETNJI,2,new
+		 * Profesor("Simic","Marko",d,new
+		 * Adresa("Gorska","37","Vrbas","Srbija"),"0613212135","simicmarko@gmail.com",
+		 * new Adresa("Kninska","1","Grad","Srbija"),"797962484","Majstor",12),3));
+		 * predmeti.add(new Predmet("6","Arhitektura",SemesterEnum.LETNJI,2,new
+		 * Profesor("Marovic","Bogdan",d,new
+		 * Adresa("Pivska","1","Vrsac","Srbija"),"0632112135","marovicbogdan@gmail.com",
+		 * new Adresa("Gorska","37","Vrbas","Srbija"),"181714190","Poglavar",5),6));
+		 * predmeti.add(new Predmet("7","Analiza",SemesterEnum.LETNJI,2,new
+		 * Profesor("Soric","Filip",d,new
+		 * Adresa("Srbobranska","96","Aleksandrovac","Srbija"),"0611521332",
+		 * "soricfilip@gmail.com",new
+		 * Adresa("Kninska","12","Cuprija","Srbija"),"209133592","Maestro",7),6));
+		 * predmeti.add(new Predmet("8","Fizicko",SemesterEnum.ZIMSKI,4,new
+		 * Profesor("Vujovic","Darko",d,new
+		 * Adresa("Zlatarska","72","Sombor","Srbija"),"0621121335",
+		 * "vujovicdarko@gmail.com",new
+		 * Adresa("Temerinska","30","Temerin","Srbija"),"211061702","Docent",19),3));
+		 * predmeti.add(new Predmet("9","Fizika",SemesterEnum.ZIMSKI,4,new
+		 * Profesor("Zlatkovic","Jovan",d,new
+		 * Adresa("Skolska","39","Beograd","Srbija"),"0612133215",
+		 * "zlatkovicjovan@gmail.com",new
+		 * Adresa("Vojnicka","32","Subotica","Srbija"),"657506348"+ "","Doca",15),6));
+		 */
 	}
 	
 	private void initPredmeti(Profesor p) {

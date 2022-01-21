@@ -399,7 +399,12 @@ public class PredmetDialog extends JDialog {
 		
 		sifraTxt.setText(subjectID);
 		nazivTxt.setText(name);
-		profTxt.setText(prof.toString());
+		if(prof == null) {
+			profTxt.setText("");
+		} else {
+			profTxt.setText(prof.toString());
+		}
+		
         espbTxt.setText(Integer.toString(espb));		
 		switch(year) {
 			case 1:
@@ -466,7 +471,7 @@ public class PredmetDialog extends JDialog {
 		btnPlus.setPreferredSize(new Dimension(43,30));
 		btnMinus.setPreferredSize(new Dimension(43,30));
 		
-		if(prof.getName().equals("")) btnMinus.setEnabled(false);
+		if(prof == null) btnMinus.setEnabled(false);
 		else btnPlus.setEnabled(false);
 		
 		btnPlus.addActionListener(new ActionListener() {
@@ -490,8 +495,7 @@ public class PredmetDialog extends JDialog {
                 if(dialogResult == JOptionPane.YES_OPTION) {
                 	
                 	Predmet p = BazaPredmeta.getInstance().getRow(PredmetiJTable.rowSelectedIndex);
-                	proff = new Profesor();
-					
+                	proff = null;
 					p.setSubjectID(sifraTxt.getText());
 					p.setName(nazivTxt.getText());
 					p.setEspb(Integer.parseInt(espbTxt.getText()));
@@ -536,7 +540,7 @@ public class PredmetDialog extends JDialog {
 						return;
 				} else {
 					Predmet p = new Predmet();
-					p.setProf(null);
+					p.setProf(proff);
 					p.setSubjectID(sifraTxt.getText());
 					p.setName(nazivTxt.getText());
 					p.setEspb(Integer.parseInt(espbTxt.getText()));

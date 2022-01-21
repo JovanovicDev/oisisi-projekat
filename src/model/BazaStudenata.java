@@ -1,14 +1,18 @@
 package model;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +23,9 @@ import java.util.zip.DeflaterOutputStream;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
+import model.Ocena.GradeEnum;
 import model.Student.StatusEnum;
+import view.AbstractTableModelNepolozeni;
 import view.MainFrame;
 import view.StudentiJTable;
 
@@ -66,21 +72,52 @@ public class BazaStudenata extends AbstractTableModel  {
 			e1.printStackTrace();
 		}
 		
-		studenti.add(new Student(Integer.toString(++gen),"Petrovic","Dusan",d,new Adresa("Skolska","40","Beograd","Srbija"),"0631569216","petrovicdusan@gmail.com","RA-43-2019",2020,4,StatusEnum.B,9.00));
-		studenti.add(new Student(Integer.toString(++gen),"Jovanovic","Aleksandar",d,new Adresa("Radnicka","30","Paracin","Srbija"),"0632115696","jovanovicaleksandar@gmail.com","RA-44-2019",2020,4,StatusEnum.S,8.50));
-		studenti.add(new Student(Integer.toString(++gen),"Zindovic","Coban",d,new Adresa("Temerinska","31","Veternik","Srbija"),"0639215616","zindoviccoban@gmail.com","RA-144-2019",2020,4,StatusEnum.B,10.00));
-		studenti.add(new Student(Integer.toString(++gen),"Nikolic","Marko",d,new Adresa("Vojnicka","32","Beograd","Srbija"),"0632115696","nikolicmarko@gmail.com","RA-145-2019",2020,4,StatusEnum.B,7.00));
-		studenti.add(new Student(Integer.toString(++gen),"Grbic","Vanja",d,new Adresa("Bombaska","33","Uzice","Srbija"),"0631215696","grbicvanja@gmail.com","RA-69-2019",2020,3,StatusEnum.S,8.50));
-		studenti.add(new Student(Integer.toString(++gen),"Milic","Mateja",d,new Adresa("Kninska","34","Vrbas","Srbija"),"0635692116","milicmateja@gmail.com","RA-169-2019",2020,2,StatusEnum.B,9.00));
-		studenti.add(new Student(Integer.toString(++gen),"Vukasinovic","Lazar",d,new Adresa("Juznobanatska","35","Palanka","Srbija"),"0656931216","vukasinoviclazar@gmail.com","RA-227-2019",2020,2,StatusEnum.B,9.50));
-		studenti.add(new Student(Integer.toString(++gen),"Peric","Lana",d,new Adresa("Borska","36","Futog","Srbija"),"0616315692","periclana@gmail.com","RA-48-2019",2020,2,StatusEnum.B,7.80));
-		studenti.add(new Student(Integer.toString(++gen),"Kojic","Dragan",d,new Adresa("Zlatarska","37","Ledinci","Srbija"),"0692131566","kojicdragan@gmail.com","RA-49-2019",2020,2,StatusEnum.S,10.00));
-		studenti.add(new Student(Integer.toString(++gen),"Tomasevic","Dusan",d,new Adresa("Timocka","38","Beska","Srbija"),"0639211566","tomasevicdragan@gmail.com","RA-148-2019",2020,2,StatusEnum.B,6.00));
-		studenti.add(new Student(Integer.toString(++gen),"Markovic","Marko",d,new Adresa("Vojvodjanska","39","Sombor","Srbija"),"0621315696","markovicmarko@gmail.com","RA-149-2019",2020,2,StatusEnum.B,9.00));
-		studenti.add(new Student(Integer.toString(++gen),"Rapic","Nikola",d,new Adresa("Gorska","43","Subotica","Srbija"),"0631516692","rapicnikola@gmail.com","RA-269-2019",2020,2,StatusEnum.S,8.50));
-		studenti.add(new Student(Integer.toString(++gen),"Gakovic","Sergej",d,new Adresa("Skolska","42","Grad","Aleksandrovac"),"0693156216","gakovicsergej@gmail.com","RA-187-2019",2020,2,StatusEnum.S,10.00));
-		studenti.add(new Student(Integer.toString(++gen),"Milisavljevic","Tomislav",d,new Adresa("Sremska","41","Vrsac","Srbija"),"0639211566","milisavljevictoma@gmail.com","RA-201-2019",2020,2,StatusEnum.B,7.00));
-	}
+		/*
+		 * studenti.add(new Student(++gen,"Petrovic","Dusan",d,new
+		 * Adresa("Skolska","40","Beograd","Srbija"),"0631569216",
+		 * "petrovicdusan@gmail.com","RA-43-2019",2020,4,StatusEnum.B,9.00));
+		 * studenti.add(new Student(++gen,"Jovanovic","Aleksandar",d,new
+		 * Adresa("Radnicka","30","Paracin","Srbija"),"0632115696",
+		 * "jovanovicaleksandar@gmail.com","RA-44-2019",2020,4,StatusEnum.S,8.50));
+		 * studenti.add(new Student(Integer.toString(++gen),"Zindovic","Coban",d,new
+		 * Adresa("Temerinska","31","Veternik","Srbija"),"0639215616",
+		 * "zindoviccoban@gmail.com","RA-144-2019",2020,4,StatusEnum.B,10.00));
+		 * studenti.add(new Student(Integer.toString(++gen),"Nikolic","Marko",d,new
+		 * Adresa("Vojnicka","32","Beograd","Srbija"),"0632115696",
+		 * "nikolicmarko@gmail.com","RA-145-2019",2020,4,StatusEnum.B,7.00));
+		 * studenti.add(new Student(Integer.toString(++gen),"Grbic","Vanja",d,new
+		 * Adresa("Bombaska","33","Uzice","Srbija"),"0631215696","grbicvanja@gmail.com",
+		 * "RA-69-2019",2020,3,StatusEnum.S,8.50)); studenti.add(new
+		 * Student(Integer.toString(++gen),"Milic","Mateja",d,new
+		 * Adresa("Kninska","34","Vrbas","Srbija"),"0635692116","milicmateja@gmail.com",
+		 * "RA-169-2019",2020,2,StatusEnum.B,9.00)); studenti.add(new
+		 * Student(Integer.toString(++gen),"Vukasinovic","Lazar",d,new
+		 * Adresa("Juznobanatska","35","Palanka","Srbija"),"0656931216",
+		 * "vukasinoviclazar@gmail.com","RA-227-2019",2020,2,StatusEnum.B,9.50));
+		 * studenti.add(new Student(Integer.toString(++gen),"Peric","Lana",d,new
+		 * Adresa("Borska","36","Futog","Srbija"),"0616315692","periclana@gmail.com",
+		 * "RA-48-2019",2020,2,StatusEnum.B,7.80)); studenti.add(new
+		 * Student(Integer.toString(++gen),"Kojic","Dragan",d,new
+		 * Adresa("Zlatarska","37","Ledinci","Srbija"),"0692131566",
+		 * "kojicdragan@gmail.com","RA-49-2019",2020,2,StatusEnum.S,10.00));
+		 * studenti.add(new Student(Integer.toString(++gen),"Tomasevic","Dusan",d,new
+		 * Adresa("Timocka","38","Beska","Srbija"),"0639211566",
+		 * "tomasevicdragan@gmail.com","RA-148-2019",2020,2,StatusEnum.B,6.00));
+		 * studenti.add(new Student(Integer.toString(++gen),"Markovic","Marko",d,new
+		 * Adresa("Vojvodjanska","39","Sombor","Srbija"),"0621315696",
+		 * "markovicmarko@gmail.com","RA-149-2019",2020,2,StatusEnum.B,9.00));
+		 * studenti.add(new Student(Integer.toString(++gen),"Rapic","Nikola",d,new
+		 * Adresa("Gorska","43","Subotica","Srbija"),"0631516692",
+		 * "rapicnikola@gmail.com","RA-269-2019",2020,2,StatusEnum.S,8.50));
+		 * studenti.add(new Student(Integer.toString(++gen),"Gakovic","Sergej",d,new
+		 * Adresa("Skolska","42","Grad","Aleksandrovac"),"0693156216",
+		 * "gakovicsergej@gmail.com","RA-187-2019",2020,2,StatusEnum.S,10.00));
+		 * studenti.add(new
+		 * Student(Integer.toString(++gen),"Milisavljevic","Tomislav",d,new
+		 * Adresa("Sremska","41","Vrsac","Srbija"),"0639211566",
+		 * "milisavljevictoma@gmail.com","RA-201-2019",2020,2,StatusEnum.B,7.00));
+		 */
+		}
 	
 	public void save() throws IOException {
 		
@@ -94,9 +131,13 @@ public class BazaStudenata extends AbstractTableModel  {
 		    pw.write(s.getSurname()+",");
 		    pw.write(s.getStudyYear()+",");
 			DateFormat df = new SimpleDateFormat("dd.MM.yyyy.");
-		String strdate = df.format(s.getBirthDate());
-			pw.write(strdate+",");
-			pw.write(s.getAdress().getId()+",");
+			String strdate = df.format(s.getBirthDate());
+			pw.write(strdate+",");	
+			if(s.getAdress() == null) {
+				pw.write("null,");
+			} else {
+				pw.write(s.getAdress().getId()+",");
+			}
 			pw.write(s.getPhone()+",");
 			pw.write(s.getEmail()+",");
 			pw.write(s.getStatus()+",");
@@ -139,9 +180,128 @@ public class BazaStudenata extends AbstractTableModel  {
 		} finally {
 			pw.close();
 		}
-		
-		
-		
+	}
+	
+	public void load() throws IOException {
+		File f = new File("student.txt");
+		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+		try {
+			String str;
+			while((str = reader.readLine()) != null) {
+				String[] delovi = str.split(",");
+				Student s = new Student();
+				s.setId(Integer.parseInt(delovi[0]));
+				s.setIndex(delovi[1]);
+				s.setName(delovi[2]);
+				s.setSurname(delovi[3]);
+				s.setStudyYear(Integer.parseInt(delovi[4]));
+				Date d;
+				try {
+					d = new SimpleDateFormat("dd.MM.yyyy.").parse(delovi[5]);
+					s.setBirthDate(d);	
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				for(Adresa a : BazaAdresa.getInstance().getAdrese()) {
+					if(delovi[6].equals("null")) {
+						s.setAdress(null);
+					} else if (Integer.parseInt(delovi[6]) == a.getId()) {
+						s.setAdress(a);
+					}
+				}
+				s.setPhone(delovi[7]);
+				s.setEmail(delovi[8]);
+				switch(delovi[9]) {
+					case "B":
+						s.setStatus(StatusEnum.B);
+						break;
+					case "S":
+						s.setStatus(StatusEnum.S);
+						break;
+					default:
+						break;
+				}
+				s.setEnrollmentYear(Integer.parseInt(delovi[10]));
+				studenti.add(s);
+			}
+		} finally {
+			reader.close();
+		}
+			f = new File("nepolozeni.txt");
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+			try {
+				String str;
+				while((str = reader.readLine()) != null) {
+					String[] delovi = str.split(",");
+					Ocena o = new Ocena();
+					for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+						if(p.getId() == Integer.parseInt(delovi[1])) {
+							o.setSubject(p);
+						}
+					}
+					for(Student s : BazaStudenata.getInstance().getStudenti()) {
+						if(s.getId() == Integer.parseInt(delovi[0])) {
+							o.setStudent(s);
+							s.getFailedExams().add(o);
+						}
+					}
+					
+				}
+			} finally {
+				reader.close();
+			}
+			
+			f = new File("ocena.txt");
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+			try {
+				String str;
+				while((str = reader.readLine()) != null) {
+					String[] delovi = str.split(",");
+					Ocena o = new Ocena();
+					switch(delovi[2]) {
+					case "6":
+						o.setGrade(GradeEnum.SEST);
+						break;
+					case "7":
+						o.setGrade(GradeEnum.SEDAM);
+						break;
+					case "8":
+						o.setGrade(GradeEnum.OSAM);
+						break;
+					case "9":
+						o.setGrade(GradeEnum.DEVET);
+						break;
+					case "10":
+						o.setGrade(GradeEnum.DESET);
+						break;
+					default:
+						break;
+					}
+					Date d;
+					try {
+						d = new SimpleDateFormat("dd.MM.yyyy.").parse(delovi[3]);
+						o.setExamDate(d);;	
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+						if(p.getId() == Integer.parseInt(delovi[1])) {
+							o.setSubject(p);
+						}
+					}
+					for(Student s : BazaStudenata.getInstance().getStudenti()) {
+						if(s.getId() == Integer.parseInt(delovi[0])) {
+							o.setStudent(s);
+							s.getPassedExams().add(o);
+						}
+					}
+					
+				}
+			} finally {
+				reader.close();
+			}
 	}
 	
 	public List<Student> getStudenti() {
@@ -178,7 +338,7 @@ public class BazaStudenata extends AbstractTableModel  {
 			}
 			;
 		}
-		s.setId(Integer.toString(++gen));
+		s.setId(++gen);
 		this.studenti.add(s);
 	}
 	

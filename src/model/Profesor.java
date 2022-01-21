@@ -20,28 +20,25 @@ public class Profesor {
 	private String title;
 	private int yearsOfService;
 	private List<Predmet> subjectsList ;
-	private int id=0;
+	private int id;
 
 	public int getId() {
 		return id;
 	}
 
-
-	
 	
 	public Profesor() {
 		super();
 		subjectsList = new ArrayList<Predmet>();
 		this.name = "";
 		this.surname = "";
-		++this.id ;
 	}
 
 
-	public Profesor(String surname, String name, Date birthDate, Adresa adress, String phone, String email,
+	public Profesor(int id, String surname, String name, Date birthDate, Adresa adress, String phone, String email,
 			Adresa officeAdress, String numberID, String title, int yearsOfService) {
 		super();
-		++this.id ;
+		this.id = id;
 		this.surname = surname;
 		this.name = name;
 		this.birthDate = birthDate;
@@ -53,9 +50,11 @@ public class Profesor {
 		this.title = title;
 		this.yearsOfService = yearsOfService;
 		subjectsList = new ArrayList<Predmet>();
-		subjectsList.add(new Predmet("1","Matematika",SemesterEnum.LETNJI,2,null,6));
-		subjectsList.add(new Predmet("2","Srpski",SemesterEnum.LETNJI,2,null,6));
-		subjectsList.add(new Predmet("5","Muzicko",SemesterEnum.LETNJI,2,null,3));
+		/*
+		 * subjectsList.add(new Predmet("1","Matematika",SemesterEnum.LETNJI,2,null,6));
+		 * subjectsList.add(new Predmet("2","Srpski",SemesterEnum.LETNJI,2,null,6));
+		 * subjectsList.add(new Predmet("5","Muzicko",SemesterEnum.LETNJI,2,null,3));
+		 */
 	}
 
 
@@ -167,5 +166,10 @@ public class Profesor {
 	@Override
 	public String toString() {
 		return name +" "+surname;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

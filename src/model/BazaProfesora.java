@@ -1,9 +1,12 @@
 package model;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -19,6 +22,7 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import model.Student.StatusEnum;
 import view.MainFrame;
 import view.PredavaniPredmetiJTable;
 import view.ProfesoriJTable;
@@ -65,16 +69,42 @@ public class BazaProfesora extends AbstractTableModel {
 			e1.printStackTrace();
 		}
 		
-		profesori.add(new Profesor("Zlatkovic","Jovan",d,new Adresa("Skolska","39","Beograd","Srbija"),"0612133215","zlatkovicjovan@gmail.com",new Adresa("Vojnicka","32","Subotica","Srbija"),"657506348"+ "","Profesor",15));
-		profesori.add(new Profesor("Markovic","Bata",d,new Adresa("Temerinska","30","Temerin","Srbija"),"0613221315","markovicbata@gmail.com",new Adresa("Zlatarska","72","Sombor","Srbija"),"149924490","Vanredni profesor",12));
-		profesori.add(new Profesor("Zmajovic","Goran",d,new Adresa("Kninska","12","Cuprija","Srbija"),"0613213215","zmajovicgoran@gmail.com",new Adresa("Srbobranska","96","Aleksandrovac","Srbija"),"768078525","Boca",18));
-		profesori.add(new Profesor("Borovic","Zlatko",d,new Adresa("Banatska","89","Loznica","Srbija"),"0612211335","boroviczlatko@gmail.com",new Adresa("Pivska","1","Vrsac","Srbija"),"680529925","Gospodin",20));
-		profesori.add(new Profesor("Simic","Marko",d,new Adresa("Gorska","37","Vrbas","Srbija"),"0613212135","simicmarko@gmail.com",new Adresa("Kninska","1","Grad","Srbija"),"797962484","Majstor",12));
-		profesori.add(new Profesor("Marovic","Bogdan",d,new Adresa("Pivska","1","Vrsac","Srbija"),"0632112135","marovicbogdan@gmail.com",new Adresa("Gorska","37","Vrbas","Srbija"),"181714190","Profesor",5));
-		profesori.add(new Profesor("Soric","Filip",d,new Adresa("Srbobranska","96","Aleksandrovac","Srbija"),"0611521332","soricfilip@gmail.com",new Adresa("Kninska","12","Cuprija","Srbija"),"209133592","Vanredni profesor",7));
-		profesori.add(new Profesor("Vujovic","Darko",d,new Adresa("Zlatarska","72","Sombor","Srbija"),"0621121335","vujovicdarko@gmail.com",new Adresa("Temerinska","30","Temerin","Srbija"),"211061702","Docent",19));
-		profesori.add(new Profesor("Filipovic","Stevan",d,new Adresa("Vojnicka","32","Subotica","Srbija"),"0611213325","filipovicstevan@gmail.com",new Adresa("Skolska","39","Beograd","Srbija"),"517201783","Doca",8));
-		
+		/*
+		 * profesori.add(new Profesor("Zlatkovic","Jovan",d,new
+		 * Adresa("Skolska","39","Beograd","Srbija"),"0612133215",
+		 * "zlatkovicjovan@gmail.com",new
+		 * Adresa("Vojnicka","32","Subotica","Srbija"),"657506348"+ "","Profesor",15));
+		 * profesori.add(new Profesor("Markovic","Bata",d,new
+		 * Adresa("Temerinska","30","Temerin","Srbija"),"0613221315",
+		 * "markovicbata@gmail.com",new
+		 * Adresa("Zlatarska","72","Sombor","Srbija"),"149924490","Vanredni profesor",12
+		 * )); profesori.add(new Profesor("Zmajovic","Goran",d,new
+		 * Adresa("Kninska","12","Cuprija","Srbija"),"0613213215",
+		 * "zmajovicgoran@gmail.com",new
+		 * Adresa("Srbobranska","96","Aleksandrovac","Srbija"),"768078525","Boca",18));
+		 * profesori.add(new Profesor("Borovic","Zlatko",d,new
+		 * Adresa("Banatska","89","Loznica","Srbija"),"0612211335",
+		 * "boroviczlatko@gmail.com",new
+		 * Adresa("Pivska","1","Vrsac","Srbija"),"680529925","Gospodin",20));
+		 * profesori.add(new Profesor("Simic","Marko",d,new
+		 * Adresa("Gorska","37","Vrbas","Srbija"),"0613212135","simicmarko@gmail.com",
+		 * new Adresa("Kninska","1","Grad","Srbija"),"797962484","Majstor",12));
+		 * profesori.add(new Profesor("Marovic","Bogdan",d,new
+		 * Adresa("Pivska","1","Vrsac","Srbija"),"0632112135","marovicbogdan@gmail.com",
+		 * new Adresa("Gorska","37","Vrbas","Srbija"),"181714190","Profesor",5));
+		 * profesori.add(new Profesor("Soric","Filip",d,new
+		 * Adresa("Srbobranska","96","Aleksandrovac","Srbija"),"0611521332",
+		 * "soricfilip@gmail.com",new
+		 * Adresa("Kninska","12","Cuprija","Srbija"),"209133592","Vanredni profesor",7))
+		 * ; profesori.add(new Profesor("Vujovic","Darko",d,new
+		 * Adresa("Zlatarska","72","Sombor","Srbija"),"0621121335",
+		 * "vujovicdarko@gmail.com",new
+		 * Adresa("Temerinska","30","Temerin","Srbija"),"211061702","Docent",19));
+		 * profesori.add(new Profesor("Filipovic","Stevan",d,new
+		 * Adresa("Vojnicka","32","Subotica","Srbija"),"0611213325",
+		 * "filipovicstevan@gmail.com",new
+		 * Adresa("Skolska","39","Beograd","Srbija"),"517201783","Doca",8));
+		 */
 		
 	}
 	public void save() throws IOException {
@@ -95,20 +125,7 @@ public class BazaProfesora extends AbstractTableModel {
 			pw.write(p.getEmail()+",");
 			pw.write(p.getOfficeAdress().getId()+",");
 			pw.write(p.getYearsOfService()+",");
-			pw.write(p.getTitle()+",");
-			for(Katedra k : BazaKatedri.getInstance().getKatedre()) {
-				
-				for(Profesor prof : k.getProfs()) {
-					
-					if(p.getNumberID().equals(prof.getNumberID())) {
-						
-						pw.write(k.getId());
-						
-					}
-					
-				}
-				
-			}
+			pw.write(p.getTitle());
 			pw.newLine();
 
 			}
@@ -116,6 +133,51 @@ public class BazaProfesora extends AbstractTableModel {
 			pw.close();
 		}
 		
+	}
+	
+	public void load() throws IOException {
+		File f = new File("profesor.txt");
+		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+		try {
+			String str;
+			while((str = reader.readLine()) != null) {
+				String[] delovi = str.split(",");
+				Profesor p = new Profesor();
+				p.setId(Integer.parseInt(delovi[0]));
+				p.setNumberID(delovi[1]);
+				p.setName(delovi[2]);
+				p.setSurname(delovi[3]);
+				Date d;
+				try {
+					d = new SimpleDateFormat("dd.MM.yyyy.").parse(delovi[4]);
+					p.setBirthDate(d);	
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				for(Adresa a : BazaAdresa.getInstance().getAdrese()) {
+					if(delovi[5].equals("null")) {
+						p.setAdress(null);
+					} else if (Integer.parseInt(delovi[5]) == a.getId()) {
+						p.setAdress(a);
+					}
+				}
+				p.setPhone(delovi[6]);
+				p.setEmail(delovi[7]);
+				for(Adresa a : BazaAdresa.getInstance().getAdrese()) {
+					if(delovi[8].equals("null")) {
+						p.setAdress(null);
+					} else if (Integer.parseInt(delovi[8]) == a.getId()) {
+						p.setOfficeAdress(a);
+					}
+				}
+				p.setYearsOfService(Integer.parseInt(delovi[9]));
+				p.setTitle(delovi[10]);
+			    profesori.add(p);
+			}
+		} finally {
+			reader.close();
+		}
 	}
 
 	public List<Profesor> getProfesori() {
@@ -183,6 +245,7 @@ public class BazaProfesora extends AbstractTableModel {
 	public Profesor getRow(int rowIndex) {
 		return this.profesori.get(rowIndex);
 	}
+	
 	public void dodajPredmetProfesoru(Profesor p,Predmet pred) {
 		
 		for(Profesor profesor : profesori) {
@@ -194,6 +257,7 @@ public class BazaProfesora extends AbstractTableModel {
 		}
 		PredavaniPredmetiJTable.azurirajPrikaz("Dodat", -1);
 	}
+	
 	public void skiniPredmeProfesoru(Profesor p,Predmet pred) {
 		
 		for(Profesor profesor : profesori) {

@@ -65,7 +65,7 @@ public class KatedraDialog extends JDialog {
 		listaSvihProfesora = BazaProfesora.getInstance().getProfesori();
 		listaProfesora = new ArrayList<Profesor>();
 		for(Profesor p : listaSvihProfesora) {
-			if((p.getTitle().equals("Profesor") || p.getTitle().equals("Vanredni profesor")) && p.getYearsOfService() >= 5) {
+			if((p.getTitle().equals("REDOVNI_PROFESOR") || p.getTitle().equals("VANREDNI_PROFESOR")) && p.getYearsOfService() >= 5) {
 				listaProfesora.add(p);
 				profesorCmb.addItem(p);
 			}
@@ -78,7 +78,6 @@ public class KatedraDialog extends JDialog {
                 int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda snimanja", dialogButton);
                 if(dialogResult == JOptionPane.YES_OPTION) {
                 	Katedra k = (Katedra)katedraCmb.getSelectedItem();
-                	System.out.println(k.getName());
                 	Profesor p = (Profesor)profesorCmb.getSelectedItem();
                 	BazaKatedri.getInstance().postaviSefaKatedre(k, p);
                 	JOptionPane.showMessageDialog(

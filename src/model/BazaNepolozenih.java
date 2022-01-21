@@ -1,5 +1,10 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -7,6 +12,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import model.Ocena.GradeEnum;
+import model.Predmet.SemesterEnum;
 import view.NepolozeniJTable;
 import view.PredmetiJTable;
 import view.StudentiJTable;
@@ -36,6 +42,7 @@ public class BazaNepolozenih extends AbstractTableModel {
 	
 	public void initNepolozeni(Student s) {
 		this.nepolozeni = s.getFailedExams();
+		
 	}
 
 	@Override

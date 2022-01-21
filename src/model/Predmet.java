@@ -6,6 +6,7 @@ import java.util.List;
 public class Predmet {
 	
 	public enum SemesterEnum {LETNJI,ZIMSKI };
+	private int id;
 	private String subjectID;
 	private String name;
 	private SemesterEnum semester; 
@@ -21,14 +22,14 @@ public class Predmet {
 
 	public Predmet() {
 		super();
-	
 		passedStudents = new ArrayList<Student>();
 		failedStudents = new ArrayList<Student>();
 	}
 
 
-	public Predmet(String subjectID, String name, SemesterEnum semester, int year, Profesor prof, int espb) {
+	public Predmet(int id, String subjectID, String name, SemesterEnum semester, int year, Profesor prof, int espb) {
 		super();
+		this.id = id;
 		this.subjectID = subjectID;
 		this.name = name;
 		this.semester = semester;
@@ -112,6 +113,16 @@ public class Predmet {
 	@Override
 	public String toString() {
 		return subjectID + " - " + name;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

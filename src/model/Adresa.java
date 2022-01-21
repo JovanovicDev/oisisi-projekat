@@ -7,15 +7,14 @@ public class Adresa {
 	private String number;
 	private String city;
 	private String country;
-	public static int gen = 0;
 	
 	public Adresa() {
 		super();
 	}
 
-	public Adresa(String street, String number, String city, String country) {
+	public Adresa(int id, String street, String number, String city, String country) {
 		super();
-		this.id = ++gen-60;
+		this.id = id;
 		this.street = street;
 		this.number = number;
 		this.city = city;
@@ -60,6 +59,11 @@ public class Adresa {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return id+"";
 	}
 
 }

@@ -30,6 +30,7 @@ import javax.swing.event.ChangeListener;
 
 import controller.StudentKontroler;
 import model.Adresa;
+import model.BazaAdresa;
 import model.BazaStudenata;
 import model.Ocena;
 import model.Student;
@@ -509,6 +510,7 @@ public class StudentDialog extends JDialog {
 						return;
 				} else {
 					Student s = new Student();
+					s.setId(BazaStudenata.getInstance().getStudenti().size()+1);
 					s.setName(imeTxt.getText());
 					s.setSurname(prezimeTxt.getText());
 					try {
@@ -524,7 +526,7 @@ public class StudentDialog extends JDialog {
 					String broj = brojTxt.getText();
 					String grad = gradTxt.getText();
 					String drzava = drzavaTxt.getText();
-					Adresa a = new Adresa(ulica,broj,grad,drzava);
+					Adresa a = new Adresa(BazaAdresa.getInstance().getAdrese().size()+1,ulica,broj,grad,drzava);
 					s.setAdress(a);
 					s.setPhone(telefonTxt.getText());
 					s.setEmail(emailTxt.getText());
@@ -584,7 +586,7 @@ public class StudentDialog extends JDialog {
 	}
 	
 	
-	public StudentDialog(String id, String surname, String name, Date birthDate, Adresa adress, String phone, String email,
+	public StudentDialog(int id, String surname, String name, Date birthDate, Adresa adress, String phone, String email,
 			String index, int enrollmentYear, int studyYear, StatusEnum status, Double averageGrade) {
 		
 		super();
@@ -1040,10 +1042,14 @@ public class StudentDialog extends JDialog {
 		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");  
         String strDate = dateFormat.format(birthDate); 
         datumTxt.setText(strDate);
-		ulicaTxt.setText(adress.getStreet());
-		brojTxt.setText(adress.getNumber());
-		gradTxt.setText(adress.getCity());
-		drzavaTxt.setText(adress.getCountry());
+        if(adress == null) {
+        	adress = new Adresa();
+        } else {
+        	ulicaTxt.setText(adress.getStreet());
+    		brojTxt.setText(adress.getNumber());
+    		gradTxt.setText(adress.getCity());
+    		drzavaTxt.setText(adress.getCountry());
+        }
 		telefonTxt.setText(phone);
 		emailTxt.setText(email);
 		indexTxt.setText(index);
@@ -1095,7 +1101,14 @@ public class StudentDialog extends JDialog {
 						String broj = brojTxt.getText();
 						String grad = gradTxt.getText();
 						String drzava = drzavaTxt.getText();
-						Adresa a = new Adresa(ulica,broj,grad,drzava);
+						int id = -1;
+						for(Adresa a : BazaAdresa.getInstance().getAdrese()) {
+							if(a.getStreet().equals(ulica)) {
+								id = a.getId();
+							}
+						}
+						
+						Adresa a = new Adresa(id,ulica,broj,grad,drzava);
 						s.setAdress(a);
 						s.setPhone(telefonTxt.getText());
 						s.setEmail(emailTxt.getText());

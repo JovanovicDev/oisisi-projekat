@@ -27,6 +27,7 @@ import javax.swing.table.TableColumn;
 
 import controller.ProfesorKontroler;
 import model.Adresa;
+import model.BazaAdresa;
 import model.BazaProfesora;
 import model.BazaStudenata;
 import model.Ocena;
@@ -681,7 +682,7 @@ public class ProfesorDialog extends JDialog {
 					String broj = brojTxt.getText();
 					String grad = gradTxt.getText();
 					String drzava = drzavaTxt.getText();
-					Adresa a = new Adresa(ulica,broj,grad,drzava);
+					Adresa a = new Adresa(BazaAdresa.getInstance().getAdrese().size()+1,ulica,broj,grad,drzava);
 					p.setAdress(a);
 					p.setPhone(telefonTxt.getText());
 					p.setEmail(emailTxt.getText());
@@ -689,7 +690,7 @@ public class ProfesorDialog extends JDialog {
 					String brojKanc = brojKancTxt.getText();
 					String gradKanc = gradKancTxt.getText();
 					String drzavaKanc = drzavaKancTxt.getText();
-					Adresa a1 = new Adresa(ulicaKanc,brojKanc,gradKanc,drzavaKanc);
+					Adresa a1 = new Adresa(BazaAdresa.getInstance().getAdrese().size()+1,ulicaKanc,brojKanc,gradKanc,drzavaKanc);
 					p.setOfficeAdress(a1);
 					p.setNumberID(brIDTxt.getText());
 					p.setTitle(zvanjeTxt.getText());
@@ -1423,7 +1424,15 @@ public class ProfesorDialog extends JDialog {
 					String broj = brojTxt.getText();
 					String grad = gradTxt.getText();
 					String drzava = drzavaTxt.getText();
-					Adresa a = new Adresa(ulica,broj,grad,drzava);
+					
+					int id = -1;
+					for(Adresa a : BazaAdresa.getInstance().getAdrese()) {
+						if(a.getStreet().equals(ulica)) {
+							id = a.getId();
+						}
+					}
+					
+					Adresa a = new Adresa(id,ulica,broj,grad,drzava);
 					p.setAdress(a);
 					p.setPhone(telefonTxt.getText());
 					p.setEmail(emailTxt.getText());
@@ -1431,7 +1440,13 @@ public class ProfesorDialog extends JDialog {
 					String brojKanc = brojKancTxt.getText();
 					String gradKanc = gradKancTxt.getText();
 					String drzavaKanc = drzavaKancTxt.getText();
-					Adresa a1 = new Adresa(ulicaKanc,brojKanc,gradKanc,drzavaKanc);
+					
+					for(Adresa a2 : BazaAdresa.getInstance().getAdrese()) {
+						if(a2.getStreet().equals(ulica)) {
+							id = a2.getId();
+						}
+					}
+					Adresa a1 = new Adresa(id,ulicaKanc,brojKanc,gradKanc,drzavaKanc);
 					p.setOfficeAdress(a1);
 					p.setNumberID(brIDTxt.getText());
 					p.setTitle(zvanjeTxt.getText());

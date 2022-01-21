@@ -11,7 +11,7 @@ import model.Predmet.SemesterEnum;
 public class Student {
 
 	public enum StatusEnum{B,S};
-	private String id;
+	private int id;
 	private String surname;
 	private String name;
 	private Date birthDate;
@@ -32,7 +32,7 @@ public class Student {
 		failedExams = new ArrayList<Ocena>();
 	}
 	
-	public Student(String id, String surname, String name, Date birthDate, Adresa adress, String phone, String email,
+	public Student(int id, String surname, String name, Date birthDate, Adresa adress, String phone, String email,
 			String index, int enrollmentYear, int studyYear, StatusEnum status, Double averageGrade) {
 		super();
 		this.id = id;
@@ -48,21 +48,32 @@ public class Student {
 		this.status = status;
 		this.averageGrade = averageGrade;
 		passedExams = new ArrayList<Ocena>();
-		passedExams.add(new Ocena(this,new Predmet("1","Matematika",SemesterEnum.LETNJI,2,null,6),GradeEnum.DESET, new Date()));
-		passedExams.add(new Ocena(this,new Predmet("2","Srpski",SemesterEnum.LETNJI,2,null,6),GradeEnum.OSAM, new Date()));
-		passedExams.add(new Ocena(this,new Predmet("5","Muzicko",SemesterEnum.LETNJI,2,null,3),GradeEnum.SEST, new Date()));
 		failedExams = new ArrayList<Ocena>();
-		failedExams.add(new Ocena(this,new Predmet("3","Algebra",SemesterEnum.LETNJI,2,null,6),GradeEnum.PET, new Date()));
-		failedExams.add(new Ocena(this,new Predmet("7","Analiza",SemesterEnum.LETNJI,2,null,6),GradeEnum.PET, new Date()));
-		failedExams.add(new Ocena(this,new Predmet("6","Arhitektura",SemesterEnum.LETNJI,2,null,6),GradeEnum.PET, new Date()));
+		/*
+		 * passedExams.add(new Ocena(this,new
+		 * Predmet("1","Matematika",SemesterEnum.LETNJI,2,null,6),GradeEnum.DESET, new
+		 * Date())); passedExams.add(new Ocena(this,new
+		 * Predmet("2","Srpski",SemesterEnum.LETNJI,2,null,6),GradeEnum.OSAM, new
+		 * Date())); passedExams.add(new Ocena(this,new
+		 * Predmet("5","Muzicko",SemesterEnum.LETNJI,2,null,3),GradeEnum.SEST, new
+		 * Date()));
+		 * 
+		 * failedExams.add(new Ocena(this,new
+		 * Predmet("3","Algebra",SemesterEnum.LETNJI,2,null,6),GradeEnum.PET, new
+		 * Date())); failedExams.add(new Ocena(this,new
+		 * Predmet("7","Analiza",SemesterEnum.LETNJI,2,null,6),GradeEnum.PET, new
+		 * Date())); failedExams.add(new Ocena(this,new
+		 * Predmet("6","Arhitektura",SemesterEnum.LETNJI,2,null,6),GradeEnum.PET, new
+		 * Date()));
+		 */
 		
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

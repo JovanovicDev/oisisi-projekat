@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Katedra {
 	
+	private int ID;
 	private String id;
 	private String name;
 	private Profesor chief;
@@ -17,8 +18,9 @@ public class Katedra {
 	}
 
 
-	public Katedra(String id, String name, Profesor chief) {
+	public Katedra(int ID, String id, String name, Profesor chief) {
 		super();
+		this.ID = ID;
 		this.id = id;
 		this.name = name;
 		this.chief = chief;
@@ -64,6 +66,16 @@ public class Katedra {
 	@Override
 	public String toString() {
 		return name;
+	}
+
+
+	public int getID() {
+		return ID;
+	}
+
+
+	public void setID(int iD) {
+		ID = iD;
 	}
 	
 	
