@@ -60,4 +60,12 @@ public class Katedra {
 		return profs;
 	}
 
+
+	@Override
+	public String toString() {
+		return name;
+	}
+	
+	
+
 }

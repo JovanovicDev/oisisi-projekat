@@ -63,6 +63,11 @@ public class MyMenuBar extends JMenuBar {
 			}
 		});
 		JMenuItem openKatedre = new JMenuItem("Katedre",tableIcon);
+		openKatedre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				KatedraDialog kd = new KatedraDialog();
+			}
+		});
 		
 		JMenuItem editEdit = new JMenuItem("Edit",editIcon);
 		MyActionListenerEdit listenerEdit = new MyActionListenerEdit();
