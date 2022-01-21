@@ -592,7 +592,7 @@ public class StudentDialog extends JDialog {
 		panel1 = new JPanel();
 		panel2 = new JPanel();
 		panel3 = new JPanel();
-		tabovi.setPreferredSize(new Dimension(1000, 700));
+		tabovi.setPreferredSize(new Dimension(1050, 750));
 		this.add(BorderLayout.CENTER, tabovi);
 		tabovi.addTab("Informacije", panel1);
 		
@@ -1152,7 +1152,7 @@ public class StudentDialog extends JDialog {
 		
 		tabovi.addTab("Polozeni", panel2);
 		panel2.setLayout(layout);
-		panel2.setPreferredSize(new Dimension(400, 400));
+		panel2.setPreferredSize(new Dimension(1050, 750));
 		JButton ponistiBtn = new JButton("Ponisti ocenu");
 		
 		ponistiBtn.addActionListener(new ActionListener() {
@@ -1182,6 +1182,7 @@ public class StudentDialog extends JDialog {
 		layout.putConstraint(SpringLayout.NORTH, ponistiBtn, 60, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, ponistiBtn, 170, SpringLayout.WEST, this);
 		panel2.add(ponistiBtn);
+		
 		polozeniIspitiTable = new PolozeniJTable();
 		JScrollPane polozeniIspitiPane = new JScrollPane(polozeniIspitiTable);
 		polozeniIspitiPane.setPreferredSize(new Dimension(700,300));

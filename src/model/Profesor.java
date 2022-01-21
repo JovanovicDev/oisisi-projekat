@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import model.Ocena.GradeEnum;
+import model.Predmet.SemesterEnum;
+
 public class Profesor {
 
 	private String surname;
@@ -41,6 +44,9 @@ public class Profesor {
 		this.title = title;
 		this.yearsOfService = yearsOfService;
 		subjectsList = new ArrayList<Predmet>();
+		subjectsList.add(new Predmet("1","Matematika",SemesterEnum.summer,2,null,6));
+		subjectsList.add(new Predmet("2","Srpski",SemesterEnum.summer,2,null,6));
+		subjectsList.add(new Predmet("5","Muzicko",SemesterEnum.summer,2,null,3));
 	}
 
 

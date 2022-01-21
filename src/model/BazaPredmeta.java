@@ -1,5 +1,7 @@
 package model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,20 +47,48 @@ public class BazaPredmeta extends AbstractTableModel{
 
 	}
 	
+	public BazaPredmeta(Profesor p) {
+		
+		
+		
+
+		this.kolone = new ArrayList<String>();
+		this.kolone.add("SIFRA PREDMETA");
+		this.kolone.add("NAZIV PREDMETA");
+		this.kolone.add("BROJ ESPB BODOVA");
+		this.kolone.add("GODINA");
+		this.kolone.add("SEMESTAR");
+		
+		initPredmeti(p);
+
+	}
+	
 	private void initPredmeti() {
 		
 		this.predmeti = new ArrayList<Predmet>();
-		predmeti.add(new Predmet("1","Matematika",SemesterEnum.summer,2,new Profesor(),6));
-		predmeti.add(new Predmet("2","Srpski",SemesterEnum.summer,2,new Profesor(),6));
-		predmeti.add(new Predmet("3","Algebra",SemesterEnum.summer,2,new Profesor(),6));
-		predmeti.add(new Predmet("4","Hemija",SemesterEnum.summer,3,new Profesor(),6));
-		predmeti.add(new Predmet("5","Muzicko",SemesterEnum.summer,2,new Profesor(),3));
-		predmeti.add(new Predmet("6","Arhitektura",SemesterEnum.summer,2,new Profesor(),6));
-		predmeti.add(new Predmet("7","Analiza",SemesterEnum.summer,2,new Profesor(),6));
-		predmeti.add(new Predmet("8","Fizicko",SemesterEnum.winter,4,new Profesor(),3));
-		predmeti.add(new Predmet("9","Fizika",SemesterEnum.winter,4,new Profesor(),6));
 		
-
+		Date d = new Date();
+		try {
+			d = new SimpleDateFormat("dd.MM.yyyy").parse("27.08.1986");	
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		predmeti.add(new Predmet("1","Matematika",SemesterEnum.summer,2,new Profesor("Zlatkovic","Jovan",d,new Adresa("Skolska",39,"Beograd","Srbija"),"0612133215","zlatkovicjovan@gmail.com",new Adresa("Vojnicka",32,"Subotica","Srbija"),"657506348"+ "","Doca",15),6));
+		predmeti.add(new Predmet("2","Srpski",SemesterEnum.summer,2,new Profesor("Markovic","Bata",d,new Adresa("Temerinska",30,"Temerin","Srbija"),"0613221315","markovicbata@gmail.com",new Adresa("Zlatarska",72,"Sombor","Srbija"),"149924490","Docent",12),6));
+		predmeti.add(new Predmet("3","Algebra",SemesterEnum.summer,2,new Profesor("Zmajovic","Goran",d,new Adresa("Kninska",12,"Cuprija","Srbija"),"0613213215","zmajovicgoran@gmail.com",new Adresa("Srbobranska",96,"Aleksandrovac","Srbija"),"768078525","Boca",18),6));
+		predmeti.add(new Predmet("4","Hemija",SemesterEnum.summer,3,new Profesor("Borovic","Zlatko",d,new Adresa("Banatska",89,"Loznica","Srbija"),"0612211335","boroviczlatko@gmail.com",new Adresa("Pivska",1,"Vrsac","Srbija"),"680529925","Gospodin",20),6));
+		predmeti.add(new Predmet("5","Muzicko",SemesterEnum.summer,2,new Profesor("Simic","Marko",d,new Adresa("Gorska",37,"Vrbas","Srbija"),"0613212135","simicmarko@gmail.com",new Adresa("Kninska",1,"Grad","Srbija"),"797962484","Majstor",12),3));
+		predmeti.add(new Predmet("6","Arhitektura",SemesterEnum.summer,2,new Profesor("Marovic","Bogdan",d,new Adresa("Pivska",1,"Vrsac","Srbija"),"0632112135","marovicbogdan@gmail.com",new Adresa("Gorska",37,"Vrbas","Srbija"),"181714190","Poglavar",5),6));
+		predmeti.add(new Predmet("7","Analiza",SemesterEnum.summer,2,new Profesor("Soric","Filip",d,new Adresa("Srbobranska",96,"Aleksandrovac","Srbija"),"0611521332","soricfilip@gmail.com",new Adresa("Kninska",12,"Cuprija","Srbija"),"209133592","Maestro",7),6));
+		predmeti.add(new Predmet("8","Fizicko",SemesterEnum.winter,4,new Profesor("Vujovic","Darko",d,new Adresa("Zlatarska",72,"Sombor","Srbija"),"0621121335","vujovicdarko@gmail.com",new Adresa("Temerinska",30,"Temerin","Srbija"),"211061702","Docent",19),3));
+		predmeti.add(new Predmet("9","Fizika",SemesterEnum.winter,4,new Profesor("Zlatkovic","Jovan",d,new Adresa("Skolska",39,"Beograd","Srbija"),"0612133215","zlatkovicjovan@gmail.com",new Adresa("Vojnicka",32,"Subotica","Srbija"),"657506348"+ "","Doca",15),6));
+		
+	}
+	
+	private void initPredmeti(Profesor p) {
+		this.predmeti = p.getSubjectsList();
 	}
 	public List<Predmet> getPredmeti() {
 		return predmeti;

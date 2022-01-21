@@ -9,6 +9,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JButton;
@@ -16,9 +17,13 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.LineBorder;
+import javax.swing.table.TableColumn;
 
 import controller.ProfesorKontroler;
 import model.Adresa;
@@ -27,7 +32,11 @@ import model.Profesor;
 public class ProfesorDialog extends JDialog {
 
 	private static final long serialVersionUID = 3346592901014711454L;
-
+	public static JTabbedPane tabovi;
+	public static JPanel panel1;
+	public static JPanel panel2;
+	public static JTable predavaniPredmetiTable;
+	
 	public ProfesorDialog() {
 		super();
 		setModal(true);
@@ -742,14 +751,20 @@ public class ProfesorDialog extends JDialog {
 			Adresa officeAdress, String numberID, String title, int yearsOfService) {
 		
 		super();
+		tabovi = new JTabbedPane();
+		panel1 = new JPanel();
+		panel2 = new JPanel();
+		tabovi.setPreferredSize(new Dimension(1050, 750));
+		this.add(BorderLayout.CENTER, tabovi);
+		tabovi.addTab("Info", panel1);
+		
 		setModal(true);
 		setTitle("Izmena profesora");
 		setResizable(false);
 		SpringLayout layout = new SpringLayout();
-		setLayout(layout);
-		setSize(400, 850);
+		panel1.setLayout(layout);
+		setSize(850, 900);
 		setLocationRelativeTo(null);
-		
 		JButton potvrdiBtn = new JButton("Potvrdi");		
 		JButton odustaniBtn = new JButton("Odustani");
 		
@@ -758,7 +773,7 @@ public class ProfesorDialog extends JDialog {
 		JTextField imeTxt = new JTextField();
 		imeTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, imeLbl, 30, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, imeLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, imeLbl, 280, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, imeTxt, 160, SpringLayout.WEST, imeLbl);
 		layout.putConstraint(SpringLayout.NORTH, imeTxt, -5, SpringLayout.NORTH, imeLbl);
 		imeTxt.addKeyListener(new KeyListener() {
@@ -795,7 +810,7 @@ public class ProfesorDialog extends JDialog {
 		JTextField prezimeTxt = new JTextField();
 		prezimeTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, prezimeLbl, 70, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, prezimeLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, prezimeLbl, 280, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, prezimeTxt, 160, SpringLayout.WEST, prezimeLbl);
 		layout.putConstraint(SpringLayout.NORTH, prezimeTxt, -5, SpringLayout.NORTH, prezimeLbl);
 		prezimeTxt.addKeyListener(new KeyListener() {
@@ -831,7 +846,7 @@ public class ProfesorDialog extends JDialog {
 		JTextField datumTxt = new JTextField();
 		datumTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, datumLbl, 110, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, datumLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, datumLbl, 280, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, datumTxt, 160, SpringLayout.WEST, datumLbl);
 		layout.putConstraint(SpringLayout.NORTH, datumTxt, -5, SpringLayout.NORTH, datumLbl);
 		datumTxt.addKeyListener(new KeyListener() {
@@ -865,13 +880,13 @@ public class ProfesorDialog extends JDialog {
 	
 		JLabel adresaLbl = new JLabel("Adresa stanovanja:");
 		layout.putConstraint(SpringLayout.NORTH, adresaLbl, 150, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, adresaLbl, 20, SpringLayout.WEST, this);	
+		layout.putConstraint(SpringLayout.WEST, adresaLbl, 260, SpringLayout.WEST, this);	
 		
 		JLabel ulicaLbl = new JLabel("Ulica*");
 		JTextField ulicaTxt = new JTextField();
 		ulicaTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, ulicaLbl, 190, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, ulicaLbl, 60, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, ulicaLbl, 300, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, ulicaTxt, 140, SpringLayout.WEST, ulicaLbl);
 		layout.putConstraint(SpringLayout.NORTH, ulicaTxt, -5, SpringLayout.NORTH, ulicaLbl);
 		ulicaTxt.addKeyListener(new KeyListener() {
@@ -907,7 +922,7 @@ public class ProfesorDialog extends JDialog {
 		JTextField brojTxt = new JTextField();
 		brojTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, brojLbl, 230, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, brojLbl, 60, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, brojLbl, 300, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, brojTxt, 140, SpringLayout.WEST, brojLbl);
 		layout.putConstraint(SpringLayout.NORTH, brojTxt, -5, SpringLayout.NORTH, brojLbl);
 		brojTxt.addKeyListener(new KeyListener() {
@@ -943,7 +958,7 @@ public class ProfesorDialog extends JDialog {
 		JTextField gradTxt = new JTextField();
 		gradTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, gradLbl, 270, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, gradLbl, 60, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, gradLbl, 300, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, gradTxt, 140, SpringLayout.WEST, gradLbl);
 		layout.putConstraint(SpringLayout.NORTH, gradTxt, -5, SpringLayout.NORTH, gradLbl);
 		gradTxt.addKeyListener(new KeyListener() {
@@ -979,7 +994,7 @@ public class ProfesorDialog extends JDialog {
 		JTextField drzavaTxt = new JTextField();
 		drzavaTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, drzavaLbl, 310, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, drzavaLbl, 60, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, drzavaLbl, 300, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, drzavaTxt, 140, SpringLayout.WEST, drzavaLbl);
 		layout.putConstraint(SpringLayout.NORTH, drzavaTxt, -5, SpringLayout.NORTH, drzavaLbl);
 		drzavaTxt.addKeyListener(new KeyListener() {
@@ -1015,7 +1030,7 @@ public class ProfesorDialog extends JDialog {
 		JTextField telefonTxt = new JTextField();
 		telefonTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, telefonLbl, 350, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, telefonLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, telefonLbl, 280, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, telefonTxt, 160, SpringLayout.WEST, telefonLbl);
 		layout.putConstraint(SpringLayout.NORTH, telefonTxt, -5, SpringLayout.NORTH, telefonLbl);
 		telefonTxt.addKeyListener(new KeyListener() {
@@ -1052,7 +1067,7 @@ public class ProfesorDialog extends JDialog {
 		JTextField emailTxt = new JTextField();
 		emailTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, emailLbl, 390, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, emailLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, emailLbl, 280, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, emailTxt, 160, SpringLayout.WEST, emailLbl);
 		layout.putConstraint(SpringLayout.NORTH, emailTxt, -5, SpringLayout.NORTH, emailLbl);
 		emailTxt.addKeyListener(new KeyListener() {
@@ -1086,13 +1101,13 @@ public class ProfesorDialog extends JDialog {
 		
 		JLabel adresaKancLbl = new JLabel("Adresa kancelarije:");
 		layout.putConstraint(SpringLayout.NORTH, adresaKancLbl, 430, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, adresaKancLbl, 20, SpringLayout.WEST, this);	
+		layout.putConstraint(SpringLayout.WEST, adresaKancLbl, 260, SpringLayout.WEST, this);	
 		
 		JLabel ulicaKancLbl = new JLabel("Ulica*");
 		JTextField ulicaKancTxt = new JTextField();
 		ulicaKancTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, ulicaKancLbl, 470, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, ulicaKancLbl, 60, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, ulicaKancLbl, 300, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, ulicaKancTxt, 140, SpringLayout.WEST, ulicaKancLbl);
 		layout.putConstraint(SpringLayout.NORTH, ulicaKancTxt, -5, SpringLayout.NORTH, ulicaKancLbl);
 		ulicaKancTxt.addKeyListener(new KeyListener() {
@@ -1128,7 +1143,7 @@ public class ProfesorDialog extends JDialog {
 		JTextField brojKancTxt = new JTextField();
 		brojKancTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, brojKancLbl, 510, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, brojKancLbl, 60, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, brojKancLbl, 300, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, brojKancTxt, 140, SpringLayout.WEST, brojKancLbl);
 		layout.putConstraint(SpringLayout.NORTH, brojKancTxt, -5, SpringLayout.NORTH, brojKancLbl);
 		brojKancTxt.addKeyListener(new KeyListener() {
@@ -1164,7 +1179,7 @@ public class ProfesorDialog extends JDialog {
 		JTextField gradKancTxt = new JTextField();
 		gradKancTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, gradKancLbl, 550, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, gradKancLbl, 60, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, gradKancLbl, 300, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, gradKancTxt, 140, SpringLayout.WEST, gradKancLbl);
 		layout.putConstraint(SpringLayout.NORTH, gradKancTxt, -5, SpringLayout.NORTH, gradKancLbl);
 		gradKancTxt.addKeyListener(new KeyListener() {
@@ -1200,7 +1215,7 @@ public class ProfesorDialog extends JDialog {
 		JTextField drzavaKancTxt = new JTextField();
 		drzavaKancTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, drzavaKancLbl, 590, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, drzavaKancLbl, 60, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, drzavaKancLbl, 300, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, drzavaKancTxt, 140, SpringLayout.WEST, drzavaKancLbl);
 		layout.putConstraint(SpringLayout.NORTH, drzavaKancTxt, -5, SpringLayout.NORTH, drzavaKancLbl);
 		drzavaKancTxt.addKeyListener(new KeyListener() {
@@ -1236,7 +1251,7 @@ public class ProfesorDialog extends JDialog {
 		JTextField brIDTxt = new JTextField();
 		brIDTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, brIDLbl, 630, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, brIDLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, brIDLbl, 280, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, brIDTxt, 160, SpringLayout.WEST, brIDLbl);
 		layout.putConstraint(SpringLayout.NORTH, brIDTxt, -5, SpringLayout.NORTH, brIDLbl);
 		brIDTxt.addKeyListener(new KeyListener() {
@@ -1272,7 +1287,7 @@ public class ProfesorDialog extends JDialog {
 		JTextField zvanjeTxt = new JTextField();
 		zvanjeTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, zvanjeLBL, 670, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, zvanjeLBL, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, zvanjeLBL, 280, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, zvanjeTxt, 160, SpringLayout.WEST, zvanjeLBL);
 		layout.putConstraint(SpringLayout.NORTH, zvanjeTxt, -5, SpringLayout.NORTH, zvanjeLBL);
 		
@@ -1311,7 +1326,7 @@ public class ProfesorDialog extends JDialog {
 		JTextField godineTxt = new JTextField();
 		godineTxt.setPreferredSize(new Dimension(150,30));
 		layout.putConstraint(SpringLayout.NORTH, godineLbl, 710, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, godineLbl, 40, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, godineLbl, 280, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, godineTxt, 160, SpringLayout.WEST, godineLbl);
 		layout.putConstraint(SpringLayout.NORTH, godineTxt, -5, SpringLayout.NORTH, godineLbl);
 		godineTxt.addKeyListener(new KeyListener() {
@@ -1344,7 +1359,7 @@ public class ProfesorDialog extends JDialog {
 		});
 		
 		layout.putConstraint(SpringLayout.NORTH, potvrdiBtn, 750, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, potvrdiBtn, 70, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, potvrdiBtn, 310, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.WEST, odustaniBtn, 160, SpringLayout.WEST, potvrdiBtn);
 		layout.putConstraint(SpringLayout.NORTH, odustaniBtn, 0, SpringLayout.NORTH, potvrdiBtn);
 		
@@ -1430,42 +1445,67 @@ public class ProfesorDialog extends JDialog {
 			}
 		});
 
-		add(imeLbl);
-		add(imeTxt);
-		add(prezimeLbl);
-		add(prezimeTxt);
-		add(datumLbl);
-		add(datumTxt);
-		add(adresaLbl);
-		add(ulicaLbl);
-		add(ulicaTxt);
-		add(brojLbl);
-		add(brojTxt);
-		add(gradLbl);
-		add(gradTxt);
-		add(drzavaLbl);
-		add(drzavaTxt);
-		add(telefonLbl);
-		add(telefonTxt);
-		add(emailLbl);
-		add(emailTxt);
-		add(adresaKancLbl);
-		add(ulicaKancLbl);
-		add(ulicaKancTxt);
-		add(brojKancLbl);
-		add(brojKancTxt);
-		add(gradKancLbl);
-		add(gradKancTxt);
-		add(drzavaKancLbl);
-		add(drzavaKancTxt);
-		add(brIDLbl);
-		add(brIDTxt);
-		add(zvanjeLBL);
-		add(zvanjeTxt);
-		add(godineLbl);
-		add(godineTxt);
-		add(potvrdiBtn);
-		add(odustaniBtn);
+		panel1.add(imeLbl);
+		panel1.add(imeTxt);
+		panel1.add(prezimeLbl);
+		panel1.add(prezimeTxt);
+		panel1.add(datumLbl);
+		panel1.add(datumTxt);
+		panel1.add(adresaLbl);
+		panel1.add(ulicaLbl);
+		panel1.add(ulicaTxt);
+		panel1.add(brojLbl);
+		panel1.add(brojTxt);
+		panel1.add(gradLbl);
+		panel1.add(gradTxt);
+		panel1.add(drzavaLbl);
+		panel1.add(drzavaTxt);
+		panel1.add(telefonLbl);
+		panel1.add(telefonTxt);
+		panel1.add(emailLbl);
+		panel1.add(emailTxt);
+		panel1.add(adresaKancLbl);
+		panel1.add(ulicaKancLbl);
+		panel1.add(ulicaKancTxt);
+		panel1.add(brojKancLbl);
+		panel1.add(brojKancTxt);
+		panel1.add(gradKancLbl);
+		panel1.add(gradKancTxt);
+		panel1.add(drzavaKancLbl);
+		panel1.add(drzavaKancTxt);
+		panel1.add(brIDLbl);
+		panel1.add(brIDTxt);
+		panel1.add(zvanjeLBL);
+		panel1.add(zvanjeTxt);
+		panel1.add(godineLbl);
+		panel1.add(godineTxt);
+		panel1.add(potvrdiBtn);
+		panel1.add(odustaniBtn);
+		
+		tabovi.addTab("Predmeti", panel2);
+		panel2.setLayout(layout);
+		panel2.setPreferredSize(new Dimension(1050, 750));
+		
+		JButton dodajBtn = new JButton("Dodaj predmet");
+		layout.putConstraint(SpringLayout.NORTH, dodajBtn, 120, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, dodajBtn, 70, SpringLayout.WEST, this);
+		panel2.add(dodajBtn);
+		
+		JButton ukloniBtn = new JButton("Ukloni predmet");
+		layout.putConstraint(SpringLayout.NORTH, ukloniBtn, 120, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, ukloniBtn, 240, SpringLayout.WEST, this);
+		panel2.add(ukloniBtn);
+		
+		predavaniPredmetiTable = new PredavaniPredmetiJTable();
+		TableColumn column = predavaniPredmetiTable.getColumn("BROJ ESPB BODOVA");
+		predavaniPredmetiTable.removeColumn(column);
+		JScrollPane predavaniPredmetiPane = new JScrollPane(predavaniPredmetiTable);
+		predavaniPredmetiPane.setPreferredSize(new Dimension(700,300));
+		predavaniPredmetiTable.setFillsViewportHeight(true);
+		layout.putConstraint(SpringLayout.NORTH, predavaniPredmetiPane, 240, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, predavaniPredmetiPane, 70, SpringLayout.WEST, this);
+		panel2.add(predavaniPredmetiPane);
+		
 		setVisible(true);
 		
 	}
