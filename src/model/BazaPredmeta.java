@@ -48,14 +48,14 @@ public class BazaPredmeta extends AbstractTableModel{
 	private void initPredmeti() {
 		
 		this.predmeti = new ArrayList<Predmet>();
-		predmeti.add(new Predmet("1","Matematika",SemesterEnum.summer,2,null,6));
-		predmeti.add(new Predmet("2","Srpski",SemesterEnum.summer,2,null,6));
-		predmeti.add(new Predmet("3","Algebra",SemesterEnum.summer,2,null,6));
+		predmeti.add(new Predmet("1","Matematika",SemesterEnum.summer,2,new Profesor(),6));
+		predmeti.add(new Predmet("2","Srpski",SemesterEnum.summer,2,new Profesor(),6));
+		predmeti.add(new Predmet("3","Algebra",SemesterEnum.summer,2,new Profesor(),6));
 		predmeti.add(new Predmet("4","Hemija",SemesterEnum.summer,3,new Profesor(),6));
-		predmeti.add(new Predmet("5","Muzicko",SemesterEnum.summer,2,null,3));
-		predmeti.add(new Predmet("6","Arhitektura",SemesterEnum.summer,2,null,6));
-		predmeti.add(new Predmet("7","Analiza",SemesterEnum.summer,2,null,6));
-		predmeti.add(new Predmet("8","Fizicko",SemesterEnum.winter,4,null,3));
+		predmeti.add(new Predmet("5","Muzicko",SemesterEnum.summer,2,new Profesor(),3));
+		predmeti.add(new Predmet("6","Arhitektura",SemesterEnum.summer,2,new Profesor(),6));
+		predmeti.add(new Predmet("7","Analiza",SemesterEnum.summer,2,new Profesor(),6));
+		predmeti.add(new Predmet("8","Fizicko",SemesterEnum.winter,4,new Profesor(),3));
 		predmeti.add(new Predmet("9","Fizika",SemesterEnum.winter,4,new Profesor(),6));
 		
 
@@ -80,6 +80,7 @@ public class BazaPredmeta extends AbstractTableModel{
 	public String getColumnName(int index) {
 		return this.kolone.get(index);
 	}
+
 	
 	public void dodajPredmet(Predmet p) {
 	
@@ -103,6 +104,7 @@ public class BazaPredmeta extends AbstractTableModel{
 				s.setEspb(s1.getEspb());
 				s.setYear(s1.getYear());
 				s.setSemester(s1.getSemester());
+				s.setProf(s1.getProf());
 			}
 		}
 		PredmetiJTable.rowSelectedIndex = -1;
