@@ -51,6 +51,7 @@ public class MainFrame extends JFrame {
 					BazaKatedri.getInstance().load();
 					BazaPredmeta.getInstance().load();
 					BazaStudenata.getInstance().load();
+					StudentiJTable.azurirajPrikaz("ASD",-1);
 
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block

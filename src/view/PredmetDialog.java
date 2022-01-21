@@ -80,7 +80,7 @@ public class PredmetDialog extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if(sifraTxt.getText().matches("[A-Z0-9]*") || sifraTxt.getText().equals("")) {
+				if(sifraTxt.getText().matches("[A-Z0-9a-z]*") || sifraTxt.getText().equals("")) {
 					potvrdiBtn.setEnabled(true);
 					sifraTxt.setBorder(new LineBorder(new Color(122, 138, 153),1));
 				} else {
@@ -88,7 +88,7 @@ public class PredmetDialog extends JDialog {
 					potvrdiBtn.setEnabled(false);
 					JOptionPane.showMessageDialog(new JPanel(), "Sifra se sastoji od velikih slova i brojeva.", "Warning",
 					        JOptionPane.WARNING_MESSAGE);
-					sifraTxt.setText(sifraTxt.getText().replaceAll("[^A-Z0-9]", "").substring(0,sifraTxt.getText().length()-1));
+					sifraTxt.setText(sifraTxt.getText().replaceAll("[^A-Z0-9a-z]", "").substring(0,sifraTxt.getText().length()-1));
 					potvrdiBtn.setEnabled(true);
 				}
 			}
@@ -287,7 +287,7 @@ public class PredmetDialog extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if(sifraTxt.getText().matches("[A-Z0-9]*") || sifraTxt.getText().equals("")) {
+				if(sifraTxt.getText().matches("[A-Z0-9a-z]*") || sifraTxt.getText().equals("")) {
 					potvrdiBtn.setEnabled(true);
 					sifraTxt.setBorder(new LineBorder(new Color(122, 138, 153),1));
 				} else {
@@ -295,7 +295,7 @@ public class PredmetDialog extends JDialog {
 					potvrdiBtn.setEnabled(false);
 					JOptionPane.showMessageDialog(new JPanel(), "Sifra se sastoji od velikih slova i brojeva.", "Warning",
 					        JOptionPane.WARNING_MESSAGE);
-					sifraTxt.setText(sifraTxt.getText().replaceAll("[^A-Z0-9]", "").substring(0,sifraTxt.getText().length()-1));
+					sifraTxt.setText(sifraTxt.getText().replaceAll("[^A-Z0-9a-z]", "").substring(0,sifraTxt.getText().length()-1));
 					potvrdiBtn.setEnabled(true);
 				}
 			}
