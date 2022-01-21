@@ -64,7 +64,7 @@ public class Toolbar extends JToolBar {
 		actionEdit.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		btnEdit.getActionMap().put("myAction", actionEdit);
 		btnEdit.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put((KeyStroke) actionEdit.getValue(Action.ACCELERATOR_KEY), "myAction");
-		btnEdit.setToolTipText("Izmena postojecih podataka.");
+		btnEdit.setToolTipText("Izmena postojećih podataka.");
 		this.add(btnEdit);
 		
 		Action actionDelete = new AbstractAction() {
