@@ -30,6 +30,7 @@ import javax.swing.event.ChangeListener;
 
 import controller.StudentKontroler;
 import model.Adresa;
+import model.BazaStudenata;
 import model.Ocena;
 import model.Student;
 import model.Student.StatusEnum;
@@ -1214,7 +1215,8 @@ public class StudentDialog extends JDialog {
 		layout.putConstraint(SpringLayout.WEST, dodajBtn, 170, SpringLayout.WEST, this);
 		dodajBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DodavanjePredmetaStudentuDialog d = new DodavanjePredmetaStudentuDialog();
+				Student s = BazaStudenata.getInstance().getRow(StudentiJTable.rowSelectedIndex);
+				DodavanjePredmetaStudentuDialog d = new DodavanjePredmetaStudentuDialog(s);
 			}
 		});
 		panel3.add(dodajBtn);

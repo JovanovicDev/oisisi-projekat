@@ -17,7 +17,7 @@ public class ViewPanel extends JPanel {
 	
 	public static JTable studentiTable;
 	public static JTable  profesoriTable;
-	public static  JTable predmetiTable;
+	public static JTable predmetiTable;
 	public static JTabbedPane tabovi;
 	
 	public ViewPanel(Dimension d) {
