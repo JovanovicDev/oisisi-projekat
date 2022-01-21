@@ -111,7 +111,7 @@ public class BazaPredmeta extends AbstractTableModel{
 	}
 	
 	public void obrisiPredmet(Predmet p) {
-		if(p.getProf() == null) {
+		if(p.getProf().getName().equals("")) {
 			predmeti.remove(p);
 			ProfesoriJTable.rowSelectedIndex = -1;
 		}

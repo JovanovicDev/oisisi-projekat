@@ -58,7 +58,7 @@ public class MyActionListenerDelete implements ActionListener {
 		if(PredmetiJTable.rowSelectedIndex>-1) {
 				
 				Predmet p = BazaPredmeta.getInstance().getRow(PredmetiJTable.rowSelectedIndex);
-				if(p.getProf() == null) {
+				if(p.getProf().getName().equals("")) {
 				int dialogButton = JOptionPane.YES_NO_OPTION;
                 int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), 
                 		"Da li ste sigurni da zelite da obrisete predmet " + p.getName() + "?", 
