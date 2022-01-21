@@ -3,11 +3,7 @@ package view;
 import java.awt.Dimension;
 
 import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 import javax.swing.SpringLayout;
 
 public class HelpDialog extends JDialog {
